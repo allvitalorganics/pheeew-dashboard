@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pheeew — Master Plan & Team Dashboard</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#0a0a0a;color:#fff;line-height:1.8;padding:0}
+.wrap{max-width:980px;margin:0 auto;padding:16px 24px 80px}
+h1{font-size:22px;font-weight:800;margin-bottom:2px}
+h2{font-size:14px;font-weight:700;margin:24px 0 8px;padding:8px 14px;border-radius:6px;background:#1a1a1a;border-left:3px solid #DAFF00}
+h3{font-size:11px;font-weight:700;color:#DAFF00;margin:10px 0 3px;text-transform:uppercase;letter-spacing:1px}
+h4{font-size:11px;font-weight:700;color:#fff;margin:6px 0 2px}
+p,li{color:#999;font-size:11px;margin:2px 0}
+ul{padding-left:14px}
+strong{color:#fff}
+em{color:#DAFF00;font-style:normal;font-weight:600}
+a{color:#DAFF00;text-decoration:none;font-size:9px}
+a:hover{text-decoration:underline}
+.sub{font-size:9px;color:#444;margin-bottom:10px}
+.S{background:#1a1a1a;border:1px solid #222;border-radius:6px;padding:12px;margin:5px 0}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px}
+@media(max-width:700px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:#111;border:1px solid #222;border-radius:6px;padding:10px}
+.stat{text-align:center;padding:8px}
+.stat .n{font-size:20px;font-weight:800}
+.stat .l{font-size:7px;color:#666;letter-spacing:1px;text-transform:uppercase;margin-top:1px}
+.lime{color:#DAFF00}.red{color:#c0392b}.green{color:#27ae60}.yel{color:#e67e22}.org{color:#FF6B35}.pur{color:#8B45A6}
+.ok{background:rgba(39,174,96,.08);border-left:3px solid #27ae60;padding:6px 10px;margin:3px 0;font-size:10px;color:#27ae60;border-radius:0 4px 4px 0}
+.no{background:rgba(192,57,43,.06);border-left:3px solid #c0392b;padding:6px 10px;margin:3px 0;font-size:10px;color:#c0392b;border-radius:0 4px 4px 0}
+.warn{background:rgba(230,126,34,.06);border-left:3px solid #e67e22;padding:6px 10px;margin:3px 0;font-size:10px;color:#e67e22;border-radius:0 4px 4px 0}
+.diamond{background:#0d1a0a;border:2px solid #DAFF00;border-radius:8px;padding:14px;margin:8px 0}
+table{width:100%;border-collapse:collapse;font-size:10px;margin:6px 0}
+th{text-align:left;padding:5px 6px;background:#111;color:#555;font-size:8px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid #333}
+td{padding:5px 6px;border-bottom:1px solid #151515;color:#888}
+.tabs{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.97);backdrop-filter:blur(12px);border-bottom:1px solid #222;padding:8px 16px;display:flex;gap:3px;flex-wrap:wrap}
+.tab{padding:5px 11px;border-radius:100px;font-size:9px;font-weight:700;cursor:pointer;border:1px solid #333;color:#555;transition:.12s;letter-spacing:.2px;text-transform:uppercase}
+.tab:hover{border-color:#DAFF00;color:#fff}
+.tab.on{background:#DAFF00;color:#0a0a0a;border-color:#DAFF00}
+.pg{display:none}.pg.a{display:block}
+.tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:8px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;margin-right:2px}
+.tag-v{background:#2d6a4f;color:#fff}
+.tag-i{background:#3a5a8c;color:#fff}
+.tag-e{background:#6b5b3e;color:#fff}
+.sku{border-radius:6px;padding:12px;text-align:center}
+.def{background:#111;padding:8px 10px;margin:3px 0;border-radius:4px;border-left:2px solid #333}
+.def strong{color:#DAFF00;font-size:10px}
+.def p{font-size:10px;color:#888;margin-top:1px}
+.src{font-size:8px;color:#333;font-style:italic}
+</style>
+</head>
+<body>
+
+<div class="tabs">
+<div class="tab on" onclick="show('overview')">HQ</div>
+<div class="tab" onclick="show('product')">Product</div>
+<div class="tab" onclick="show('economics')">Economics</div>
+<div class="tab" onclick="show('legal')">Legal</div>
+<div class="tab" onclick="show('retail')">Retail</div>
+<div class="tab" onclick="show('gtm')">GTM</div>
+<div class="tab" onclick="show('competitive')">Comp</div>
+<div class="tab" onclick="show('audience')">Audience</div>
+<div class="tab" onclick="show('investment')">Investment</div>
+<div class="tab" onclick="show('dictionary')">Dictionary</div>
+<div class="tab" onclick="show('ops')">Ops Setup</div>
+<div class="tab" onclick="show('legal_docs')">Legal Docs</div>
+<div class="tab" onclick="show('future')">Future</div>
+<div class="tab" onclick="show('actions')">Actions</div>
+</div>
+
+<div class="wrap">
+
+<!-- ============================================= -->
+<!-- HQ / OVERVIEW -->
+<!-- ============================================= -->
+<div class="pg a" id="overview">
+<h1 style="color:#DAFF00">PHEEEW</h1>
+<p style="font-size:13px;color:#DAFF00;font-weight:600">The Synbiotic Pouch™</p>
+<div class="sub">
+Pheeew, Inc. · Delaware C-Corp · Class 32 Trademark Filed · Conventional Food (NOT supplement)<br>
+Alex Kim 35% · Jason Kim 33% · Dawon Kim 32% · Equity contract update pending<br>
+Last updated: April 13, 2026
+</div>
+
+<div class="g3">
+<div class="sku" style="background:rgba(255,107,53,.1);border:2px solid #FF6B35">
+<p style="font-size:8px;letter-spacing:2px;color:#FF6B35;text-transform:uppercase">SKU 1 — Launch</p>
+<h4 style="color:#FF6B35;font-size:16px">Gut + Digestion</h4>
+<p style="color:#FF6B35;font-size:10px">Tropical Punch</p>
+<p style="margin-top:4px;font-size:9px;color:#888">Synbiotic base only · Lowest COGS<br>₩790/740 per unit · $0.58/0.54</p>
+<p style="font-size:8px;color:#555;margin-top:3px">Working alt name: "Gut + Bloat" (under legal review — supplement territory risk)</p>
+</div>
+<div class="sku" style="background:rgba(232,197,71,.08);border:2px solid #E8C547">
+<p style="font-size:8px;letter-spacing:2px;color:#E8C547;text-transform:uppercase">SKU 2 — Month 3-4</p>
+<h4 style="color:#E8C547;font-size:16px">Gut + Immunity</h4>
+<p style="color:#E8C547;font-size:10px">Ginger Pear</p>
+<p style="margin-top:4px;font-size:9px;color:#888">Synbiotic + Vitamin C (200mg)<br>₩810/760 + additive · $0.60/0.56+</p>
+</div>
+<div class="sku" style="background:rgba(139,69,166,.08);border:2px solid #8B45A6">
+<p style="font-size:8px;letter-spacing:2px;color:#8B45A6;text-transform:uppercase">SKU 3 — Month 5-6</p>
+<h4 style="color:#8B45A6;font-size:16px">Gut + Energy</h4>
+<p style="color:#8B45A6;font-size:10px">Wild Berries</p>
+<p style="margin-top:4px;font-size:9px;color:#888">Synbiotic + B6 + B12 + Green tea (~50-75mg)<br>₩860/810 + additives · $0.63/0.60+</p>
+</div>
+</div>
+
+<div class="diamond" style="text-align:center;padding:16px">
+<p style="font-size:15px;color:#DAFF00;font-weight:800">"Most probiotics don't survive your stomach.<br>Pheeew does."</p>
+<p style="font-size:9px;color:#555;margin-top:4px">Bacillus coagulans SNZ 1969 · Spore-forming · FDA GRAS (GRN 597, 864) · Clinically studied<br>XOS + Fibersol-2L prebiotic · 100mL squeeze pouch · 5 seconds · Done.</p>
+</div>
+
+<div class="S">
+<h3>TEAM</h3>
+<div class="g3">
+<div class="card"><h4>Alex Kim <span style="color:#DAFF00;font-size:9px">CEO · 35%</span></h4><p>Brand · Product · Legal · Investor relations · Creative direction</p></div>
+<div class="card"><h4>Jason Kim <span style="color:#DAFF00;font-size:9px">COO · 33%</span></h4><p>Copy · Operations · Content · Growth · Influencer strategy</p></div>
+<div class="card"><h4>Dawon Kim <span style="color:#DAFF00;font-size:9px">CDO · 32%</span></h4><p>Design · Video · Website · E-commerce · Brand aesthetics</p></div>
+</div>
+</div>
+
+<div class="S">
+<h3>FUNDING</h3>
+<table>
+<tr><th>Source</th><th>KRW</th><th>USD</th><th>Status</th></tr>
+<tr><td>Committed (in account)</td><td>₩28.8M</td><td><strong>$20,000</strong></td><td style="color:#27ae60">Confirmed</td></tr>
+<tr><td>Gap for 1 SKU launch</td><td>₩20-42M</td><td><strong>$15-25K</strong></td><td style="color:#c0392b">Need to secure</td></tr>
+<tr><td>Jason's dad (potential)</td><td>₩197M</td><td><strong>$145,000</strong></td><td style="color:#e67e22">Conversation stage</td></tr>
+<tr><td>Angel investor route</td><td>TBD</td><td>TBD</td><td style="color:#e67e22">Under discussion — 90-day vs 1-year raise</td></tr>
+</table>
+</div>
+
+<div class="S">
+<h3>KEY NUMBERS (memorize these)</h3>
+<div class="g4">
+<div class="stat card"><div class="n lime">$69</div><div class="l">Monthly sub (30-pack)</div></div>
+<div class="stat card"><div class="n lime">70%</div><div class="l">Gross margin</div></div>
+<div class="stat card"><div class="n lime">52%</div><div class="l">CM1</div></div>
+<div class="stat card"><div class="n lime">22-27%</div><div class="l">CM2</div></div>
+</div>
+<div class="g4">
+<div class="stat card"><div class="n org">$0.57</div><div class="l">Mfg COGS/unit (120K)</div></div>
+<div class="stat card"><div class="n org">$0.69</div><div class="l">Landed COGS/unit</div></div>
+<div class="stat card"><div class="n lime">$828</div><div class="l">Annual sub value</div></div>
+<div class="stat card"><div class="n lime">$828K</div><div class="l">ARR @ 1K subs</div></div>
+</div>
+</div>
+</div>
+
+<!-- ============================================= -->
+<!-- PRODUCT -->
+<!-- ============================================= -->
+<div class="pg" id="product">
+<h1>Product</h1>
+<div class="sub">Formulation · Format · Manufacturing · Probiotic science</div>
+
+<div class="S">
+<h3>BASE FORMULA — ALL POUCHES</h3>
+<table>
+<tr><th>Ingredient</th><th>Role</th><th>Status</th><th>Source</th></tr>
+<tr><td><strong>Bacillus coagulans SNZ 1969</strong></td><td>Probiotic · Spore-forming · Survives stomach acid + shelf-stable</td><td style="color:#27ae60">Confirmed · FDA GRAS (GRN 597 + 864)</td><td><a href="https://www.fda.gov/files/food/published/GRAS-Notice-000597---Bacillus-coagulans-SNZ1969-spores-preparation.pdf">FDA GRN 597</a>, <a href="https://www.fda.gov/media/134103/download">FDA GRN 864</a></td></tr>
+<tr><td><strong>XOS (xylo-oligosaccharides)</strong></td><td>Prebiotic fiber</td><td style="color:#27ae60">Confirmed</td><td>Manufacturer formula</td></tr>
+<tr><td><strong>Fibersol-2L</strong></td><td>Prebiotic fiber (resistant maltodextrin, Matsutani/ADM)</td><td style="color:#27ae60">Confirmed</td><td>Manufacturer formula</td></tr>
+</table>
+<div class="no">NOT inulin. NOT chicory root fiber. Never has been. Never will be.</div>
+</div>
+
+<div class="S">
+<h3>SNZ 1969 — WHY THIS STRAIN</h3>
+<p><strong>Spore-forming</strong> = the single most important differentiator. Most probiotics (Lactobacillus, Bifidobacterium) are fragile — they die in heat, on shelves, in stomach acid. B. coagulans SNZ 1969 forms a protective spore that survives all three, reaches the colon intact, then activates.</p>
+<p style="margin-top:4px"><strong>What this means for Pheeew:</strong> No refrigeration. Shelf-stable. Survives stomach. Arrives alive. This is what makes "Most probiotics don't survive your stomach. Pheeew does." TRUE and legally defensible.</p>
+
+<h4 style="margin-top:8px">Clinical Evidence (all RCTs — randomized, placebo-controlled)</h4>
+<table>
+<tr><th>Study</th><th>Finding</th><th>Source</th></tr>
+<tr><td>GI discomfort (dyspepsia)</td><td>Significantly improved pain + symptoms vs placebo. Effects persisted 7 days post-stop.</td><td><a href="https://www.ijhsr.org/IJHSR_Vol.12_Issue.3_March2022/IJHSR-Abstract.036.html">IJHSR 2022</a></td></tr>
+<tr><td>Constipation / motility</td><td>Improved colonic transit time, bowel movements, discomfort symptoms. Changed microbiota composition.</td><td><a href="https://pubmed.ncbi.nlm.nih.gov/34119240/">PubMed 34119240</a></td></tr>
+<tr><td>IBS (n=92)</td><td>500M CFU 2x/day, 60 days. Constipation + diarrhea dominant IBS.</td><td><a href="https://www.ijbcp.com/index.php/ijbcp/article/view/5120">IJBCP</a></td></tr>
+<tr><td>Immune function (ages 60-65)</td><td>Significant increase in NK cell activity across men + women.</td><td><a href="https://pubmed.ncbi.nlm.nih.gov/41262831/">PubMed 41262831</a></td></tr>
+</table>
+<p class="src">50+ years of safe human consumption. Manufactured by Sanzyme Biologics (India). <a href="https://www.sanzymebiologics.com/bacillus-coagulans/">sanzymebiologics.com</a></p>
+</div>
+
+<div class="S">
+<h3>SKU-SPECIFIC FORMULAS</h3>
+<table>
+<tr><th>SKU</th><th>Flavor Base</th><th>Functional Add</th><th>COGS (40K/120K)</th><th>Monday Question</th></tr>
+<tr><td style="color:#FF6B35"><strong>Gut + Digestion</strong></td><td>열대혼합과일, 망고퓨레, 바나나퓨레</td><td>None — pure synbiotic</td><td>₩790/740 · $0.58/0.54</td><td>N/A</td></tr>
+<tr><td style="color:#E8C547"><strong>Gut + Immunity</strong></td><td>사과농축액, 사과퓨레, 생강쥬스, 배</td><td>Vitamin C 200mg</td><td>₩810/760 + Vit C</td><td>Vitamin C 추가 가능? 비용? 맛 영향?</td></tr>
+<tr><td style="color:#8B45A6"><strong>Gut + Energy</strong></td><td>블루베리, 사과, 딸기, 크랜베리, 엘더베리</td><td>B6 + B12 + Green tea extract (~50-75mg caffeine)</td><td>₩860/810 + additives</td><td>녹차추출물 수용성? 맛? 소싱? B vitamin 비용?</td></tr>
+</table>
+</div>
+
+<div class="S">
+<h3>PRODUCTION</h3>
+<p><strong>Manufacturer:</strong> 좋은영농조합법인 (Naju, Korea) · Quote: April 9, 2026</p>
+<p><strong>Format:</strong> 100mL spout pouch (숏바디/안전캡) · 10ea color inbox · 40-unit carton</p>
+<p><strong>Shelf life:</strong> Minimum 12 months, targeting 18 months. (Confirm with manufacturer — CFU at end of shelf life must be guaranteed for FDA labeling.)</p>
+<p><strong>Production lead time:</strong> ~3 months from payment to finished goods (first run). Subsequent runs shorter.</p>
+<p><strong>Shipping to US:</strong> 4-12 weeks depending on method. Sea freight (cheapest): 8-12 weeks. Air freight (fastest): 4-6 weeks but 5-10x more expensive.</p>
+
+<div class="warn"><strong>MOQ STRUCTURE:</strong><br>
+<strong>Pouch printing = 120K per SKU design per roll.</strong> Each SKU has its OWN roll.<br>
+<strong>Juice filling = 40K per SKU minimum.</strong><br>
+So: 1 SKU at 40K fill = 40K filled pouches + 80K empty pouches remaining on that SKU's roll.<br><br>
+<strong>THE POUCH ROLL COST IS INCLUDED IN THE PER-UNIT PRICE.</strong> The manufacturer's quoted price (₩790/740 etc.) already includes the pouch. You do NOT pay separately for the roll. The 80K remaining pouches sit at the manufacturer waiting for your next production run.<br><br>
+<strong>The risk:</strong> The 80K empties become YOUR cost ONLY if you never manufacture that SKU again. If you do a second run, they're pre-paid — the per-unit cost on run 2 drops because the pouches are already printed and waiting. The manufacturer just fills them.</div>
+
+<table>
+<tr><th>Plan</th><th>Filled</th><th>Remaining on roll</th><th>Production cost (₩ / $)</th><th>What happens on Run 2</th></tr>
+<tr><td><strong>1 SKU × 40K</strong></td><td>40,000</td><td>80,000 pouches waiting</td><td><strong>₩31.6M / $23.2K</strong><br>(40K × ₩790 avg)</td><td>Run 2: fill 40K more from remaining pouches. Cost = juice fill only (pouch already paid). Run 3: fill last 40K. Then reorder new roll.</td></tr>
+<tr><td><strong>2 SKUs × 40K each</strong></td><td>80,000</td><td>80,000 per SKU (160K total)</td><td><strong>₩63.2M / $46.5K</strong><br>(80K × ₩790 avg)</td><td>Each SKU has 80K pouches waiting for run 2+3.</td></tr>
+<tr><td><strong>3 SKUs × 40K each</strong></td><td>120,000</td><td>80,000 per SKU (240K total)</td><td><strong>₩92.4M / $67.9K</strong><br>(120K × ₩770 avg at 120K pricing)</td><td>Each SKU has 80K pouches waiting. 360K total pouches printed, 120K filled.</td></tr>
+</table>
+
+<div class="ok"><strong>KEY INSIGHT:</strong> The per-unit quoted price (₩790 at 40K, ₩740 at 120K) INCLUDES the pouch cost amortized across the fill run. You're not paying for pouches + juice separately — it's one all-in price. The 80K remaining pouches are a sunk cost embedded in your first production payment, recovered when you do run 2. If you grow and keep producing, the pouch roll is effectively free on runs 2 and 3.</div>
+<p class="src">Confirm with 좋은영농조합법인 on Monday: does the per-unit price include pouch cost, or is the pouch roll billed separately? This affects whether 1 SKU production is ₩31.6M ($23.2K) or higher.</p>
+</div>
+
+<div class="S">
+<h3>MONDAY CALL — 좋은영농조합법인 QUESTIONS</h3>
+<p style="color:#ccc;font-size:11px;line-height:2">
+1. Vitamin C (ascorbic acid) 추가 가능? 200mg 기준 유닛당 추가 비용?<br>
+2. Vitamin B6 + B12 추가 가능? 유닛당 비용?<br>
+3. 녹차 추출물 (카페인 ~50-75mg) 추가 가능? 수용성? 맛 영향? 베리에 어울리는지?<br>
+4. <strong>Bacillus coagulans SNZ 1969의 GRAS 서류 확인</strong> — FDA GRN 597/864 기준. 미국 일반식품 판매 목적.<br>
+5. 파우치 120K — <strong>디자인 3종 (색상별) 각 40K씩 인쇄 가능?</strong> 아니면 120K 동일 디자인만?<br>
+6. 첨가물 추가 시 120K 가격 (₩740-810) 유지되는지?<br>
+7. 주문 → 제조 완료 리드타임? (목표: 6월 초 미국 도착)<br>
+8. 유통기한 기준 1B CFU 보장 가능? (FDA 표기 요구사항)<br>
+9. 수출용 영양성분 분석표 (Nutrition Facts panel) 제공 가능?
+</p>
+</div>
+</div>
+
+<!-- ============================================= -->
+<!-- ECONOMICS -->
+<!-- ============================================= -->
+<div class="pg" id="economics">
+<h1>Economics</h1>
+<div class="sub">Unit P&L · Investment by SKU · Break-even · Subscription model</div>
+
+<div class="S">
+<h3>DTC SUBSCRIPTION P&L (per 30-pack box, $69/month)</h3>
+<table>
+<tr><th>Line</th><th>Per Pouch</th><th>Per Box</th><th>%</th></tr>
+<tr><td><strong>Revenue</strong></td><td>₩3,128 / $2.30</td><td>₩93,840 / $69.00</td><td>100%</td></tr>
+<tr><td>Manufacturing (120K avg)</td><td>₩770 / $0.57</td><td>₩23,100 / $17.00</td><td>24.6%</td></tr>
+<tr><td>Landed add</td><td>₩163 / $0.12</td><td>₩5,032 / $3.70</td><td>5.4%</td></tr>
+<tr><td><strong>Landed COGS</strong></td><td><strong>₩938 / $0.69</strong></td><td><strong>₩28,152 / $20.70</strong></td><td><strong>30%</strong></td></tr>
+<tr style="background:rgba(218,255,0,.03)"><td><strong style="color:#27ae60">Gross Profit</strong></td><td style="color:#27ae60">₩2,190 / $1.61</td><td style="color:#27ae60">₩65,688 / $48.30</td><td style="color:#27ae60"><strong>70%</strong></td></tr>
+<tr><td>Shipping</td><td>₩381 / $0.28</td><td>₩11,560 / $8.50</td><td>12.3%</td></tr>
+<tr><td>Payment (2.9%+$0.30)</td><td>₩109 / $0.08</td><td>₩3,128 / $2.30</td><td>3.3%</td></tr>
+<tr><td>Returns (2%)</td><td>₩68 / $0.05</td><td>₩1,877 / $1.38</td><td>2%</td></tr>
+<tr style="background:rgba(218,255,0,.03)"><td><strong style="color:#27ae60">CM1</strong></td><td style="color:#27ae60">₩1,632 / $1.20</td><td style="color:#27ae60">₩49,123 / $36.12</td><td style="color:#27ae60"><strong>52.3%</strong></td></tr>
+<tr><td>Marketing (20-25%)</td><td>₩626-783 / $0.46-0.58</td><td>₩18,768-23,460</td><td>20-25%</td></tr>
+<tr><td>Content (5%)</td><td>₩163 / $0.12</td><td>₩4,692 / $3.45</td><td>5%</td></tr>
+<tr style="background:rgba(218,255,0,.04)"><td><strong style="color:#27ae60">CM2</strong></td><td style="color:#27ae60">₩694-857 / $0.51-0.63</td><td style="color:#27ae60">₩20,971-25,663</td><td style="color:#27ae60"><strong>22-27%</strong></td></tr>
+</table>
+<p class="src">COGS: 좋은영농조합법인 April 9 quote (120K pricing). Landed: sea freight + duty + 3PL estimates. Shipping: USPS/UPS ground amortized across 30-pack.</p>
+</div>
+
+<div class="S">
+<h3>TOTAL INVESTMENT BY SKU</h3>
+<p style="font-size:9px;color:#555;margin-bottom:4px">Production cost = manufacturer's quoted per-unit price × units. Pouch roll cost is INCLUDED in the per-unit price. The 80K remaining pouches per SKU are a sunk cost recovered on run 2+3 — not an additional expense unless you never produce again.</p>
+<table>
+<tr><th></th><th>1 SKU (₩ / $)</th><th>2 SKUs (₩ / $)</th><th>3 SKUs (₩ / $)</th></tr>
+<tr><td>Production (all-in per-unit × qty)</td><td>₩31.6M / $23.2K</td><td>₩63.2M / $46.5K</td><td>₩92.4M / $67.9K</td></tr>
+<tr><td>Logistics (KR→US)</td><td>₩7-11M / $5.4-8K</td><td>₩11-16M / $8.4-11.4K</td><td>₩14-18M / $10-13.5K</td></tr>
+<tr><td>Infrastructure</td><td>₩4-7M / $2.9-4.9K</td><td>₩5-8M / $3.5-5.9K</td><td>₩6-10M / $4.1-7K</td></tr>
+<tr><td>Marketing (90 days)</td><td>₩5-12M / $4-9K</td><td>₩8-18M / $6-13K</td><td>₩11-23M / $8-17K</td></tr>
+<tr style="background:#111"><td><strong>TOTAL</strong></td><td><strong>₩48-62M / $35-45K</strong></td><td><strong>₩87-105M / $64-77K</strong></td><td><strong>₩123-143M / $90-105K</strong></td></tr>
+</table>
+<div class="ok"><strong>1 SKU at 40K units costs $35-45K total</strong> (production + logistics + infra + marketing). You have $20K committed. Gap: $15-25K. This is achievable with Jason's dad at a fraction of the $145K discussed — even $30K from him covers 1 SKU launch.</div>
+<div class="warn"><strong>Sunk cost risk per SKU:</strong> Each SKU's 40K production run includes 120K pouches (80K unfilled). If you never produce that SKU again, the 80K pouch cost (embedded in your first run payment, est. ~₩12-15M / $9-11K) is lost. If you DO produce again, runs 2+3 are cheaper — pouches are already printed.</div>
+
+<h3 style="margin-top:10px">SUBSCRIBER ECONOMICS</h3>
+<table>
+<tr><th>Metric</th><th>Value</th></tr>
+<tr><td>Annual subscriber value</td><td><strong>$828 / ₩1,126,080</strong> ($69 × 12)</td></tr>
+<tr><td>Repeat customer CAC</td><td><strong>$0</strong></td></tr>
+<tr><td>1,000 subscribers</td><td><strong>$828K ARR / ₩11.3억</strong></td></tr>
+<tr><td>Target first-purchase CAC</td><td><strong><$35</strong> (industry avg $45-53 for supplement DTC)</td></tr>
+<tr><td>LTV:CAC target</td><td><strong>3:1+</strong> (at $828 LTV / $35 CAC = 23.7:1 if retained 12mo)</td></tr>
+<tr><td>PMF signal</td><td><strong>30%+ repeat at 90 days = confirmed. <15% = pivot product.</strong></td></tr>
+</table>
+<p class="src">CAC benchmark: <a href="https://kruzeconsulting.com/blog/preseed-funding/">Kruze Consulting Pre-Seed Guide</a>. LTV methodology: subscription × average retention months. Conversion rate benchmark: F&B DTC avg 6-7% (<a href="https://www.justuno.com/blog/dtc-food-beverage-strategies/">Justuno 2025</a>). Subscription churn for beverages: 6-8%/month (<a href="https://getrecharge.com/blog/10-subscription-metrics-every-dtc-brand-should-track/">Recharge</a>).</p>
+</div>
+
+<div class="S">
+<h3>12-MONTH P&L SCENARIOS (DTC only, per month)</h3>
+<table>
+<tr><th></th><th style="color:#c0392b">WORST CASE</th><th style="color:#e67e22">LIKELY CASE</th><th style="color:#27ae60">BEST CASE</th></tr>
+<tr><td colspan="4" style="background:#111;color:#555;font-size:8px;letter-spacing:1px">ASSUMPTIONS</td></tr>
+<tr><td>MSRP per pouch</td><td>$2.99 (30pk = $59)</td><td>$3.49 (30pk = $69)</td><td>$3.99 (30pk = $79)</td></tr>
+<tr><td>Subscription rate</td><td>20% of buyers</td><td>40% of buyers</td><td>70% of buyers</td></tr>
+<tr><td>Month 12 active subs</td><td>200</td><td>600</td><td>1,200</td></tr>
+<tr><td>Monthly churn</td><td>10%</td><td>7%</td><td>5%</td></tr>
+<tr><td>One-time buyers/month</td><td>100</td><td>200</td><td>300</td></tr>
+<tr><td>Marketing % of rev</td><td>30%</td><td>25%</td><td>20%</td></tr>
+<tr><td colspan="4" style="background:#111;color:#555;font-size:8px;letter-spacing:1px">MONTH 12 NUMBERS</td></tr>
+<tr><td>Monthly sub revenue</td><td style="color:#c0392b">200 × $59 = $11,800</td><td style="color:#e67e22">600 × $69 = $41,400</td><td style="color:#27ae60">1,200 × $79 = $94,800</td></tr>
+<tr><td>Monthly one-time revenue</td><td>100 × $69 = $6,900</td><td>200 × $79 = $15,800</td><td>300 × $89 = $26,700</td></tr>
+<tr><td><strong>Total monthly revenue</strong></td><td style="color:#c0392b"><strong>$18,700</strong></td><td style="color:#e67e22"><strong>$57,200</strong></td><td style="color:#27ae60"><strong>$121,500</strong></td></tr>
+<tr><td>Gross profit (70%)</td><td>$13,090</td><td>$40,040</td><td>$85,050</td></tr>
+<tr><td>After shipping+payment+returns (52% CM1)</td><td>$9,724</td><td>$29,744</td><td>$63,180</td></tr>
+<tr><td>Marketing spend</td><td>-$5,610 (30%)</td><td>-$14,300 (25%)</td><td>-$24,300 (20%)</td></tr>
+<tr><td>Content/seeding (5%)</td><td>-$935</td><td>-$2,860</td><td>-$6,075</td></tr>
+<tr><td><strong>CM2 (monthly operating profit)</strong></td><td style="color:#c0392b"><strong>$3,179</strong></td><td style="color:#e67e22"><strong>$12,584</strong></td><td style="color:#27ae60"><strong>$32,805</strong></td></tr>
+<tr><td colspan="4" style="background:#111;color:#555;font-size:8px;letter-spacing:1px">ANNUAL (12 MONTHS CUMULATIVE)</td></tr>
+<tr><td><strong>Total annual revenue (est.)</strong></td><td style="color:#c0392b"><strong>~$120K</strong></td><td style="color:#e67e22"><strong>~$400K</strong></td><td style="color:#27ae60"><strong>~$950K</strong></td></tr>
+<tr><td><strong>Total annual CM2</strong></td><td style="color:#c0392b"><strong>~$20K</strong></td><td style="color:#e67e22"><strong>~$85K</strong></td><td style="color:#27ae60"><strong>~$250K</strong></td></tr>
+<tr><td><strong>Break-even on $54K investment</strong></td><td style="color:#c0392b">Month 18+</td><td style="color:#e67e22">Month 8-9</td><td style="color:#27ae60">Month 4-5</td></tr>
+</table>
+<p class="src">Revenue ramp assumes gradual subscriber growth month over month, not flat. Month 1 ≠ Month 12. Annual estimates account for ramp curve. Churn benchmarks: <a href="https://getrecharge.com/blog/10-subscription-metrics-every-dtc-brand-should-track/">Recharge 2025</a> (coffee/bev 6-8%/mo).</p>
+</div>
+
+<div class="S">
+<h3>CASH FLOW WATERFALL — WHEN MONEY GOES OUT vs COMES IN</h3>
+<table>
+<tr><th>When</th><th>Cash OUT</th><th>Cash IN</th><th>Net Position</th></tr>
+<tr><td>Month -3 (order)</td><td style="color:#c0392b">-$32K (production deposit)</td><td>—</td><td style="color:#c0392b">-$32K</td></tr>
+<tr><td>Month -2 (production)</td><td style="color:#c0392b">-$5K (logistics prep)</td><td>—</td><td style="color:#c0392b">-$37K</td></tr>
+<tr><td>Month -1 (shipping)</td><td style="color:#c0392b">-$5K (sea freight + customs)</td><td>—</td><td style="color:#c0392b">-$42K</td></tr>
+<tr><td>Month 0 (3PL receiving)</td><td style="color:#c0392b">-$2K (3PL + infra)</td><td>—</td><td style="color:#c0392b">-$44K</td></tr>
+<tr><td>Month 1 (launch)</td><td style="color:#c0392b">-$4K (marketing)</td><td style="color:#27ae60">+$5-15K (first sales)</td><td style="color:#c0392b">-$43K to -$33K</td></tr>
+<tr><td>Month 2</td><td>-$4K</td><td style="color:#27ae60">+$8-25K</td><td>Improving</td></tr>
+<tr><td>Month 3</td><td>-$4K</td><td style="color:#27ae60">+$12-35K</td><td>Improving</td></tr>
+<tr><td>Month 6</td><td>-$4K/mo ongoing</td><td style="color:#27ae60">+$20-60K/mo</td><td style="color:#e67e22">Approaching break-even</td></tr>
+<tr><td>Month 9-12</td><td>-$4K + SKU 2/3 production</td><td style="color:#27ae60">+$30-100K/mo</td><td style="color:#27ae60">Cash-flow positive (likely case)</td></tr>
+</table>
+<div class="warn"><strong>The CPG cash trap:</strong> You pay for inventory 3-5 months before collecting revenue. $44K goes out before Dollar 1 comes in. This is why CPG brands raise money — timing, not unit economics. (<a href="https://www.finrofca.com/startup-qa/safe-rounds-valuation-caps-explained">Finro</a>)</div>
+</div>
+</div>
+
+<!-- ============================================= -->
+<!-- LEGAL -->
+<!-- ============================================= -->
+<div class="pg" id="legal">
+<h1>Legal Compliance</h1>
+<div class="sub">FDA · FTC · Classification · Packaging · Claims library</div>
+
+<div class="S">
+<h3>CLASSIFICATION</h3>
+<p><strong>Pheeew = CONVENTIONAL FOOD.</strong> Not a dietary supplement.</p>
+<p>Trademark: <strong>Class 32</strong> (non-alcoholic beverages). Filed with USPTO.</p>
+<p>Label: <strong>Nutrition Facts</strong> panel (NOT Supplement Facts).</p>
+<p>FDA notification: <strong>NOT required</strong> for structure/function claims on conventional food.</p>
+<p>Disclaimer: <strong>NOT required</strong> on conventional food. No "This statement has not been evaluated…" needed.</p>
+<p class="src"><a href="https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/structurefunction-claims">FDA Structure/Function Claims</a> — "FDA does not require conventional food manufacturers to notify FDA about their structure/function claims, and disclaimers are not required."</p>
+</div>
+
+<div class="S">
+<h3>GRAS STATUS — CONFIRMED</h3>
+<p><strong>Bacillus coagulans SNZ 1969</strong> has FDA GRAS notification for use in beverages:</p>
+<ul>
+<li><strong>GRN 597:</strong> B. coagulans SNZ1969 spores preparation — <a href="https://www.fda.gov/files/food/published/GRAS-Notice-000597---Bacillus-coagulans-SNZ1969-spores-preparation.pdf">FDA PDF</a></li>
+<li><strong>GRN 864:</strong> Additional GRAS notification — <a href="https://www.fda.gov/media/134103/download">FDA PDF</a></li>
+</ul>
+<p>FDA response: <strong>"did not question the conclusions"</strong> that B. coagulans spores preparation is GRAS under the conditions of use described. Food categories include: baked goods, <strong>beverages</strong>, breakfast cereals, and other foods.</p>
+<div class="ok"><strong>This means:</strong> You can legally use B. coagulans SNZ 1969 in a conventional food beverage in the US. The GRAS documentation exists at FDA level. Your Monday call is to confirm your manufacturer uses this specific strain and has access to the GRAS dossier.</div>
+</div>
+
+<div class="S">
+<h3>PACKAGING — REQUIRED ELEMENTS</h3>
+<table>
+<tr><th>Element</th><th>Requirement</th><th>Pheeew</th><th>Source</th></tr>
+<tr><td>Product name</td><td>Common/usual name</td><td>"Pheeew Gut + Digestion — Synbiotic Drink"</td><td><a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/guidance-industry-food-labeling-guide">FDA Food Labeling Guide</a></td></tr>
+<tr><td>Net quantity</td><td>Metric + US customary</td><td>"100 mL (3.38 fl oz)"</td><td>21 CFR 101.105</td></tr>
+<tr><td>Nutrition Facts</td><td>Standard format</td><td>Nutrition Facts panel</td><td>21 CFR 101.9</td></tr>
+<tr><td>Ingredient list</td><td>Descending by weight</td><td>Include strain: "Bacillus coagulans SNZ 1969"</td><td>21 CFR 101.4</td></tr>
+<tr><td>Allergens</td><td>Big 9 declaration</td><td>Check all ingredients</td><td>FALCPA + FASTER Act</td></tr>
+<tr><td>Manufacturer</td><td>Name + address</td><td>"Distributed by Pheeew, Inc."</td><td>21 CFR 101.5</td></tr>
+<tr><td>Country of origin</td><td>Required (imported)</td><td>"Product of Korea"</td><td>19 CFR 134</td></tr>
+<tr><td>Probiotic CFU</td><td>At end of shelf life</td><td>"1 Billion CFU at expiry"</td><td><a href="https://www.fda.gov/files/food/published/Draft-Guidance-for-Industry--Policy-Regarding-Quantitative-Labeling-of-Dietary-Supplements-Containing-Live-Microbials-PDF.pdf">FDA Draft Guidance</a></td></tr>
+<tr><td>Probiotic ID</td><td>Genus, species, strain</td><td>"Bacillus coagulans SNZ 1969"</td><td><a href="https://www.chpa.org/public-policy-regulatory/voluntary-codes-guidelines/best-practices-voluntary-guidelines-probiotics">CHPA Guidelines</a></td></tr>
+</table>
+</div>
+
+<div class="S">
+<h3>CLAIMS LIBRARY — What You Can Say vs Cannot Say</h3>
+
+<h4 style="color:#27ae60">✅ SAFE ON ALL CHANNELS (Packaging + Website + Social + Ads + UGC)</h4>
+<table>
+<tr><th>Claim</th><th>Type</th><th>Why Safe</th></tr>
+<tr><td>"Supports digestive health"</td><td>Structure/function</td><td>Tied to probiotic (nutritive value). No disclaimer needed for conventional food.</td></tr>
+<tr><td>"Supports immune function"</td><td>Structure/function</td><td>Tied to Vitamin C (if ≥10% DV). Ginger = traditional immunity association.</td></tr>
+<tr><td>"Natural energy support"</td><td>Structure/function</td><td>Tied to B vitamins + green tea caffeine.</td></tr>
+<tr><td>"Contains 1 Billion CFU probiotics"</td><td>Factual/descriptive</td><td>Quantitative claim. Must be true at end of shelf life.</td></tr>
+<tr><td>"With prebiotic fiber"</td><td>Factual/descriptive</td><td>XOS + Fibersol-2L are prebiotics.</td></tr>
+<tr><td>"Synbiotic"</td><td>Descriptive</td><td>Not a regulated term. Pre + probiotic = synbiotic by scientific definition.</td></tr>
+<tr><td>"0g added sugar"</td><td>Nutrient content</td><td>If true per Nutrition Facts.</td></tr>
+<tr><td>"Good source of Vitamin C"</td><td>Nutrient content</td><td>If ≥10% DV per serving. "Excellent source" if ≥20% DV.</td></tr>
+<tr><td>"Gut + Digestion" / "Gut + Immunity" / "Gut + Energy"</td><td>Product descriptor</td><td>Names, not health claims. Same approach as So Good So You.</td></tr>
+<tr><td>"Spore-forming probiotic"</td><td>Factual</td><td>B. coagulans is spore-forming. Scientific fact.</td></tr>
+<tr><td>"Clinically studied strain"</td><td>Factual</td><td>SNZ 1969 has 4+ published RCTs. Not "clinically proven product."</td></tr>
+<tr><td>"Most probiotics don't survive your stomach. Pheeew does."</td><td>Comparative factual</td><td>Spore-forming survival is documented. Non-spore-forming probiotic attrition is well-established in literature.</td></tr>
+</table>
+
+<h4 style="color:#c0392b;margin-top:10px">❌ NEVER SAY — ANY CHANNEL</h4>
+<table>
+<tr><th>Claim</th><th>Why Dangerous</th></tr>
+<tr><td>"Prevents IBS" / "Treats constipation" / "Cures bloating"</td><td>Disease claims = drug. FDA enforcement action.</td></tr>
+<tr><td>"Clinically proven"</td><td>Unless YOU ran a clinical trial on YOUR product (not just the ingredient).</td></tr>
+<tr><td>"FDA approved"</td><td>FDA does not approve conventional foods or dietary supplements.</td></tr>
+<tr><td>"The first synbiotic drink"</td><td>Can't prove "first" — legal risk from competitors.</td></tr>
+<tr><td>"Better than [competitor name]"</td><td>Comparative claims need substantiation. Competitor can sue.</td></tr>
+<tr><td>"Fixes your gut"</td><td>"Fixes" implies treating a condition = drug claim.</td></tr>
+<tr><td>"Guaranteed results"</td><td>No food can guarantee health outcomes.</td></tr>
+<tr><td>Any specific % improvement ("50% better digestion")</td><td>Need YOUR product's clinical trial data, not ingredient data.</td></tr>
+</table>
+
+<h4 style="color:#DAFF00;margin-top:10px">EXPANDED CLAIMS LIBRARY — 50+ Variations Rated</h4>
+<p style="font-size:9px;color:#555;margin-bottom:4px">✅ = safe for conventional food · ⚠️ = use carefully / context-dependent · ❌ = never use</p>
+
+<h4 style="margin-top:8px">DIGESTIVE CLAIMS</h4>
+<table>
+<tr><th>Claim</th><th>Rating</th><th>Notes</th></tr>
+<tr><td>"Supports digestive health"</td><td style="color:#27ae60">✅</td><td>Standard structure/function. Used by So Good So You, Suja.</td></tr>
+<tr><td>"Helps maintain digestive balance"</td><td style="color:#27ae60">✅</td><td>Softer version. Safe.</td></tr>
+<tr><td>"Supports a healthy gut"</td><td style="color:#27ae60">✅</td><td>General wellness. Safe.</td></tr>
+<tr><td>"For daily digestive support"</td><td style="color:#27ae60">✅</td><td>Descriptive, not a claim.</td></tr>
+<tr><td>"Promotes regularity"</td><td style="color:#27ae60">✅</td><td>Fiber-related claim. Substantiable with Fibersol-2L data.</td></tr>
+<tr><td>"Improves digestion"</td><td style="color:#e67e22">⚠️</td><td>"Improves" is stronger than "supports." Need substantiation for YOUR product.</td></tr>
+<tr><td>"Reduces bloating"</td><td style="color:#e67e22">⚠️</td><td>Borderline. BelliWelli uses it as supplement. For conventional food, rephrase as "supports comfort after meals."</td></tr>
+<tr><td>"Fixes your digestion"</td><td style="color:#c0392b">❌</td><td>"Fixes" = treatment claim.</td></tr>
+<tr><td>"Cures IBS symptoms"</td><td style="color:#c0392b">❌</td><td>Disease claim. Drug territory.</td></tr>
+<tr><td>"Eliminates gas and bloating"</td><td style="color:#c0392b">❌</td><td>"Eliminates" = treatment. Never.</td></tr>
+</table>
+
+<h4 style="margin-top:6px">PROBIOTIC / SYNBIOTIC CLAIMS</h4>
+<table>
+<tr><th>Claim</th><th>Rating</th><th>Notes</th></tr>
+<tr><td>"Contains 1 Billion CFU probiotics"</td><td style="color:#27ae60">✅</td><td>Factual. Must be true at end of shelf life.</td></tr>
+<tr><td>"Synbiotic — pre + probiotic in one"</td><td style="color:#27ae60">✅</td><td>Descriptive. Not a regulated term.</td></tr>
+<tr><td>"Spore-forming probiotic"</td><td style="color:#27ae60">✅</td><td>Factual attribute of B. coagulans.</td></tr>
+<tr><td>"Survives stomach acid"</td><td style="color:#27ae60">✅</td><td>Substantiable with spore-forming probiotic data.</td></tr>
+<tr><td>"Most probiotics don't survive your stomach. Ours does."</td><td style="color:#27ae60">✅</td><td>Comparative factual. Non-spore-forming probiotic attrition is well-documented.</td></tr>
+<tr><td>"Clinically studied strain"</td><td style="color:#27ae60">✅</td><td>SNZ 1969 has published RCTs. "Studied" ≠ "proven." Safe.</td></tr>
+<tr><td>"Contains clinically studied ingredients"</td><td style="color:#27ae60">✅</td><td>Ingredient-level, not product-level. Clear distinction.</td></tr>
+<tr><td>"Clinically proven formula"</td><td style="color:#c0392b">❌</td><td>YOUR formula wasn't clinically tested. The ingredient was.</td></tr>
+<tr><td>"Doctor recommended"</td><td style="color:#c0392b">❌</td><td>Unless you have documented doctor endorsements.</td></tr>
+<tr><td>"FDA approved probiotic"</td><td style="color:#c0392b">❌</td><td>FDA doesn't "approve" food ingredients. GRAS ≠ approved.</td></tr>
+</table>
+
+<h4 style="margin-top:6px">IMMUNITY CLAIMS (Gut + Immunity SKU)</h4>
+<table>
+<tr><th>Claim</th><th>Rating</th><th>Notes</th></tr>
+<tr><td>"Vitamin C supports immune function"</td><td style="color:#27ae60">✅</td><td>Well-established nutrient claim. If ≥10% DV.</td></tr>
+<tr><td>"Supports your body's natural defenses"</td><td style="color:#27ae60">✅</td><td>General wellness. Safe.</td></tr>
+<tr><td>"With ginger for immunity support"</td><td style="color:#27ae60">✅</td><td>Ginger is widely associated with immunity. Descriptive.</td></tr>
+<tr><td>"Boosts your immune system"</td><td style="color:#e67e22">⚠️</td><td>"Boosts" is stronger. Some FDA guidance suggests avoiding "boost" for immunity.</td></tr>
+<tr><td>"Prevents colds and flu"</td><td style="color:#c0392b">❌</td><td>Disease claim. Cold/flu = diseases.</td></tr>
+<tr><td>"Strengthens immunity by 50%"</td><td style="color:#c0392b">❌</td><td>Specific % without YOUR product's trial data.</td></tr>
+</table>
+
+<h4 style="margin-top:6px">ENERGY CLAIMS (Gut + Energy SKU)</h4>
+<table>
+<tr><th>Claim</th><th>Rating</th><th>Notes</th></tr>
+<tr><td>"B vitamins support natural energy production"</td><td style="color:#27ae60">✅</td><td>Established nutrient claim.</td></tr>
+<tr><td>"Natural caffeine from green tea"</td><td style="color:#27ae60">✅</td><td>Factual ingredient description.</td></tr>
+<tr><td>"Clean energy without the crash"</td><td style="color:#27ae60">✅</td><td>Experience-based. Not a health claim.</td></tr>
+<tr><td>"Sustained energy support"</td><td style="color:#27ae60">✅</td><td>General. Safe.</td></tr>
+<tr><td>"Replaces your morning coffee"</td><td style="color:#e67e22">⚠️</td><td>Comparative but not a health claim. Taste/experience territory. Likely safe but check FTC.</td></tr>
+<tr><td>"Gives you more energy than coffee"</td><td style="color:#c0392b">❌</td><td>Specific comparative claim needs substantiation.</td></tr>
+</table>
+
+<h4 style="margin-top:6px">GENERAL MARKETING CLAIMS</h4>
+<table>
+<tr><th>Claim</th><th>Rating</th><th>Notes</th></tr>
+<tr><td>"Made with real fruit"</td><td style="color:#27ae60">✅</td><td>If true. Factual.</td></tr>
+<tr><td>"No artificial flavors or colors"</td><td style="color:#27ae60">✅</td><td>If true. Standard clean-label claim.</td></tr>
+<tr><td>"Plant-based"</td><td style="color:#27ae60">✅</td><td>If no animal-derived ingredients.</td></tr>
+<tr><td>"Shelf-stable — no refrigeration needed"</td><td style="color:#27ae60">✅</td><td>Factual product attribute.</td></tr>
+<tr><td>"Squeeze and go — 5 seconds"</td><td style="color:#27ae60">✅</td><td>Experience-based. Not a health claim.</td></tr>
+<tr><td>"Daily gut ritual"</td><td style="color:#27ae60">✅</td><td>Lifestyle framing. Safe.</td></tr>
+<tr><td>"Healthier than your current probiotic"</td><td style="color:#c0392b">❌</td><td>Comparative health claim. Needs substantiation. Competitor attack.</td></tr>
+<tr><td>"The best synbiotic on the market"</td><td style="color:#c0392b">❌</td><td>"Best" is a superiority claim. Needs substantiation or qualifiers ("one of the best" = still risky).</td></tr>
+</table>
+<p class="src">Sources: <a href="https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/structurefunction-claims">FDA Structure/Function Claims</a> · <a href="https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance">FTC Health Products Compliance</a> · Competitor label language analysis (So Good So You, Suja, GoodBelly, BelliWelli, Lemme)</p>
+
+<h4 style="color:#e67e22;margin-top:10px">⚠️ CHANNEL-SPECIFIC RULES</h4>
+<table>
+<tr><th>Channel</th><th>Regulator</th><th>Special Rules</th></tr>
+<tr><td><strong>Packaging</strong></td><td>FDA</td><td>No disclaimer needed. No notification. Claims must relate to nutritive value for conventional food.</td></tr>
+<tr><td><strong>Website</strong></td><td>FDA + FTC</td><td>Website = "labeling" (FDA jurisdiction). Same rules as packaging PLUS FTC truth-in-advertising.</td></tr>
+<tr><td><strong>Social media</strong></td><td>FTC primary</td><td>Same substantiation as packaging. All claims must be truthful and substantiated.</td></tr>
+<tr><td><strong>Paid ads</strong></td><td>FTC</td><td>Same standard. Platform (Meta, TikTok) may have additional restrictions.</td></tr>
+<tr><td><strong>UGC / Creators</strong></td><td>FTC</td><td><strong>YOU are liable for creator claims.</strong> Must disclose paid relationship (#ad). Create a 1-page brief.</td></tr>
+<tr><td><strong>Amazon</strong></td><td>FTC + Amazon TOS</td><td>Amazon has stricter policies than FDA in some cases. No disease claims. No "FDA" mentions.</td></tr>
+<tr><td><strong>TikTok Shop</strong></td><td>FTC + TikTok</td><td>Full ingredient disclosure required on PDP (2026 policy). <a href="https://seller-us.tiktok.com/university/essay?knowledge_id=1427590502287146">TikTok Seller University</a></td></tr>
+</table>
+<p class="src">Sources: <a href="https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/structurefunction-claims">FDA Structure/Function Claims</a> · <a href="https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance">FTC Health Products Compliance</a> · <a href="https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/label-claims-conventional-foods-and-dietary-supplements">FDA Label Claims Guide</a></p>
+</div>
+
+<div class="S">
+<h3>UGC CREATOR BRIEF (give this to anyone who posts about Pheeew)</h3>
+<div class="ok"><strong>SAY:</strong> How it makes you FEEL. "I drink this every morning." "I love the taste." "The pouch format is so easy." "I feel good about what's in it." Personal experience = always safe.</div>
+<div class="no"><strong>DON'T SAY:</strong> What it DOES medically. "Cured my bloating." "Cleared my skin." "Fixed my digestion." Medical claims = illegal even from real customers.</div>
+<div class="warn"><strong>ALWAYS:</strong> Include #ad or #sponsored if we sent product or paid. FTC requires disclosure. No exceptions.</div>
+</div>
+
+<div class="S">
+<h3>"GUT + BLOAT" NAME — LEGAL STATUS</h3>
+<p>Every brand using "bloat/debloat" as a product NAME is classified as a <strong>dietary supplement</strong>: Lemme Debloat, The Nue Co Debloat+, BelliWelli "No Bloat", Farmana Debloating. <strong>No conventional food uses "bloat" in its product name.</strong></p>
+<p style="margin-top:4px">Using "bloat" as a product name on a Class 32 conventional food implies treating a medical symptom, which could reclassify the product or trigger FDA/FTC scrutiny.</p>
+<div class="warn"><strong>Current decision:</strong> Using "Gut + Digestion" as the safe option. "Gut + Bloat" is the aspirational name if legal counsel confirms it's safe for conventional food. Marketing copy CAN reference bloating support ("supports comfort after meals") without making it the product name.</div>
+<p class="src">Sources: <a href="https://lemmelive.com/products/debloat">Lemme Debloat</a> (supplement), <a href="https://belliwelli.com/">BelliWelli</a> (supplement), <a href="https://thenueco.com/products/debloatplus">The Nue Co Debloat+</a> (supplement)</p>
+</div>
+</div>
+
+<!-- ============================================= -->
+<!-- RETAIL -->
+<!-- ============================================= -->
+<div class="pg" id="retail">
+<h1>Retail Channels</h1>
+<div class="sub">How to enter · Who to contact · Economics per channel · US + Korea</div>
+
+<div class="S">
+<h3>US CHANNELS — Per-Unit Economics at $3.50-4.00 MSRP (retail) or $69/30-pack (DTC)</h3>
+<table>
+<tr><th>Channel</th><th>Their Take</th><th>Conf.</th><th>You Receive</th><th>How to Enter</th></tr>
+<tr><td><strong>DTC (Shopify)</strong></td><td>~3-4% processing</td><td><span class="tag tag-v">V</span></td><td style="color:#27ae60">$2.88-3.84</td><td>Your website. You control everything. Day 1.</td></tr>
+<tr><td><strong>TikTok Shop</strong></td><td>2% referral + ~1%</td><td><span class="tag tag-v">V</span></td><td style="color:#27ae60">$2.68-3.49*</td><td>Seller Center → Category Qualification → submit FDA reg + ingredients. <a href="https://seller-us.tiktok.com/university/essay?knowledge_id=1427590502287146">Guide</a></td></tr>
+<tr><td><strong>Amazon FBA</strong></td><td>8% + FBA ~$5.70</td><td><span class="tag tag-v">V</span></td><td>$3.15 (12-pack)</td><td>Amazon Seller Central. Must sell as 12-pack min. Brand Registry. <a href="https://sellercentral.amazon.com">sellercentral.amazon.com</a></td></tr>
+<tr><td><strong>Pop Up Grocer</strong></td><td>Consignment + ~$800/mo</td><td><span class="tag tag-v">V</span></td><td>$2.40-2.80</td><td>Apply at <a href="https://popupgrocer.com/pages/apply">popupgrocer.com/pages/apply</a>. Rolling review. Ship product 2-3 months before opening.</td></tr>
+<tr><td><strong>Erewhon</strong></td><td>40-50% margin</td><td><span class="tag tag-e">E</span></td><td>$1.60-1.92</td><td>Call corporate → ask for category buyer name → LinkedIn + RangeMe. Need non-GMO + organic certs. Spec sheets required. <a href="https://dashboard.erewhonmarket.com/">Vendor dashboard</a></td></tr>
+<tr><td><strong>Whole Foods LEAP</strong></td><td>35-38%</td><td><span class="tag tag-v">V</span></td><td>$1.98-2.08</td><td>LEAP program: check fall 2026 for applications. Also: Forager path (regional scouts). Email: LEAP@wholefoods.com. <a href="https://www.wholefoodsmarket.com/company-info/information-potential-suppliers">Supplier page</a></td></tr>
+<tr><td><strong>Target</strong></td><td>30-38%</td><td><span class="tag tag-i">I</span></td><td>$1.98-2.24</td><td>Forward Founders program + Supplier Intake Form. <a href="https://accelerators.target.com/programs/target-forward-founders/">accelerators.target.com</a></td></tr>
+<tr><td><strong>Sprouts</strong></td><td>35-40%</td><td><span class="tag tag-i">I</span></td><td>$1.92-2.08</td><td>Vendor portal at sprouts.com. Fair Share Merchandising Fees.</td></tr>
+<tr><td><strong>Costco</strong></td><td>Max 14%</td><td><span class="tag tag-v">V</span></td><td>~$3.01</td><td>Volume play only. Not for early-stage. Public policy capped margin.</td></tr>
+</table>
+<p class="src">Sources: <a href="https://mrcheckout.net/retailers/sell-to-erewhon-market/">Mr Checkout (Erewhon)</a> · <a href="https://media.wholefoodsmarket.com/whole-foods-market-accepting-applications-for-its-2025-local-and-emerging-accelerator-program/">WFM LEAP 2025</a> · <a href="https://accelerators.target.com/programs/target-forward-founders/">Target Forward Founders</a> · <a href="https://popupgrocer.com/pages/faq">Pop Up Grocer FAQ</a> · <a href="https://seller-us.tiktok.com/university/essay?knowledge_id=1427590502287146">TikTok Seller University</a></p>
+<p style="font-size:8px;color:#444;margin-top:4px"><span class="tag tag-v">V</span> = Verified (official source) · <span class="tag tag-i">I</span> = Industry standard · <span class="tag tag-e">E</span> = Estimated</p>
+</div>
+
+<div class="S">
+<h3>KOREA CHANNELS — ₩4,000 MSRP (via distributor, Month 12+)</h3>
+<table>
+<tr><th>Channel</th><th>Commission</th><th>Brand Gets</th><th>How to Enter</th></tr>
+<tr><td><strong>Naver SmartStore</strong></td><td>~5-7%</td><td style="color:#27ae60">~₩3,791</td><td>sell.smartstore.naver.com. 네이버페이/카카오페이 필수.</td></tr>
+<tr><td><strong>Coupang 로켓그로스</strong></td><td>10% + logistics</td><td>~₩2,950</td><td>wing.coupang.com. 로켓배송 뱃지 = 검색 2배.</td></tr>
+<tr><td><strong>Olive Young</strong></td><td>~30%</td><td>~₩2,800</td><td>corp.oliveyoung.com/inquiry/business. 건기식 30% (화장품 54%보다 낮음).</td></tr>
+<tr><td><strong>Kakao Gift</strong></td><td>10-15%</td><td>~₩3,400-3,600</td><td>카카오 선물하기. 설날/추석/어버이날 시즌.</td></tr>
+<tr><td><strong>Home Shopping</strong></td><td>~30%</td><td>~₩2,800</td><td>서봉준 대표님 connection. 1회 방송 수억원 가능.</td></tr>
+</table>
+<p class="src">Sources: 네이버 공식, 쿠팡 Wing, 머니투데이, 비즈한국, 전자신문</p>
+</div>
+</div>
+
+<!-- ============================================= -->
+<!-- GTM -->
+<!-- ============================================= -->
+<div class="pg" id="gtm">
+<h1>Go-to-Market</h1>
+<div class="sub">5 phases · Content strategy · World Cup activation</div>
+
+<div class="S">
+<h3>LAUNCH SEQUENCE</h3>
+<table>
+<tr><th>Phase</th><th>When</th><th>What</th><th>Milestone</th></tr>
+<tr><td style="color:#DAFF00;font-weight:700">BUILD</td><td>Now → Apr</td><td>Monday mfg call. Finalize formulation. Place order + payment. Content filming starts. Website build. Email waitlist.</td><td>Order placed. Production begins.</td></tr>
+<tr><td style="color:#FF6B35;font-weight:700">WAIT</td><td>May → Jul</td><td>~3 months production. Content bank building. Social launch (IG only). Email list growing. Preorder page live (May wk 2). Packaging design finalized.</td><td>1K email signups. Content ready. Product in production.</td></tr>
+<tr><td style="color:#FF6B35;font-weight:700">SHIP</td><td>Jul → Aug</td><td>Product ships from Korea (4-12 weeks). If sea freight: arrives Aug-Sep. If air freight portion: arrives Jul. 3PL receiving.</td><td>Product in US warehouse.</td></tr>
+<tr><td style="color:#27ae60;font-weight:700">LAUNCH</td><td>Aug-Sep</td><td>DTC launch. $69/30-pack sub. TikTok Shop. Founder content goes live. Seeding wave 1.</td><td>First revenue. First subscribers.</td></tr>
+<tr><td style="color:#E8C547;font-weight:700">EXPAND</td><td>Sep-Oct</td><td>SKU 2 (Gut + Immunity). Use stored pouches. Amazon eval. Seeding. Paid ads on proven organic.</td><td>2 SKUs. 500+ subs.</td></tr>
+<tr><td style="color:#8B45A6;font-weight:700">SCALE</td><td>Nov-Dec</td><td>SKU 3 (Gut + Energy). Amazon launch. Retail conversations. Pop Up Grocer.</td><td>3 SKUs. Retail velocity data.</td></tr>
+<tr><td style="color:#666;font-weight:700">RETAIL</td><td>2027</td><td>Erewhon / WF LEAP / Sprouts. Korea via distributor. 2nd production.</td><td>Retail shelf. Korea revenue.</td></tr>
+</table>
+</div>
+
+<div class="S">
+<h3>WORLD CUP 2026 ACTIVATION</h3>
+<p><strong>When:</strong> June 11 — July 19. 16 host cities. <a href="https://theworldcupguide.com/fifa-world-cup-2026-fan-fest-guide/">Fan zone guide</a></p>
+<p><strong>Concept:</strong> Branded porta potty + Airstream (Jason's dad's). "Pheeew" = what you say after. Hand out product on entry. QR → email → "First 1,000 subs get free month."</p>
+<p><strong>Cost:</strong> ~$1,200-7,700/day. 1,000+ trials/day. Cost per trial: $1.22-7.72 vs Meta CAC $45-53.</p>
+<p><strong>Fan zones:</strong> LA Memorial Coliseum · NYC/Queens USTA · Miami Bayfront · Philly Fairmount Park (15K-100K+/day).</p>
+<div class="no"><strong>TIMELINE REALITY CHECK:</strong> Production = 3 months from payment. If you pay mid-April → product ready mid-July. Sea freight = 8-12 weeks → product arrives in US Sep-Oct. <strong>World Cup (June 11 - July 19) is NOT possible with this timeline unless you air freight a small batch ($$$).</strong><br><br>
+<strong>Options:</strong><br>
+A) Air freight a portion (500-1,000 pouches, ~$2-5K extra) to arrive by July for the final week of World Cup → prove the concept<br>
+B) Skip World Cup 2026. Target LA Olympics 2028 or major music festivals fall 2026 instead.<br>
+C) If manufacturer can accelerate (ask Monday), revisit.</div>
+</div>
+
+<div class="S">
+<h3>CONTENT STRATEGY</h3>
+<p><strong>Characters:</strong> Alex (Visionary Idiot) · Jason (Operator Idiot) · Dawon (Aesthetic Idiot)</p>
+<p><strong>Formats:</strong> The Meeting / The Field / The Report / The Reaction</p>
+<p><strong>Tone:</strong> "Completely serious. Completely unhinged. Never trying to be funny."</p>
+<p><strong>Platform:</strong> Instagram only until Day 60. No paid ads before Day 30. No coupons/affiliates/creator briefs until PMF.</p>
+<p style="margin-top:6px;color:#DAFF00"><strong>Jason's key series:</strong> "You know probiotics. You know prebiotics. But you don't know synbiotics — and that's why your gut health products aren't working."</p>
+</div>
+
+<div class="S">
+<h3>THE GRUNS BASICS PLAYBOOK — "Do The Basics Insanely Well"</h3>
+<p style="color:#ccc;font-size:10px;margin-bottom:6px">Gruns reached $300M ARR in 24 months. Not with one viral moment — with relentless execution of fundamentals. Every tactic below is what they did, adapted for Pheeew's budget and format. (<a href="https://www.thedigitalchapter.com/p/gruns">The Digital Chapter</a>, <a href="https://www.blog.theperformers.io/p/gruns-ads">The Performers</a>, <a href="https://www.mightyjoy.com/post/how-gruns-reached-a-500m-valuation-powered-by-creator-communities">Mighty Joy</a>)</p>
+
+<h4>1. PAID ADS — A/B Testing Framework</h4>
+<table>
+<tr><th>Element</th><th>Gruns Method</th><th>Pheeew Adaptation</th></tr>
+<tr><td><strong>Enemy positioning</strong></td><td>Every winning ad positions against a villain (green powders, pills, AG1)</td><td>Position against: dead probiotics, chalky supplements, expensive subscriptions that don't work</td></tr>
+<tr><td><strong>Creative volume</strong></td><td>Multiple narratives around ONE hero product. Different angles for different customer avatars.</td><td>Same pouch, different story: "the gut science angle" / "the taste angle" / "the convenience angle" / "the ingredient comparison angle"</td></tr>
+<tr><td><strong>Testing cadence</strong></td><td>New creative weekly. Kill underperformers in 48-72 hrs. Scale winners 15-20%/week.</td><td>Budget version: 3-5 new creatives per week from founder content. Test $50-100/creative. Kill below 0.8% CTR after 1K impressions.</td></tr>
+<tr><td><strong>UGC > polished</strong></td><td>1,500+ pieces of UGC collected. Repurposed across paid + organic + TikTok Shop.</td><td>Start with founder-shot content. Graduate to seeded product UGC as budget allows. Every piece of founder content = potential ad creative.</td></tr>
+<tr><td><strong>Channel mix</strong></td><td>Meta (primary) + TikTok + YouTube. TikTok + DTC = lion's share.</td><td>Meta (primary, $50-100/day initially) + TikTok organic (free). No YouTube ads until $5K+/week budget.</td></tr>
+</table>
+
+<h4 style="margin-top:8px">2. KLAVIYO EMAIL FLOWS</h4>
+<table>
+<tr><th>Flow</th><th>Emails</th><th>Trigger</th><th>Goal</th><th>Revenue Contribution</th></tr>
+<tr><td><strong>Welcome</strong></td><td>5</td><td>Email signup</td><td>Educate → convert to first purchase</td><td>Should generate 45-65% open, $1.50-4/recipient</td></tr>
+<tr><td><strong>Abandoned Cart</strong></td><td>3</td><td>Added to cart, didn't buy</td><td>Recover 5-15% of abandoned carts</td><td>Fire within 1 hour. 40-55% open rate.</td></tr>
+<tr><td><strong>Post-Purchase</strong></td><td>4</td><td>First purchase</td><td>Onboard → educate → drive subscription</td><td>This is where repeat purchases start.</td></tr>
+<tr><td><strong>Browse Abandonment</strong></td><td>2</td><td>Viewed product, didn't add to cart</td><td>Nudge hesitant browsers</td><td>Lower volume, high intent.</td></tr>
+<tr><td><strong>Win-Back</strong></td><td>3</td><td>No purchase in 60+ days</td><td>Reactivate lapsed customers</td><td>"We miss your gut" angle.</td></tr>
+<tr><td><strong>Subscription Replenishment</strong></td><td>2</td><td>Subscription renewal approaching</td><td>Reduce churn, confirm renewal</td><td>50-60% open rates for replenishment flows.</td></tr>
+</table>
+<p class="src">Email benchmarks: <a href="https://getrecharge.com/blog/10-subscription-metrics-every-dtc-brand-should-track/">Recharge</a>. Email should drive 28-45% of total DTC revenue. Replenishment flows based on serving size get 50-60% opens (MOHO Knowledge Base).</p>
+
+<h4 style="margin-top:8px">3. SEEDING STRATEGY</h4>
+<table>
+<tr><th>Phase</th><th>Who</th><th>Volume</th><th>What to Send</th><th>What to Say</th></tr>
+<tr><td>Pre-launch (now)</td><td>Friends, family, gym community, local health stores</td><td>50-100 pouches</td><td>Single pouches + handwritten note</td><td>"We made this. Try it. Tell me what you honestly think." No ask to post.</td></tr>
+<tr><td>Launch (Month 1)</td><td>Micro-creators (1K-50K followers, gut health / wellness / food)</td><td>100-200 pouches</td><td>3-pack + branded card with QR</td><td>"Made by 3 founders who care about gut health. No strings. If you like it, share it."</td></tr>
+<tr><td>Scale (Month 3+)</td><td>Mid-tier creators (50K-500K) + affiliate program</td><td>500+ pouches/month</td><td>Full 30-pack + personal video from Jason</td><td>Affiliate offer: 15% commission. "We're building a synbiotic movement."</td></tr>
+</table>
+<p class="src">Gruns method: gifting + affiliate hybrid. Send → 20-30% post → collect UGC → repurpose as paid ads → revenue funds more gifting. (<a href="https://www.mightyjoy.com/post/how-gruns-reached-a-500m-valuation-powered-by-creator-communities">Mighty Joy</a>)</p>
+
+<h4 style="margin-top:8px">4. WEEKLY OUTPUT TARGETS</h4>
+<table>
+<tr><th>Content Type</th><th>Weekly Target</th><th>Who Creates</th></tr>
+<tr><td>Instagram Reels/Stories</td><td>5-7 per week</td><td>Jason (on camera) + Dawon (editing)</td></tr>
+<tr><td>TikTok posts</td><td>3-5 per week</td><td>Jason + Alex</td></tr>
+<tr><td>Email campaigns</td><td>1-2 per week</td><td>Alex (copy) + Dawon (design)</td></tr>
+<tr><td>Ad creative variations</td><td>3-5 new per week</td><td>Repurposed from organic winners</td></tr>
+<tr><td>Blog/SEO content</td><td>1 per week</td><td>Alex</td></tr>
+</table>
+
+<h4 style="margin-top:8px">5. RETAIL ENTRY — STEP BY STEP (when ready)</h4>
+<table>
+<tr><th>Step</th><th>Channel</th><th>When</th><th>What You Need</th></tr>
+<tr><td>1</td><td>Local indie stores (walk in with samples)</td><td>Month 2-3</td><td>Product, sell sheet, business card. That's it.</td></tr>
+<tr><td>2</td><td>Pop Up Grocer</td><td>Month 4-6</td><td><a href="https://popupgrocer.com/pages/apply">Apply online</a>. Ship product 2-3 months before opening.</td></tr>
+<tr><td>3</td><td>Whole Foods (Forager path)</td><td>Month 6-9</td><td>Reach out to local store's Forager directly. Bring velocity data from DTC.</td></tr>
+<tr><td>4</td><td>Whole Foods LEAP</td><td>Month 9-12</td><td>Application opens fall 2026. Email: LEAP@wholefoods.com. Need DTC velocity data.</td></tr>
+<tr><td>5</td><td>Target Forward Founders</td><td>Month 12+</td><td><a href="https://accelerators.target.com/programs/target-forward-founders/">Supplier Intake Form</a>. Need proven retail velocity.</td></tr>
+<tr><td>6</td><td>Erewhon</td><td>Month 12+</td><td>Call corporate → category buyer → LinkedIn. Need non-GMO certs + spec sheets.</td></tr>
+</table>
+</div>
+</div>
+
+<!-- ============================================= -->
+<!-- COMPETITIVE -->
+<!-- ============================================= -->
+<div class="pg" id="competitive">
+<h1>Competitive Landscape</h1>
+<div class="sub">Every competitor with verified revenue, funding, social, format</div>
+
+<div class="S">
+<h3>ROUTE B BRANDS (Fun/Cans — NOT our lane, but know them)</h3>
+<table>
+<tr><th>Brand</th><th>Revenue</th><th>Funding</th><th>Social</th><th>Format</th><th>Biotic?</th><th>Key</th></tr>
+<tr><td><strong>Poppi</strong></td><td class="lime">$500M</td><td>$41.5M</td><td>1.2M</td><td>12oz can</td><td class="red">Pre only (2g)</td><td>PepsiCo $1.95B acq. $8.9M lawsuit. <a href="https://taptwicedigital.com/stats/poppi">Source</a></td></tr>
+<tr><td><strong>OLIPOP</strong></td><td class="lime">$400M</td><td>$50M+</td><td>863K</td><td>12oz can</td><td class="red">Pre only (9g)</td><td>$1.85B val. 50K stores. 60% market share. <a href="https://taptwicedigital.com/stats/olipop">Source</a></td></tr>
+<tr><td><strong>Slice</strong></td><td>N/A (relaunch)</td><td>Suja sub</td><td>Early</td><td>12oz can</td><td class="yel">Pre+pro+post claimed, zero transparency</td><td>Suja owned. Born 1984. <a href="https://slicesoda.com/">slicesoda.com</a></td></tr>
+</table>
+
+<h3 style="margin-top:10px">ROUTE A BRANDS (Function/Shots — OUR LANE)</h3>
+<table>
+<tr><th>Brand</th><th>Revenue</th><th>Funding</th><th>Social</th><th>Format</th><th>Biotic?</th><th>Key</th></tr>
+<tr><td><strong>So Good So You</strong></td><td class="lime">#1 shot brand</td><td>$16.1M</td><td>Niche</td><td>1.7oz bottle</td><td class="red">Pro only</td><td>Profitable since 2019. 400%+ growth. <a href="https://www.bevnet.com/news/2020/so-good-so-you-lands-14-5m-to-grow-probiotic-shots-line/">Source</a></td></tr>
+<tr><td><strong>Suja</strong></td><td class="lime">$326M</td><td>$207M</td><td>~521K</td><td>Multi-format</td><td class="yel">Varies by product</td><td>IPO filing April 2026. ~$1B val target. <a href="https://www.bloomberg.com/news/articles/2026-04-10/organic-juice-maker-suja-files-for-us-ipo-showing-rising-sales">Bloomberg</a></td></tr>
+<tr><td><strong>Vive Organic</strong></td><td>21M+ shots sold</td><td>Unknown</td><td>Moderate</td><td>2oz bottle</td><td class="red">Pro only</td><td>Flagship: Immunity Ginger Turmeric. <a href="https://viveorganic.com/">viveorganic.com</a></td></tr>
+<tr><td><strong>GoodBelly</strong></td><td class="red">$6.7M (↓$25M)</td><td>$45.7M</td><td>39K IG</td><td>Cartons+shots</td><td class="green">YES (3g fiber + 1B CFU)</td><td>IS synbiotic, never says it. Dying. <a href="https://www.konaequity.com/company/goodbelly-probiotics-4391663145/">Revenue source</a></td></tr>
+</table>
+
+<h3 style="margin-top:10px">POUCH FORMAT BRANDS (direct format competitors)</h3>
+<table>
+<tr><th>Brand</th><th>Revenue</th><th>Format</th><th>Price</th><th>What</th><th>Key</th></tr>
+<tr><td><strong>Liquid+</strong></td><td>Early (<$5M est.)</td><td>4.23oz pouch</td><td>$1.95/day</td><td>Greens + 8g prebiotic fiber. "Liquid Salad."</td><td>DTC + Amazon. Founded by Alan Lin. <a href="https://www.drinkliquidplus.com/">Site</a></td></tr>
+<tr><td><strong>POUCH</strong></td><td>Pre-revenue</td><td>8oz RTD pouch</td><td>TBD</td><td>IV-inspired. Hydration, Immunity, SkinRevive, WellDrip.</td><td>Annie Kurnick, Miami. Just launched 2025. <a href="https://www.modernluxury.com/pouch/">Source</a></td></tr>
+<tr><td><strong>Noka</strong></td><td class="red">$1.8M/yr</td><td>4.22oz pouch</td><td>$3-4/pouch</td><td>Superfood smoothie + prebiotic fiber.</td><td>In Target/Sprouts but NOT a breakout. <a href="https://tracxn.com/d/companies/noka/__znPCKlozu3S0tMsXiLTaDZjILielEBXWhQJVprRJ6N4">Revenue</a></td></tr>
+</table>
+</div>
+
+<h3 style="margin-top:10px">BIOTIC MATRIX — Who Has What (Pre / Pro / Post / Syn)</h3>
+<table>
+<tr><th>Brand</th><th>PRE</th><th>PRO</th><th>POST</th><th>SYN (pre+pro)</th><th>Format</th><th>Says "Synbiotic"?</th></tr>
+<tr><td><strong>Pheeew</strong></td><td style="color:#27ae60">✅ XOS + Fibersol-2L</td><td style="color:#27ae60">✅ B. coagulans SNZ 1969</td><td>—</td><td style="color:#DAFF00"><strong>✅ TRUE SYNBIOTIC</strong></td><td>100mL pouch</td><td style="color:#DAFF00"><strong>YES — owning it</strong></td></tr>
+<tr><td>Poppi</td><td style="color:#e67e22">⚠️ ACV (2g)</td><td>—</td><td>—</td><td>—</td><td>12oz can</td><td>No</td></tr>
+<tr><td>OLIPOP</td><td style="color:#27ae60">✅ 9g fiber (OliSmart)</td><td>—</td><td>—</td><td>—</td><td>12oz can</td><td>No</td></tr>
+<tr><td>Slice (Suja)</td><td style="color:#e67e22">⚠️ Claimed</td><td style="color:#e67e22">⚠️ Claimed</td><td style="color:#e67e22">⚠️ Claimed</td><td style="color:#e67e22">⚠️ Claims all 3 but zero transparency</td><td>12oz can</td><td>No</td></tr>
+<tr><td>GoodBelly</td><td style="color:#27ae60">✅ 3g fiber</td><td style="color:#27ae60">✅ LP299V 1B CFU</td><td>—</td><td style="color:#27ae60">✅ IS synbiotic</td><td>Carton/shot</td><td style="color:#c0392b"><strong>NO — never uses the word</strong></td></tr>
+<tr><td>Seed DS-01</td><td style="color:#27ae60">✅</td><td style="color:#27ae60">✅ Multi-strain</td><td>—</td><td style="color:#27ae60">✅ TRUE SYNBIOTIC</td><td>Capsule</td><td style="color:#27ae60">YES — owns it in supplements</td></tr>
+<tr><td>So Good So You</td><td>—</td><td style="color:#27ae60">✅ 1B CFU</td><td>—</td><td>—</td><td>1.7oz bottle</td><td>No</td></tr>
+<tr><td>Suja Shots</td><td>Varies</td><td>Varies by SKU</td><td>—</td><td>—</td><td>2oz bottle</td><td>No</td></tr>
+<tr><td>Vive Organic</td><td>—</td><td style="color:#27ae60">✅ 1B CFU</td><td>—</td><td>—</td><td>2oz bottle</td><td>No</td></tr>
+<tr><td>Yakult</td><td>—</td><td style="color:#27ae60">✅ L. casei Shirota</td><td>—</td><td>—</td><td>65mL bottle</td><td>No</td></tr>
+<tr><td>GT's Kombucha</td><td>—</td><td style="color:#27ae60">✅ Live cultures</td><td>—</td><td>—</td><td>16oz bottle</td><td>No</td></tr>
+<tr><td>Health-Ade</td><td>—</td><td style="color:#27ae60">✅ Live cultures</td><td>—</td><td>—</td><td>16oz bottle</td><td>No</td></tr>
+<tr><td>Liquid+</td><td style="color:#27ae60">✅ 8g fiber</td><td>—</td><td>—</td><td>—</td><td>4.23oz pouch</td><td>No</td></tr>
+<tr><td>POUCH</td><td>—</td><td>—</td><td>—</td><td>—</td><td>8oz pouch</td><td>No (vitamins/minerals)</td></tr>
+<tr><td>Noka</td><td style="color:#27ae60">✅ Prebiotic fiber</td><td>—</td><td>—</td><td>—</td><td>4.22oz pouch</td><td>No</td></tr>
+<tr><td>BelliWelli</td><td style="color:#27ae60">✅ Acacia fiber</td><td style="color:#27ae60">✅ B. coagulans</td><td>—</td><td style="color:#27ae60">✅ IS synbiotic</td><td>Powder</td><td>No</td></tr>
+<tr><td>Lemme Debloat</td><td style="color:#27ae60">✅ XOS</td><td style="color:#27ae60">✅ Probiotics</td><td>—</td><td style="color:#27ae60">✅ IS synbiotic</td><td>Gummy</td><td>No</td></tr>
+<tr><td>AG1</td><td>—</td><td style="color:#27ae60">✅ (in blend)</td><td>—</td><td>—</td><td>Powder</td><td>No</td></tr>
+<tr><td>Gruns</td><td>—</td><td style="color:#27ae60">✅ (in blend)</td><td>—</td><td>—</td><td>Gummy</td><td>No</td></tr>
+<tr><td>IM8</td><td>—</td><td style="color:#27ae60">✅ (in blend)</td><td>—</td><td>—</td><td>Powder</td><td>No</td></tr>
+<tr><td>Ritual</td><td style="color:#27ae60">✅ (some products)</td><td style="color:#27ae60">✅ (some products)</td><td>—</td><td style="color:#e67e22">Some products</td><td>Capsule</td><td>No</td></tr>
+</table>
+<div class="diamond">
+<p style="font-size:10px;color:#ccc;line-height:1.8">
+<strong style="color:#DAFF00">What the matrix reveals:</strong> 4 brands ARE synbiotic (GoodBelly, BelliWelli, Lemme, Seed). NONE of them are in a pouch format. Only Seed uses the word "synbiotic" — and they're capsules. GoodBelly, BelliWelli, and Lemme are all synbiotic and NEVER say it. <strong style="color:#fff">Pheeew would be the ONLY synbiotic RTD beverage in a pouch that actually claims the word.</strong>
+</p>
+</div>
+
+<h3 style="margin-top:10px">FULL BRAND SCORECARDS — Revenue, Funding, Social, Format</h3>
+<table>
+<tr><th>Brand</th><th>Revenue</th><th>Format</th><th>Biotic Type</th><th>Price</th><th>Key</th></tr>
+<tr><td><strong>Yakult</strong></td><td class="lime">$3.25B (global)</td><td>65mL bottle</td><td>Probiotic only (L. casei Shirota)</td><td>~$0.50-1/bottle</td><td>8.5% global probiotic share. 34.5% Japan share. Mass market. <a href="https://blog.osum.com/yakult-market-share/">Source</a></td></tr>
+<tr><td><strong>GT's Kombucha</strong></td><td class="lime">$275M (est.)</td><td>16oz bottle</td><td>Probiotic (live cultures)</td><td>~$3-5/bottle</td><td>40% of US kombucha market. 100% founder-owned. $900M+ valuation. <a href="https://growjo.com/company/GT'S_Kombucha">Source</a></td></tr>
+<tr><td><strong>Health-Ade</strong></td><td class="lime">~$250M retail</td><td>16oz bottle</td><td>Probiotic (live cultures)</td><td>~$4-5/bottle</td><td>Acquired by Generous Brands for $500M (Jul 2025). 65K outlets. $77M funding. <a href="https://www.fooddive.com/news/beverage-company-generous-brands-buys-kombucha-maker-health-ade/753892/">Source</a></td></tr>
+<tr><td><strong>Seed</strong></td><td class="lime">$200M (2024 proj.)</td><td>Capsule (60ct)</td><td style="color:#DAFF00"><strong>Synbiotic (DS-01)</strong></td><td>$49.99/mo sub</td><td>500%+ growth in 3yr. 453K IG. Contemplating $1B+ sale. Owns "synbiotic" in supplements. <a href="https://www.cnbc.com/2024/04/11/this-consumer-microbiome-startup-is-betting-profits-on-an-ai-moonshot.html">Source</a></td></tr>
+<tr><td><strong>Ritual</strong></td><td class="lime">$250M+ gross</td><td>Capsule</td><td>Synbiotic (pre+pro in some products)</td><td>$30-40/mo sub</td><td>$40.3M funding. Transparency leader. Instagram-driven cult following. <a href="https://fortune.com/2025/03/11/why-the-founder-of-250-million-vitamin-and-supplement-brand-ritual-is-urging-congress-to-regulate-her-own-industry/">Source</a></td></tr>
+<tr><td><strong>AG1</strong></td><td class="lime">$1.2B+</td><td>Powder scoop</td><td>Multi-ingredient (includes probiotics)</td><td>$79/mo sub</td><td>Single SKU. $27M+ podcast spend. Huberman. <a href="https://www.patigroup.com/p/the-ag1-phenomenon-how-a-single-sku">Source</a></td></tr>
+<tr><td><strong>Gruns</strong></td><td class="lime">$300M+ ARR</td><td>Gummy</td><td>Multi-ingredient (includes probiotics)</td><td>$1.38/day sub</td><td>Acquired by Unilever $1.2B. 10M gummies/day. 7K retail doors. <a href="https://insider.fitt.co/unilever-acquires-gruns-functional-gummies/">Source</a></td></tr>
+<tr><td><strong>IM8</strong></td><td class="lime">$108M ARR (yr 1)</td><td>Powder</td><td>Multi-ingredient</td><td>$89/mo sub</td><td>Beckham co-founded. 30+ countries Day 1. 1,500+ concurrent Meta ads. <a href="https://beautymatter.com/articles/david-beckham-backed-im8-off-to-108-million-first-year-start">Source</a></td></tr>
+<tr><td><strong>BelliWelli</strong></td><td>Early stage</td><td>Powder (was bars)</td><td>Synbiotic (B. coagulans + acacia fiber)</td><td>~$1.50/serving</td><td>Uses SAME probiotic genus. Supplement classification. "No Bloat" positioning. <a href="https://belliwelli.com/">Site</a></td></tr>
+<tr><td><strong>Lemme (Kourtney K)</strong></td><td>Growing</td><td>Gummy</td><td>Varies (Debloat has XOS prebiotics)</td><td>$30/bottle</td><td>Celebrity-backed. "Debloat" = supplement classification. Uses XOS like us. <a href="https://lemmelive.com/products/debloat">Site</a></td></tr>
+</table>
+<p class="src">Note: Lemme Debloat uses XOS (same prebiotic as Pheeew). BelliWelli uses B. coagulans (same probiotic genus). Neither is in beverage pouch format. Neither owns "synbiotic" as a term.</p>
+
+<div class="diamond">
+<h3 style="color:#DAFF00">PHEEEW'S MOAT</h3>
+<p style="font-size:10px;color:#ccc;line-height:1.8;margin-top:4px">
+<strong style="color:#fff">1. Spore-forming probiotic in an RTD pouch.</strong> Shelf-stable. No fridge. FDA GRAS confirmed (GRN 597+864).<br>
+<strong style="color:#fff">2. True synbiotic + owns the word in beverages.</strong> Seed owns it in capsules ($200M). GoodBelly IS synbiotic but never says it ($6.7M dying). The word is unclaimed in drinks.<br>
+<strong style="color:#fff">3. Squeeze pouch format.</strong> Novel. Not glass (fragile), not can (wrong category), not powder (needs mixing), not gummy (can't carry liquid probiotics).<br>
+<strong style="color:#fff">4. Subscription-first DTC.</strong> No shot brand runs subscription. No kombucha brand runs subscription. $828/subscriber/year.<br>
+<strong style="color:#fff">5. Function-by-flavor at clinical doses.</strong> So Good So You has function-by-flavor but in glass bottles with non-spore-forming probiotics. Pheeew has it in a shelf-stable pouch with a spore-former.
+</p>
+</div>
+</div>
+
+<!-- ============================================= -->
+<!-- AUDIENCE -->
+<!-- ============================================= -->
+<div class="pg" id="audience">
+<h1>Target Audience</h1>
+<div class="sub">Consumer personas · Demographics · Purchase behavior</div>
+
+<div class="S" style="border:2px solid #DAFF00">
+<h3 style="font-size:13px">THE ONE — Our Perfect Customer</h3>
+<div class="g2">
+<div class="card" style="border-left:3px solid #DAFF00">
+<h4 style="color:#DAFF00;font-size:14px">Meet Jess.</h4>
+<p><strong>Full name:</strong> Jessica Park</p>
+<p><strong>Age:</strong> 28</p>
+<p><strong>Location:</strong> Silver Lake, Los Angeles</p>
+<p><strong>Job:</strong> Social media coordinator at a DTC skincare brand. $62K/year.</p>
+<p><strong>Education:</strong> UCLA Communications '20</p>
+<p><strong>Relationship:</strong> Boyfriend, no kids. Lives with one roommate.</p>
+<p><strong>Ethnicity:</strong> Korean-American (2nd gen). Speaks some Korean with parents.</p>
+</div>
+<div class="card" style="border-left:3px solid #DAFF00">
+<h4 style="color:#DAFF00">Her Day</h4>
+<p><strong>6:30am:</strong> Alarm. Scrolls TikTok for 15 min before getting up.</p>
+<p><strong>7:00am:</strong> Makes coffee. Checks IG stories. Thinks "I should eat healthier."</p>
+<p><strong>7:30am:</strong> Grabs a Poppi from the fridge because it's cute and "healthier than Coke."</p>
+<p><strong>8:30am:</strong> Commute (drives, 25 min). Listens to wellness podcast or music.</p>
+<p><strong>12:00pm:</strong> Lunch with coworkers. Sweetgreen or Erewhon if payday.</p>
+<p><strong>6:30pm:</strong> Pilates or yoga 3x/week. Walks otherwise.</p>
+<p><strong>8:00pm:</strong> Cooks with boyfriend or orders in. Watches Netflix.</p>
+<p><strong>10:00pm:</strong> Skincare routine (10 min, Korean products). Bed by 11.</p>
+</div>
+</div>
+<div class="g2" style="margin-top:6px">
+<div class="card">
+<h4>Her Gut Health History</h4>
+<p>• Tried kombucha — liked the taste, didn't stick with it (forgot to buy)</p>
+<p>• Bought AG1 once — too expensive, didn't like the taste, felt scammy</p>
+<p>• Takes a multivitamin "when she remembers" (3x/week max)</p>
+<p>• Follows @drglaucomflecken and wellness creators but doesn't deep-dive</p>
+<p>• Gets bloated after eating out. Thinks "I should do something about this."</p>
+<p>• Knows "gut health matters" from TikTok but can't name a probiotic strain</p>
+<p>• Would NEVER buy a powder she has to mix</p>
+</div>
+<div class="card">
+<h4>Why She Buys Pheeew</h4>
+<p>• The pouch looks different — "what IS that?" She asks her friend.</p>
+<p>• Her friend says "it's a synbiotic thing, like pre and probiotic together, you just squeeze it"</p>
+<p>• She tries it. It tastes good. Actually good, not health-good.</p>
+<p>• She likes that it's 5 seconds — no mixing, no blender, no fridge needed</p>
+<p>• She subscribes because she forgets to buy things — it just shows up</p>
+<p>• She posts it on her story (not because we asked — because the pouch looks cool)</p>
+<p>• She tells 2 friends. One subscribes. <strong>This is PMF.</strong></p>
+</div>
+</div>
+<div class="diamond" style="margin-top:6px">
+<p style="font-size:10px;color:#ccc;text-align:center"><strong style="color:#DAFF00">Every decision we make should pass the Jess test:</strong><br>"Would Jess pick this up? Would Jess understand this? Would Jess post this? Would Jess reorder?"<br>If yes → do it. If no → rethink.</p>
+</div>
+</div>
+
+<div class="S">
+<h3>PRIMARY PERSONA: "The Wellness-Curious Woman"</h3>
+<div class="g2">
+<div class="card">
+<h4>Demographics</h4>
+<p><strong>Age:</strong> 23-38 (Millennial + Gen Z)</p>
+<p><strong>Gender:</strong> Female-primary (women more likely to consume probiotic drinks — <a href="https://www.grandviewresearch.com/industry-analysis/functional-drinks-market">Grand View Research</a>)</p>
+<p><strong>Income:</strong> $40K-90K (willing to pay premium for health — 52% of US consumers pay more for health benefits, <a href="https://www.kerry.com/insights/kerrydigest/2024/exploring-influence-on-beverage-preferences">Kerry Insights</a>)</p>
+<p><strong>Location:</strong> Urban/suburban US. LA, NYC, Austin, Miami, Chicago.</p>
+</div>
+<div class="card">
+<h4>Behavior</h4>
+<p>Reads ingredient lists (58% of US consumers — <a href="https://www.kerry.com/insights/kerrydigest/2024/exploring-influence-on-beverage-preferences">Kerry 2025</a>)</p>
+<p>Believes gut health = overall health (59% globally — <a href="https://www.foodingredientsfirst.com/news/functional-beverages-health-wellness-trends.html">Food Ingredients First 2026</a>)</p>
+<p>Follows wellness creators on IG/TikTok</p>
+<p>Has tried kombucha, probiotic supplements, or greens</p>
+<p>Didn't stick with it (adherence is the problem)</p>
+<p>Values convenience > efficacy claims</p>
+</div>
+</div>
+</div>
+
+<div class="S">
+<h3>WHAT THEY WANT (ranked by consumer demand)</h3>
+<table>
+<tr><th>Benefit</th><th>% Interested</th><th>Our SKU</th><th>Source</th></tr>
+<tr><td><strong>Sleep support</strong></td><td style="color:#DAFF00"><strong>42%</strong> (#1)</td><td>Future SKU 4?</td><td><a href="https://www.beveragedaily.com/Article/2026/03/16/functional-beverages-sleep-gut-health-and-focus-top-benefits/">BeverageDaily 2026</a></td></tr>
+<tr><td><strong>Gut health / Digestion</strong></td><td style="color:#DAFF00"><strong>37%</strong> (#2)</td><td>Gut + Digestion (Tropical)</td><td>Same source</td></tr>
+<tr><td><strong>Focus / Concentration</strong></td><td><strong>24%</strong></td><td>Future concept</td><td>Same source</td></tr>
+<tr><td><strong>Energy</strong></td><td><strong>39.4%</strong> of shot revenue</td><td>Gut + Energy (Berry)</td><td><a href="https://www.imarcgroup.com/functional-shots-market">IMARC Functional Shots Market</a></td></tr>
+<tr><td><strong>Immunity</strong></td><td><strong>17.6% CAGR</strong> (fastest growth)</td><td>Gut + Immunity (Ginger)</td><td>Same source</td></tr>
+<tr><td><strong>Gut health in beverages specifically</strong></td><td style="color:#DAFF00"><strong>63.7%</strong></td><td>All 3 SKUs (base)</td><td><a href="https://www.beveragedaily.com/Article/2025/10/21/functional-beverage-innovation-gut-health-energy-and-more/">BeverageDaily 2025</a></td></tr>
+</table>
+</div>
+
+<div class="S">
+<h3>SECONDARY PERSONA: "The Optimization Guy"</h3>
+<div class="g2">
+<div class="card">
+<h4>Demographics</h4>
+<p><strong>Age:</strong> 25-40</p>
+<p><strong>Gender:</strong> Male</p>
+<p><strong>Income:</strong> $60K-120K</p>
+<p><strong>Location:</strong> Urban. Follows Huberman, Bryan Johnson, Dr. Mike.</p>
+</div>
+<div class="card">
+<h4>Behavior</h4>
+<p>Reads studies (or thinks he does). Checks labels obsessively.</p>
+<p>"Natural flavors" = suspicious. Wants strain-specific probiotic info.</p>
+<p>Has tried AG1 or considered it. Price-sensitive but will pay for proven.</p>
+<p>Won't buy from vibes — needs data or trusted endorsement.</p>
+<p>Buys: if he can verify the science himself.</p>
+</div>
+</div>
+<div class="warn"><strong>Content strategy for this persona:</strong> Jason's "synbiotic education" series. PubMed links on the website. Full ingredient transparency. "Here's our strain, here's the study, here's why spore-forming matters." Don't dumb it down — let him verify.</div>
+</div>
+
+<div class="S">
+<h3>TERTIARY PERSONA: "The Busy Parent"</h3>
+<div class="g2">
+<div class="card">
+<h4>Demographics</h4>
+<p><strong>Age:</strong> 30-45</p>
+<p><strong>Gender:</strong> Any (skews female)</p>
+<p><strong>Income:</strong> $50K-100K</p>
+<p><strong>Location:</strong> Suburban. Time-poor. Health-conscious but overwhelmed.</p>
+</div>
+<div class="card">
+<h4>Behavior</h4>
+<p>Wants gut health but forgets to take supplements.</p>
+<p>Has kombucha in the fridge that goes bad. Has pills they forget.</p>
+<p>Convenience is #1 — if it takes more than 30 seconds, won't happen.</p>
+<p>"I know I should but I don't have time to think about it."</p>
+<p>Buys: subscription that just shows up. Squeeze, done, move on.</p>
+</div>
+</div>
+<div class="ok"><strong>Why this persona loves Pheeew:</strong> 100mL pouch. 5 seconds. Shelf-stable (no fridge hunting). Subscription (auto-ships). No mixing, no measuring, no blender. This is the Gruns insight — the barrier isn't awareness, it's ADHERENCE. Pheeew solves adherence.</div>
+</div>
+
+<div class="S">
+<h3>PERSONA PRIORITY FOR CONTENT</h3>
+<table>
+<tr><th>Persona</th><th>Content Type</th><th>Channel</th><th>Conversion Path</th></tr>
+<tr><td style="color:#FF6B35"><strong>Wellness-Curious Woman</strong></td><td>Aesthetic lifestyle, "what I drink in a morning," ingredient education lite</td><td>Instagram Reels, TikTok</td><td>See → follow → email signup → subscribe</td></tr>
+<tr><td style="color:#E8C547"><strong>Optimization Guy</strong></td><td>Science breakdowns, strain comparisons, "dead probiotic" content</td><td>YouTube, TikTok, Reddit</td><td>Search → website Science page → verify → subscribe</td></tr>
+<tr><td style="color:#8B45A6"><strong>Busy Parent</strong></td><td>Convenience messaging, "5 seconds," subscription ease, routine content</td><td>Facebook, Instagram</td><td>Ad → landing page → subscribe (convenience CTA)</td></tr>
+</table>
+<p class="src">Consumer demographics: <a href="https://www.grandviewresearch.com/industry-analysis/functional-drinks-market">Grand View Research</a> (women = highest growth at 5.32% for functional beverages). <a href="https://www.kerry.com/insights/kerrydigest/2024/exploring-influence-on-beverage-preferences">Kerry Insights 2025</a> (58% read labels, 52% pay more for health).</p>
+</div>
+</div>
+
+<!-- ============================================= -->
+<!-- INVESTMENT -->
+<!-- ============================================= -->
+<div class="pg" id="investment">
+<h1>Investment Strategy</h1>
+<div class="sub">Angel investor landscape · 90-day vs 1-year raise · Deal structure</div>
+
+<div class="S">
+<h3>THE DEBATE: 90-DAY RAISE vs 1-YEAR RAISE</h3>
+<div class="g2">
+<div class="card" style="border-left:3px solid #FF6B35">
+<h4 style="color:#FF6B35">Option A: 90-Day Raise ($44-54K)</h4>
+<p><strong>What it covers:</strong> 1 SKU production + 90 days marketing + launch</p>
+<p><strong>Source:</strong> Jason's dad partial + small angel(s)</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Less dilution — raise at lowest possible valuation only what you NEED</li>
+<li>Forces speed — 90 days to prove PMF</li>
+<li>Smaller ask = easier to close, faster</li>
+<li>If PMF proven, next raise is at MUCH higher valuation</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>If PMF takes longer than 90 days (likely), you're raising again immediately while running the business</li>
+<li>Can't do World Cup activation + production + marketing on this budget</li>
+<li>No buffer — one manufacturing delay and you're out of money</li>
+</ul>
+<p><strong>When this makes sense:</strong> If Jason's dad commits $40K+ and you can cover the gap with personal funds. Get product to market, prove demand, raise properly with data.</p>
+</div>
+<div class="card" style="border-left:3px solid #DAFF00">
+<h4 style="color:#DAFF00">Option B: 1-Year Raise ($90-165K)</h4>
+<p><strong>What it covers:</strong> 3 SKU production + 12 months marketing + events + ops</p>
+<p><strong>Source:</strong> Jason's dad $145K + angel investor(s)</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Runway to prove PMF properly (12 months, not 90 days)</li>
+<li>Can do World Cup + all 3 SKUs + events</li>
+<li>Negotiate from strength, not desperation</li>
+<li>One raise, one negotiation, focus on building</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>More dilution at lower (pre-revenue) valuation</li>
+<li>$145K from Jason's dad = still "conversation stage"</li>
+<li>If PMF fails, you've given up more equity for nothing</li>
+</ul>
+<p><strong>When this makes sense:</strong> If Jason's dad commits firmly, or you find an angel who writes $100K+ checks for pre-revenue CPG.</p>
+</div>
+</div>
+
+<div class="diamond">
+<h3 style="color:#DAFF00">RECOMMENDATION</h3>
+<p style="font-size:10px;color:#ccc;line-height:2;margin-top:4px">
+<strong style="color:#fff">Raise for 1 year ($120-150K) via SAFE note with a $1.5-2M cap.</strong><br>
+CPG angels in 2025-2026 expect 12-18% dilution at pre-seed. At $150K raise on a $1.5M cap = ~10% dilution. Reasonable.<br>
+The hybrid structure trending in CPG: equity (SAFE) + non-dilutive (revenue-based financing or equipment loans). <a href="https://angelinvestorsnetwork.com/angel-investing/consumer-cpg-angel-funding-why-2026-deals-structure-differently/">Source</a><br><br>
+<strong style="color:#fff">But: secure Jason's dad FIRST.</strong> If he's in for $145K, you barely need outside capital. If he's not, you need to find an angel who writes $100K+ checks for pre-revenue CPG — that's a harder pitch without product in market.
+</p>
+</div>
+</div>
+
+<div class="S">
+<h3>CPG ANGEL LANDSCAPE</h3>
+<table>
+<tr><th>Investor Type</th><th>Check Size</th><th>What They Want</th><th>Source</th></tr>
+<tr><td>Individual angels (food/bev focus)</td><td>$25K-100K</td><td>Team + market + early traction. LOI or samples.</td><td><a href="https://www.rho.co/blog/angel-investors-for-food-and-beverage">Rho 2025</a></td></tr>
+<tr><td>Angel groups/syndicates</td><td>$100K-500K</td><td>Product in market. Some revenue or velocity data.</td><td><a href="https://f4.fund/investors/food-beverage/pre-seed">F4 Fund list</a></td></tr>
+<tr><td>Pre-seed VCs (food/bev)</td><td>$250K-2M</td><td>Product + initial sales data. Team with relevant background.</td><td><a href="https://signal.nfx.com/investor-lists/top-food-and-beverage-seed-investors">NFX Signal</a></td></tr>
+<tr><td>Strategic investors (industry)</td><td>Varies</td><td>Distribution synergy. Category expansion. Nurihaus-type deal.</td><td>Relationship-based</td></tr>
+</table>
+<p class="src">Median pre-seed food/bev check: $1.6M. But range includes $20K-$100M. Most early CPG raises are $50K-$500K from angels. <a href="https://f4.fund/investors/food-beverage/pre-seed">F4 Fund</a></p>
+<p style="margin-top:4px;font-size:10px;color:#e67e22"><strong>2025-2026 CPG trend:</strong> Hybrid financing (12-18% equity via SAFE + revenue-based financing for inventory). Protects founders from over-dilution. <a href="https://angelinvestorsnetwork.com/angel-investing/consumer-cpg-angel-funding-why-2026-deals-structure-differently/">Source</a></p>
+</div>
+
+<div class="S">
+<h3>EQUITY DILUTION SCENARIOS — What You Give Up at Each Raise</h3>
+<p style="color:#555;font-size:9px;margin-bottom:4px">Post-money SAFE assumed. Founders start at: Alex 35%, Jason 33%, Dawon 32% = 100% pre-investment.</p>
+<table>
+<tr><th>Raise Amount</th><th>Cap $1M</th><th>Cap $1.5M</th><th>Cap $2M</th><th>Cap $3M</th></tr>
+<tr><td colspan="5" style="background:#111;color:#555;font-size:8px;letter-spacing:1px">INVESTOR GETS (% of company)</td></tr>
+<tr><td><strong>$50K</strong></td><td>5.0%</td><td>3.3%</td><td>2.5%</td><td>1.7%</td></tr>
+<tr><td><strong>$100K</strong></td><td>10.0%</td><td>6.7%</td><td>5.0%</td><td>3.3%</td></tr>
+<tr><td><strong>$145K (Jason's dad)</strong></td><td style="color:#c0392b">14.5%</td><td style="color:#e67e22">9.7%</td><td style="color:#27ae60">7.3%</td><td style="color:#27ae60">4.8%</td></tr>
+<tr><td><strong>$150K</strong></td><td style="color:#c0392b">15.0%</td><td style="color:#e67e22">10.0%</td><td style="color:#27ae60">7.5%</td><td style="color:#27ae60">5.0%</td></tr>
+<tr><td><strong>$200K</strong></td><td style="color:#c0392b">20.0%</td><td style="color:#c0392b">13.3%</td><td style="color:#e67e22">10.0%</td><td style="color:#27ae60">6.7%</td></tr>
+<tr><td colspan="5" style="background:#111;color:#555;font-size:8px;letter-spacing:1px">FOUNDERS RETAIN (combined %)</td></tr>
+<tr><td><strong>$50K</strong></td><td>95.0%</td><td>96.7%</td><td>97.5%</td><td>98.3%</td></tr>
+<tr><td><strong>$145K (Jason's dad)</strong></td><td style="color:#c0392b">85.5%</td><td style="color:#e67e22">90.3%</td><td style="color:#27ae60">92.7%</td><td style="color:#27ae60">95.2%</td></tr>
+<tr><td><strong>$200K</strong></td><td style="color:#c0392b">80.0%</td><td style="color:#c0392b">86.7%</td><td style="color:#e67e22">90.0%</td><td style="color:#27ae60">93.3%</td></tr>
+</table>
+
+<div class="diamond">
+<h3 style="color:#DAFF00">THE JASON'S DAD SCENARIO ($145K at $2M cap)</h3>
+<p style="font-size:10px;color:#ccc;line-height:1.8;margin-top:4px">
+<strong style="color:#fff">Investment:</strong> $145,000 via post-money SAFE, $2M valuation cap<br>
+<strong style="color:#fff">Investor gets:</strong> 7.3% of company<br>
+<strong style="color:#fff">Founders retain:</strong> 92.7% combined (Alex ~32.4%, Jason ~30.6%, Dawon ~29.7%)<br>
+<strong style="color:#fff">Total capital:</strong> $20K (existing) + $145K = $165K<br>
+<strong style="color:#fff">Covers:</strong> Full 3-SKU production ($67.9K) + 6 months marketing ($40K) + ops ($25K) + infra ($15K) + buffer ($17K)<br>
+<strong style="color:#fff">Result:</strong> Founders retain >90% ownership. Investor gets meaningful stake at reasonable cap. Clean, simple. One conversation.
+</p>
+</div>
+
+<div class="warn"><strong>Valuation defense for pre-revenue:</strong> CPG pre-seed standard is $2-4M cap. At $2M cap: you're saying "our brand, formulation, team, manufacturer relationship, GRAS probiotic, and market positioning are worth $2M before any sales." That's conservative and defensible given: Seed at $200M revenue started similarly, and your COGS/margin structure is proven. <a href="https://sheetventure.com/fundraising-knowledge/what-is-the-valuation-cap-standard-for-safe-notes-in-2026">SAFE cap standards 2026</a></div>
+</div>
+
+<div class="S">
+<h3>ANGEL INVESTOR STRATEGY — WHERE TO FIND THEM</h3>
+<table>
+<tr><th>Source</th><th>How</th><th>Check Size</th><th>Notes</th></tr>
+<tr><td><strong>Jason's dad</strong></td><td>Direct conversation</td><td>$145K</td><td>Warmest possible lead. Has Airstream for activation. Family alignment. Start here.</td></tr>
+<tr><td><strong>Personal network</strong></td><td>Friends, family, former colleagues who invest</td><td>$5K-50K each</td><td>Smallest checks but fastest closes. 3-5 people at $10-20K = $50-100K.</td></tr>
+<tr><td><strong>Food/bev angel groups</strong></td><td>Apply to: <a href="https://www.wearetheangelgroup.com/">The Angel Group</a>, local angel networks</td><td>$50K-250K</td><td>Usually want product in market. Best for post-launch raise.</td></tr>
+<tr><td><strong>CPG-focused VCs (pre-seed)</strong></td><td><a href="https://signal.nfx.com/investor-lists/top-food-and-beverage-seed-investors">NFX Signal list</a>, <a href="https://f4.fund/investors/food-beverage/pre-seed">F4 Fund list</a></td><td>$250K-2M</td><td>Want product + some traction. Better for Series Seed after PMF proven.</td></tr>
+<tr><td><strong>Nurihaus (cross-brand)</strong></td><td>Already in conversation for SO. Could they invest in Pheeew too?</td><td>₩2-3억 ($140-210K)</td><td>K-Wellness angle. BUT: would Daesung find out? Firewall risk.</td></tr>
+<tr><td><strong>Korean angel investors</strong></td><td>D-Camp, SparkLabs, Primer Club networks</td><td>₩1-5억</td><td>Prefer Korean entities. Pheeew is US C-Corp — may need Korean sub or convertible note.</td></tr>
+</table>
+
+<h3 style="margin-top:8px">THE PITCH — WHAT ANGELS WANT TO HEAR (CPG-specific)</h3>
+<div class="g2">
+<div class="card">
+<h4>What they ask first</h4>
+<p>1. "What are your unit economics?" → 70% gross, 52% CM1, 22-27% CM2. Know this cold.</p>
+<p>2. "Do you have traction?" → Pre-revenue. But: formulation locked, manufacturer quoted, GRAS confirmed, trademark filed.</p>
+<p>3. "What's the market?" → $209B global supplements, $40B probiotic drinks, 63.7% of consumers want gut health in beverages.</p>
+<p>4. "What's your moat?" → Spore-forming probiotic in RTD synbiotic pouch. Nobody else has this combination.</p>
+</div>
+<div class="card">
+<h4>What closes the deal</h4>
+<p>1. <strong>Founder commitment:</strong> "We put in $20K of our own money. We're not asking you to take risk we won't take."</p>
+<p>2. <strong>Specific milestone:</strong> "This $145K gets us to first revenue + subscription data + retail velocity proof in 6 months."</p>
+<p>3. <strong>Exit vision:</strong> "Gruns sold to Unilever for $1.2B. Health-Ade sold for $500M. Poppi sold for $1.95B. We're building for a strategic exit in the K-Wellness category."</p>
+<p>4. <strong>Why now:</strong> "K-Beauty → K-Wellness wave. US is now #1 K-beauty export market. The window is 12-18 months."</p>
+</div>
+</div>
+<p class="src">Angel expectations: <a href="https://www.rho.co/blog/angel-investors-for-food-and-beverage">Rho 2025</a>. CPG deal structures: <a href="https://angelinvestorsnetwork.com/angel-investing/consumer-cpg-angel-funding-why-2026-deals-structure-differently/">Angel Investors Network 2026</a>. Pre-seed check sizes: <a href="https://f4.fund/investors/food-beverage/pre-seed">F4 Fund</a>.</p>
+</div>
+
+<div class="S">
+<h3>KOREAN IR INTELLIGENCE (from studying 6 real Korean beauty IR decks)</h3>
+<p style="color:#555;font-size:9px;margin-bottom:4px">Decks analyzed: Refilled/Constant (D-Camp), Biodance (Beauty Selection), S-Skin (Samsung C-Lab), Mimetics (Pre-A), Beauty Selection ($110M), BX Design Proposal</p>
+
+<h4>If pitching to Korean investors (for Pheeew Korea or SO):</h4>
+<table>
+<tr><th>Korean Convention</th><th>How It Differs from US</th><th>What Pheeew Should Do</th></tr>
+<tr><td>Founder story on slide 2</td><td>US delays team to slide 6-8</td><td>Lead with Alex + Jason + Dawon's story. Personal mission. Why gut health matters to YOU.</td></tr>
+<tr><td>Table of Contents on slide 2-3</td><td>US never includes TOC</td><td>Add a TOC for Korean-facing decks. Shows structure and respect for the reader's time.</td></tr>
+<tr><td>Company history timeline</td><td>US focuses on future, not past</td><td>Build a timeline: 2025 LLC formed → 2026 formulation → manufacturer → trademark → etc. Even 6 months of history matters.</td></tr>
+<tr><td>Government grants as credibility</td><td>US doesn't emphasize grants</td><td>Pursue Korean government programs (TIPS, K-Startup Grand Challenge) and list them.</td></tr>
+<tr><td>RCPS is standard investment instrument</td><td>US uses SAFE / convertible notes</td><td>For Korean investors, offer RCPS or convertible notes. For US angels, offer SAFE.</td></tr>
+<tr><td>Monthly revenue bars (momentum)</td><td>US shows annual/quarterly</td><td>Once launched, show MoM growth in bars. Korean investors want to see acceleration.</td></tr>
+<tr><td>Channel rankings are headline metrics</td><td>US focuses on total revenue</td><td>"#1 in [category] on [platform]" = the most powerful slide in a Korean IR deck.</td></tr>
+<tr><td>Unit economics BY CHANNEL</td><td>US shows blended P&L</td><td>Show DTC margin vs Amazon margin vs TikTok Shop margin separately. More granular = more trust.</td></tr>
+</table>
+
+<h4 style="margin-top:6px">Benchmark exits from the decks:</h4>
+<table>
+<tr><th>Brand</th><th>Revenue Growth</th><th>Key Metric</th></tr>
+<tr><td>Beauty Selection (Biodance parent)</td><td>$3.7M → $110M in 5 years (30x)</td><td>Series A from Altos Ventures at $9.7M</td></tr>
+<tr><td>Biodance</td><td>464x growth since launch</td><td>Amazon US Beauty #1, Olive Young #1, 10M masks in 2 years</td></tr>
+<tr><td>Refilled/Constant</td><td>4.1x YoY, targeting ₩15B (2025)</td><td>75% repeat purchase, 3.2x LTV/CAC, Amazon US 25x growth</td></tr>
+</table>
+<p class="src">Source: Direct analysis of 6 Korean IR decks uploaded to Useful Knowledge/Pitch folder, April 2026.</p>
+</div>
+</div>
+
+<!-- ============================================= -->
+<!-- DICTIONARY -->
+<!-- ============================================= -->
+<div class="pg" id="dictionary">
+<h1>Dictionary</h1>
+<div class="sub">Every term the team needs to know — from zero to operational</div>
+
+<div class="S">
+<h3>PRODUCT & SCIENCE</h3>
+<div class="def"><strong>Synbiotic</strong><p>A product that contains both PREbiotics (food for good bacteria) AND PRObiotics (live good bacteria). Pheeew is synbiotic. Most brands are only one or the other.</p></div>
+<div class="def"><strong>Probiotic</strong><p>Live microorganisms that provide health benefits when consumed in adequate amounts. Our probiotic: Bacillus coagulans SNZ 1969.</p></div>
+<div class="def"><strong>Prebiotic</strong><p>Non-digestible fibers that feed the good bacteria already in your gut. Our prebiotics: XOS + Fibersol-2L.</p></div>
+<div class="def"><strong>Spore-forming</strong><p>A type of bacteria that creates a protective shell (spore) around itself. Survives heat, shelf storage, and stomach acid. Most probiotics are NOT spore-forming and die before reaching the gut. B. coagulans IS spore-forming — this is our key differentiator.</p></div>
+<div class="def"><strong>CFU (Colony Forming Units)</strong><p>How probiotic quantity is measured. "1 Billion CFU" = 1 billion live bacteria per serving. Must be measured at END of shelf life, not at manufacture.</p></div>
+<div class="def"><strong>XOS (Xylo-oligosaccharides)</strong><p>A type of prebiotic fiber derived from plant material. Feeds beneficial gut bacteria.</p></div>
+<div class="def"><strong>Fibersol-2L</strong><p>A soluble prebiotic fiber (resistant maltodextrin) made by Matsutani/ADM. Clinically studied for digestive health. Liquid form designed for beverages.</p></div>
+<div class="def"><strong>RCT (Randomized Controlled Trial)</strong><p>The gold standard of clinical research. Participants randomly assigned to treatment or placebo. Our probiotic has 4+ RCTs published. This is what "clinically studied" means.</p></div>
+</div>
+
+<div class="S">
+<h3>BUSINESS & FINANCE</h3>
+<div class="def"><strong>COGS (Cost of Goods Sold)</strong><p>What it costs to make one unit. Our manufacturing COGS: $0.57/pouch (120K pricing). Landed COGS (including shipping to US): $0.69/pouch.</p></div>
+<div class="def"><strong>Gross Margin</strong><p>(Revenue - COGS) ÷ Revenue. Ours: 70%. Investors want 50%+ for supplements. We exceed that.</p></div>
+<div class="def"><strong>CM1 (Contribution Margin 1)</strong><p>Gross profit minus variable costs (shipping, payment processing, returns). Ours: 52%. This is profit BEFORE marketing.</p></div>
+<div class="def"><strong>CM2 (Contribution Margin 2)</strong><p>CM1 minus marketing and content costs. Ours: 22-27%. This is operating profit per unit.</p></div>
+<div class="def"><strong>ARR (Annual Recurring Revenue)</strong><p>Total subscription revenue projected over 12 months. 1,000 subscribers × $69/month × 12 = $828K ARR.</p></div>
+<div class="def"><strong>CAC (Customer Acquisition Cost)</strong><p>How much you spend to get one new customer. Industry average for DTC supplements: $45-53. Our target: <$35 (founder-led content reduces this).</p></div>
+<div class="def"><strong>LTV (Lifetime Value)</strong><p>Total revenue from one customer over their lifetime. If a subscriber stays 12 months: $828 LTV.</p></div>
+<div class="def"><strong>PMF (Product-Market Fit)</strong><p>When people want your product enough to buy it repeatedly without heavy marketing. Signal: 30%+ repeat purchase rate at 90 days.</p></div>
+<div class="def"><strong>MOQ (Minimum Order Quantity)</strong><p>Smallest amount a manufacturer will produce. Our juice MOQ: 40,000 units per flavor. Pouch printing MOQ: 120,000 pouches.</p></div>
+<div class="def"><strong>DTC (Direct-to-Consumer)</strong><p>Selling directly through your own website, not through retailers. Highest margin channel. You own the customer data.</p></div>
+<div class="def"><strong>MSRP (Manufacturer's Suggested Retail Price)</strong><p>The price consumers see on the shelf. Our DTC MSRP: $2.30/pouch ($69/30-pack subscription).</p></div>
+</div>
+
+<div class="S">
+<h3>INVESTMENT</h3>
+<div class="def"><strong>SAFE (Simple Agreement for Future Equity)</strong><p>The most common investment instrument for pre-seed startups. Not a loan. Investor gives money now, gets equity later when you do a priced round. No interest, no maturity date. <a href="https://www.ycombinator.com/documents">Y Combinator created it</a>.</p></div>
+<div class="def"><strong>Valuation Cap</strong><p>The maximum company value at which a SAFE converts to equity. If cap = $2M and investor put in $200K, they get at least 10% equity regardless of how high the next round values the company.</p></div>
+<div class="def"><strong>Pre-money Valuation</strong><p>Company value BEFORE investment money comes in. Post-money = pre-money + investment. Example: $1.5M pre-money + $150K investment = $1.65M post-money.</p></div>
+<div class="def"><strong>Dilution</strong><p>When new shares are issued (for investors), existing shareholders own a smaller percentage. Normal and expected. CPG pre-seed: 12-18% dilution is standard.</p></div>
+<div class="def"><strong>Angel Investor</strong><p>Individual person who invests their own money in early-stage companies. Typical check: $25K-$100K for food/bev. Different from VCs who invest other people's money.</p></div>
+<div class="def"><strong>Convertible Note</strong><p>Like a SAFE but structured as a loan. Has interest rate (typically 5%) and maturity date (typically 24 months). More familiar to Korean investors.</p></div>
+</div>
+
+<div class="S">
+<h3>LEGAL & REGULATORY</h3>
+<div class="def"><strong>Conventional Food</strong><p>What Pheeew is classified as. Different from "dietary supplement." Uses Nutrition Facts panel, not Supplement Facts. No FDA notification needed for claims. No disclaimer needed.</p></div>
+<div class="def"><strong>Class 32 (Trademark)</strong><p>The trademark classification for non-alcoholic beverages. This is what Pheeew's trademark is filed under.</p></div>
+<div class="def"><strong>GRAS (Generally Recognized as Safe)</strong><p>FDA designation meaning an ingredient is safe for use in food. Our probiotic (B. coagulans SNZ 1969) has GRAS status — FDA GRN 597 and 864.</p></div>
+<div class="def"><strong>Structure/Function Claim</strong><p>"Supports digestive health" — describes how an ingredient affects body structure or function. Legal on conventional food WITHOUT FDA notification or disclaimer.</p></div>
+<div class="def"><strong>Disease Claim</strong><p>"Prevents IBS" — claims to treat, prevent, or cure a disease. ILLEGAL on food or supplements. Makes your product a drug. Never say this.</p></div>
+<div class="def"><strong>FTC (Federal Trade Commission)</strong><p>Regulates advertising claims. Everything you say on social media, ads, and website must be truthful and substantiated. Same standard as packaging.</p></div>
+<div class="def"><strong>FDA (Food and Drug Administration)</strong><p>Regulates food labeling, packaging, and safety. Pheeew needs FDA facility registration (free) for the US manufacturer/importer.</p></div>
+</div>
+
+<div class="S">
+<h3>MANUFACTURING</h3>
+<div class="def"><strong>OEM (Original Equipment Manufacturer)</strong><p>A company that manufactures products for other brands. 좋은영농조합법인 is our OEM — they make the juice, we sell it under our brand.</p></div>
+<div class="def"><strong>ODM (Original Design Manufacturer)</strong><p>Like OEM but they also design/formulate the product. Our manufacturer handles both formulation and production.</p></div>
+<div class="def"><strong>Landed COGS</strong><p>Total cost of getting one unit from factory to your US warehouse. Includes: manufacturing + packaging + domestic freight + sea freight + customs + duty + broker + 3PL receiving. Our landed COGS: $0.69/unit.</p></div>
+<div class="def"><strong>3PL (Third-Party Logistics)</strong><p>A warehouse company that stores your inventory, picks/packs orders, and ships to customers. You don't own the warehouse — you pay per order fulfilled.</p></div>
+<div class="def"><strong>FCL (Full Container Load)</strong><p>A full shipping container from Korea to US. 40ft container = ~60,000+ pouches. Cheaper per unit than LCL (Less than Container Load).</p></div>
+<div class="def"><strong>EXW (Ex-Works)</strong><p>Pricing term meaning "price at the factory door." Doesn't include shipping, customs, or duties. Our manufacturer quotes EXW.</p></div>
+</div>
+
+<div class="S">
+<h3>MARKETING</h3>
+<div class="def"><strong>UGC (User-Generated Content)</strong><p>Content created by customers or creators, not the brand. A customer filming themselves drinking Pheeew = UGC. Best-performing ad creative format.</p></div>
+<div class="def"><strong>ROAS (Return on Ad Spend)</strong><p>Revenue generated per dollar spent on ads. $3 ROAS = $3 revenue for every $1 spent. Target: 3x+ for sustainable DTC.</p></div>
+<div class="def"><strong>Spark Ads (TikTok)</strong><p>Boosting organic TikTok posts as paid ads. Uses real creator content with their handle. Higher trust than traditional ads.</p></div>
+<div class="def"><strong>Seeding</strong><p>Sending free product to creators/influencers without requiring a post. They post if they genuinely like it. Lower cost, higher authenticity than paid sponsorships.</p></div>
+<div class="def"><strong>Velocity (Retail)</strong><p>How fast a product sells per store per week. Units Per Week (UPW). <2 UPW = dying on shelf. 5-10 = solid. 20+ = category leader. Retailers use this to decide if you stay.</p></div>
+<div class="def"><strong>CPM (Cost Per Mille/Thousand)</strong><p>How much you pay per 1,000 ad impressions. Average ecommerce CPM: $14-18. Q4 (holiday): $25-35. Lower CPM ≠ better — high CTR matters more.</p></div>
+<div class="def"><strong>CTR (Click-Through Rate)</strong><p>% of people who see your ad and click it. Above 1% = healthy. Below 0.8% after 1K impressions = kill the creative.</p></div>
+<div class="def"><strong>CPC (Cost Per Click)</strong><p>How much each click on your ad costs. Derived from CPM ÷ CTR × 10. Lower = more efficient ads.</p></div>
+<div class="def"><strong>Hook Rate</strong><p>% of viewers who watch past the first 3 seconds of a video. Above 30% = good hook. Below 20% = rewrite the opening.</p></div>
+<div class="def"><strong>Thumb-Stop</strong><p>Content that makes someone stop scrolling. The first frame of every video or the headline of every ad. If it doesn't stop thumbs, nothing else matters.</p></div>
+<div class="def"><strong>Spark Ads (TikTok)</strong><p>Boosting organic TikTok posts as paid ads. Uses real creator content with their handle. Higher trust, lower CPM than traditional TikTok ads.</p></div>
+<div class="def"><strong>RPR (Revenue Per Recipient)</strong><p>How much revenue one email generates per person who receives it. Welcome flow: $1.50-4/recipient is healthy. Below $1 = flow is broken.</p></div>
+<div class="def"><strong>Flow (Klaviyo)</strong><p>Automated email sequence triggered by customer behavior (signup, purchase, cart abandonment). Flows run 24/7 without manual work. Different from campaigns (one-time blasts).</p></div>
+<div class="def"><strong>Campaign (Klaviyo)</strong><p>One-time email blast to a segment of your list. Weekly newsletters, product launches, sales. Different from flows (automated).</p></div>
+<div class="def"><strong>Segment (Email)</strong><p>A group of subscribers filtered by behavior. "Engaged 30 days" = opened email recently. "Never purchased" = leads. "Purchased 2+" = VIPs. You send different content to different segments.</p></div>
+</div>
+
+<div class="S">
+<h3>RETAIL</h3>
+<div class="def"><strong>Slotting Fee</strong><p>One-time payment to get your product on a retailer's shelf. $5K-$25K per SKU at major chains. Natural/specialty retailers often don't charge. This is why you start at indie stores.</p></div>
+<div class="def"><strong>UPW (Units Per Week)</strong><p>How many units sell per store per week. The #1 metric retailers care about. Below 2 UPW = getting cut. 5-10 = solid. 20+ = category leader.</p></div>
+<div class="def"><strong>Endcap</strong><p>The display at the end of a store aisle. Premium placement = more sales. Brands pay for endcap placement through trade spend.</p></div>
+<div class="def"><strong>Planogram</strong><p>The visual map of where products sit on a shelf. Retailers design planograms. Your position (eye level vs bottom shelf) dramatically affects sales.</p></div>
+<div class="def"><strong>Trade Spend</strong><p>Money you pay retailers for promotions, placement, and marketing. Can be 20-30% of gross revenue for retail brands. Includes: slotting, promos, free fills, demo days.</p></div>
+<div class="def"><strong>Deductions</strong><p>Money retailers subtract from your invoice for various fees (spoilage, damaged goods, promotional allowances, data fees). UNFI/KeHE deductions can eat 25-35% of your wholesale price.</p></div>
+<div class="def"><strong>Free Fill</strong><p>First order of product given free to a retailer to stock their shelves. Common requirement for new brands entering retail. Budget for this.</p></div>
+<div class="def"><strong>Broker</strong><p>A third-party who represents your brand to retail buyers. Takes 3-5% commission. Helpful when you don't have relationships with buyers. Not needed for DTC.</p></div>
+</div>
+
+<div class="S">
+<h3>AMAZON</h3>
+<div class="def"><strong>FBA (Fulfillment by Amazon)</strong><p>You ship inventory to Amazon's warehouse. They store, pick, pack, and ship to customers. You get the Prime badge. Fees: referral (8-15%) + fulfillment (~$5-7/unit).</p></div>
+<div class="def"><strong>FBM (Fulfilled by Merchant)</strong><p>You store and ship products yourself (or through your 3PL). No Prime badge. Lower fees but lower conversion rate.</p></div>
+<div class="def"><strong>SFP (Seller Fulfilled Prime)</strong><p>You ship from your warehouse but earn the Prime badge. Must meet strict delivery and performance requirements. Best margin + visibility combo.</p></div>
+<div class="def"><strong>ACoS (Advertising Cost of Sales)</strong><p>Ad spend ÷ ad revenue. 20% ACoS = you spent $20 in ads for every $100 in ad-attributed sales. Target: below 25% for established products.</p></div>
+<div class="def"><strong>TACoS (Total Advertising Cost of Sales)</strong><p>Ad spend ÷ TOTAL revenue (including organic). More important than ACoS. Shows if ads are building organic momentum. Target: 8-12% for established products.</p></div>
+<div class="def"><strong>Buy Box</strong><p>The "Add to Cart" button on an Amazon listing. Multiple sellers can list the same product, but only one gets the Buy Box. Lose it = revenue drops to near-zero.</p></div>
+<div class="def"><strong>IPI (Inventory Performance Index)</strong><p>Amazon's score for how well you manage inventory. Below 400 = storage limits. Above 400 = healthy. Running out of stock kills your IPI and ranking.</p></div>
+</div>
+
+<div class="S">
+<h3>MANUFACTURING</h3>
+<div class="def"><strong>Batch</strong><p>One production run of a specific recipe. A batch of 40,000 pouches = one continuous run. Different batches may have slight variations.</p></div>
+<div class="def"><strong>Lot Number</strong><p>Unique identifier for each production batch. Required for traceability. If there's a recall, you need to know which lot is affected.</p></div>
+<div class="def"><strong>Shelf Life</strong><p>How long the product stays safe and maintains quality. For Pheeew: TBD from manufacturer. CFU must be guaranteed at END of shelf life, not manufacture date.</p></div>
+<div class="def"><strong>Fill Weight</strong><p>The exact amount of liquid in each pouch. Must be consistent. Underfilling = legal issue (misbranded). Overfilling = lost margin.</p></div>
+<div class="def"><strong>Brix</strong><p>Measurement of sugar content in a liquid. Higher Brix = sweeter. Used by manufacturers to ensure consistency between batches.</p></div>
+<div class="def"><strong>Spec Sheet</strong><p>Document listing every detail about your product: ingredients, allergens, nutritional info, packaging dimensions, shelf life, storage requirements. Retailers and distributors require this before considering your product.</p></div>
+</div>
+
+<div class="S">
+<h3>FINANCE / INVESTMENT</h3>
+<div class="def"><strong>Burn Rate</strong><p>How much cash you spend per month. If you have $50K and burn $10K/month, you have 5 months of runway.</p></div>
+<div class="def"><strong>Runway</strong><p>Cash in bank ÷ monthly burn rate = months before you run out of money. 12-18 months runway is ideal when raising.</p></div>
+<div class="def"><strong>Cap Table</strong><p>The spreadsheet showing who owns what % of the company. Alex 35%, Jason 33%, Dawon 32% = your cap table before any outside investment.</p></div>
+<div class="def"><strong>Pro Rata</strong><p>An investor's right to maintain their ownership % in future funding rounds by investing proportionally. Standard in most investment agreements.</p></div>
+<div class="def"><strong>Anti-Dilution</strong><p>Protection for investors if the company raises money at a LOWER valuation later ("down round"). Adjusts their shares to compensate. Common in VC term sheets, less common in angel/SAFE deals.</p></div>
+<div class="def"><strong>MER (Marketing Efficiency Ratio)</strong><p>Total revenue ÷ total marketing spend. Ignores attribution. If MER is trending up, your overall marketing is working. The cross-channel sanity check.</p></div>
+<div class="def"><strong>Down Round</strong><p>Raising money at a lower valuation than your previous round. Bad signal. Means the company is worth less than before. Try to avoid by raising at reasonable valuations early.</p></div>
+<div class="def"><strong>Term Sheet</strong><p>A non-binding document outlining the key terms of an investment deal. Covers: amount, valuation, equity %, investor rights, board seats. You negotiate the term sheet before signing final legal docs.</p></div>
+</div>
+</div>
+
+<!-- ============================================= -->
+<!-- FUTURE -->
+<!-- ============================================= -->
+<div class="pg" id="future">
+<h1>Future Product Expansion</h1>
+<div class="sub">Beyond the first 3 SKUs — where the brand goes next</div>
+
+<div class="S">
+<h3>EXPANSION CONCEPTS (all keep synbiotic base)</h3>
+<table>
+<tr><th>Concept</th><th>Function</th><th>Consumer Demand</th><th>Why</th></tr>
+<tr><td style="color:#DAFF00"><strong>Gut + Sleep</strong></td><td>Synbiotic + Magnesium + L-Theanine + Chamomile</td><td style="color:#DAFF00"><strong>42% — #1 most wanted benefit</strong></td><td>Underserved in shots. Almost nobody doing sleep + gut. <a href="https://www.beveragedaily.com/Article/2026/03/16/functional-beverages-sleep-gut-health-and-focus-top-benefits/">Source</a></td></tr>
+<tr><td><strong>Gut + Focus</strong></td><td>Synbiotic + Lion's Mane + L-Theanine</td><td><strong>24%</strong></td><td>Nootropic mushrooms trending. Clean focus without caffeine jitters.</td></tr>
+<tr><td><strong>Gut + Skin</strong></td><td>Synbiotic + Collagen peptides + Vitamin E</td><td>Growing (inner beauty category)</td><td>K-Beauty → K-Wellness crossover. Collagen drinks are massive in Korea.</td></tr>
+<tr><td><strong>Gut + Calm</strong></td><td>Synbiotic + Ashwagandha + GABA</td><td>Stress management growing</td><td>So Good So You's "Happy" shot uses ashwagandha. Stress = universal.</td></tr>
+</table>
+<div class="warn"><strong>Rule:</strong> Every future SKU keeps the synbiotic base (B. coagulans SNZ 1969 + XOS + Fibersol-2L). Gut health is the FOUNDATION. Additional functions are the +1. Never lose the core.</div>
+</div>
+
+<div class="S">
+<h3>FORMAT EXPANSION (post-PMF)</h3>
+<table>
+<tr><th>Format</th><th>When</th><th>Why</th></tr>
+<tr><td><strong>12oz can</strong></td><td>Year 2+ (if retail demands it)</td><td>Shelf presence. Sipping experience. Competes with Poppi/OLIPOP. Different manufacturer needed.</td></tr>
+<tr><td><strong>Multipacks (retail)</strong></td><td>When entering Whole Foods/Target</td><td>Retail requires multipack format. 6-pack or 12-pack boxes.</td></tr>
+<tr><td><strong>Stick packs (powder)</strong></td><td>Year 2+</td><td>Travel-friendly. Add-to-water format. Like Liquid IV but synbiotic. Lower shipping cost.</td></tr>
+<tr><td><strong>Korea-specific format</strong></td><td>Korea launch (Month 12+)</td><td>Korean market may prefer different size/format. Research needed.</td></tr>
+</table>
+</div>
+</div>
+
+<!-- ============================================= -->
+<!-- OPS SETUP -->
+<!-- ============================================= -->
+<div class="pg" id="ops">
+<h1>Operations Setup Checklist</h1>
+<div class="sub">Every registration, account, license, and tool needed before and after launch. Check off as completed.</div>
+
+<div class="S">
+<h3>FDA & REGULATORY (before first sale)</h3>
+<table>
+<tr><th>Task</th><th>What</th><th>Cost</th><th>Status</th><th>Source</th></tr>
+<tr><td><strong>FDA Facility Registration</strong></td><td>Register as food facility (importer). Required for ALL food sold in US. Renew every even year (Oct-Dec).</td><td>Free</td><td>⬜ Not started</td><td><a href="https://www.fda.gov/food/guidance-regulation-food-and-dietary-supplements/registration-food-facilities-and-other-submissions">FDA.gov</a></td></tr>
+<tr><td><strong>Foreign Facility Registration</strong></td><td>Korean manufacturer (좋은영농조합법인) must register as foreign food facility with FDA. They may already be registered — ask Monday.</td><td>Free</td><td>⬜ Ask manufacturer</td><td><a href="https://www.fda.gov/food/food-industry/how-start-food-business">FDA How to Start</a></td></tr>
+<tr><td><strong>FDA Prior Notice</strong></td><td>Required before EACH import shipment. Filed electronically via FDA Prior Notice System. Must include: product, manufacturer, shipper, carrier, entry port.</td><td>Free</td><td>⬜ Per shipment</td><td><a href="https://www.fda.gov/food/food-imports-exports/importing-food-products-united-states">FDA Imports</a></td></tr>
+<tr><td><strong>FSVP (Foreign Supplier Verification Program)</strong></td><td>As importer, YOU must verify Korean manufacturer meets US food safety standards. Document supplier approval, hazard analysis, verification activities.</td><td>DIY or ~$500-2K for consultant</td><td>⬜ Not started</td><td><a href="https://www.fda.gov/food/food-imports-exports/importing-food-products-united-states">FDA FSVP</a></td></tr>
+<tr><td><strong>DUNS Number</strong></td><td>Data Universal Numbering System — required for customs entry filing. Free from Dun & Bradstreet.</td><td>Free</td><td>⬜ Not started</td><td><a href="https://www.dnb.com/duns.html">D&B</a></td></tr>
+<tr><td><strong>Customs Broker</strong></td><td>Hire a licensed customs broker to handle import clearance. They file Prior Notice, manage customs entries, handle duties.</td><td>$150-300/shipment</td><td>⬜ Not started</td><td>Industry standard</td></tr>
+<tr><td><strong>Nutrition Facts Panel</strong></td><td>Lab testing of final product for Nutrition Facts label. Must comply with 21 CFR 101.9. Send finished product samples to certified lab.</td><td>$500-800/SKU</td><td>⬜ After production</td><td><a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/guidance-industry-food-labeling-guide">FDA Labeling Guide</a></td></tr>
+<tr><td><strong>Label Compliance Review</strong></td><td>Have final label reviewed for FDA compliance before printing. Check: Nutrition Facts, ingredient list, allergens, net weight, manufacturer info.</td><td>$200-500 (consultant) or DIY</td><td>⬜ Before print</td><td>Same source</td></tr>
+</table>
+</div>
+
+<div class="S">
+<h3>INSURANCE</h3>
+<table>
+<tr><th>Type</th><th>What</th><th>Est. Cost</th><th>Status</th><th>When Needed</th></tr>
+<tr><td><strong>Product Liability Insurance</strong></td><td>Required before selling food. Covers claims if product causes harm. Most retailers require proof of insurance before accepting your product.</td><td>$700-3,000/year</td><td>⬜ Not started</td><td>Before first sale</td></tr>
+<tr><td><strong>General Liability Insurance</strong></td><td>Covers general business operations, slip-and-fall at events, property damage. Needed for pop-ups and events.</td><td>$500-2,000/year</td><td>⬜ Not started</td><td>Before first event/retail</td></tr>
+<tr><td><strong>Commercial Auto</strong></td><td>Only if using Airstream or vehicle for brand activations.</td><td>Varies</td><td>⬜ If applicable</td><td>Before vehicle use</td></tr>
+</table>
+<p class="src">Sources: <a href="https://www.insureon.com/food-business-insurance">Insureon</a>, <a href="https://www.specialtyfoodbeverage.com/beverage-insurance">Specialty F&B Insurance</a>, <a href="https://www.fliprogram.com/">FLIP</a></p>
+</div>
+
+<div class="S">
+<h3>E-COMMERCE & DIGITAL</h3>
+<table>
+<tr><th>Platform</th><th>What to Set Up</th><th>Cost</th><th>Status</th></tr>
+<tr><td><strong>Shopify</strong></td><td>Store build. Theme. Product pages. Checkout. Subscription toggle (sub = default).</td><td>$39/mo (Basic)</td><td>⬜ Dawon building</td></tr>
+<tr><td><strong>Recharge (subscriptions)</strong></td><td>Subscription management. Handles recurring billing, skip/pause, swap flavors.</td><td>Free → $99/mo</td><td>⬜ After Shopify</td></tr>
+<tr><td><strong>Klaviyo</strong></td><td>Email + SMS. Welcome flow (5 emails), abandoned cart (3), post-purchase (4), browse abandonment (2), win-back (3). Connect to Shopify.</td><td>Free → $20/mo</td><td>⬜ Set up flows</td></tr>
+<tr><td><strong>Judge.me</strong></td><td>Product reviews on Shopify. Social proof. Photo reviews. Auto-request after purchase.</td><td>Free tier</td><td>⬜ After Shopify</td></tr>
+<tr><td><strong>Google Analytics 4</strong></td><td>Website analytics. Connect to Shopify. Set up purchase funnel, traffic source tracking, conversion events.</td><td>Free</td><td>⬜ With Shopify</td></tr>
+<tr><td><strong>Meta Pixel</strong></td><td>Facebook/Instagram tracking pixel. Install on Shopify. Required for Meta ad optimization.</td><td>Free</td><td>⬜ Before any Meta ads</td></tr>
+<tr><td><strong>TikTok Pixel</strong></td><td>TikTok tracking pixel. Install on Shopify. Required for TikTok ad optimization and TikTok Shop.</td><td>Free</td><td>⬜ Before TikTok ads</td></tr>
+<tr><td><strong>Google Ads account</strong></td><td>Set up Google Ads. Brand search campaigns. Not needed until post-launch.</td><td>Free to set up</td><td>⬜ Post-launch</td></tr>
+<tr><td><strong>TikTok Shop Seller account</strong></td><td>Register at seller-us.tiktok.com. Category qualification for food/bev. Submit FDA docs + ingredient info.</td><td>Free</td><td>⬜ Before launch</td></tr>
+<tr><td><strong>Amazon Seller Central</strong></td><td>Register. Brand Registry (need trademark). FBA or FBM setup. NOT needed at launch — Month 3+.</td><td>$39.99/mo (Pro)</td><td>⬜ Month 3+</td></tr>
+</table>
+</div>
+
+<div class="S">
+<h3>LOGISTICS & FULFILLMENT</h3>
+<table>
+<tr><th>Task</th><th>What</th><th>Est. Cost</th><th>Status</th></tr>
+<tr><td><strong>3PL Selection</strong></td><td>Third-party logistics warehouse in US. Receives shipment from Korea, stores inventory, picks/packs/ships DTC orders. Research: ShipBob, ShipMonk, Deliverr, or local 3PL.</td><td>Varies ($3-5/order + storage)</td><td>⬜ Research needed</td></tr>
+<tr><td><strong>Shipping carrier accounts</strong></td><td>USPS, UPS, or FedEx. Negotiate rates. Most 3PLs have pre-negotiated rates. Shopify Shipping also offers discounted rates.</td><td>Per-shipment</td><td>⬜ Through 3PL or Shopify</td></tr>
+<tr><td><strong>Freight forwarder</strong></td><td>Handles sea freight from Korea (Busan/Incheon) to US (LA/Long Beach port). Get quotes from 2-3 forwarders. Ask manufacturer for recommendations.</td><td>$2,000-5,000/container</td><td>⬜ Ask manufacturer Monday</td></tr>
+<tr><td><strong>HTS Code classification</strong></td><td>Harmonized Tariff Schedule code for your product. Determines import duty rate. Fruit juice/beverage = specific HTS code. Customs broker can help classify.</td><td>Customs broker handles</td><td>⬜ With customs broker</td></tr>
+</table>
+</div>
+
+<div class="S">
+<h3>BANKING & FINANCE</h3>
+<table>
+<tr><th>Task</th><th>What</th><th>Status</th></tr>
+<tr><td><strong>Mercury IO</strong></td><td>Business banking. Already set up via Stripe Atlas.</td><td style="color:#27ae60">✅ Done</td></tr>
+<tr><td><strong>Stripe Payments</strong></td><td>Payment processing for Shopify. Connected via Stripe Atlas.</td><td style="color:#27ae60">✅ Done</td></tr>
+<tr><td><strong>QuickBooks / bookkeeping</strong></td><td>Accounting software. Track revenue, expenses, COGS. Needed before first sale for clean books.</td><td>⬜ Set up before launch</td></tr>
+<tr><td><strong>Sales tax registration</strong></td><td>Register for sales tax in states where you have nexus (California for sure, others based on sales volume). Consider TaxJar or Avalara for automated compliance.</td><td>⬜ Before first sale</td></tr>
+<tr><td><strong>EIN</strong></td><td>Employer Identification Number.</td><td style="color:#27ae60">✅ 41-5111005</td></tr>
+<tr><td><strong>Delaware franchise tax</strong></td><td>Annual tax filing for Delaware corp. Due March 1 each year. $400 minimum for C-Corps.</td><td>⬜ Due March 1, 2027</td></tr>
+</table>
+</div>
+
+<div class="S">
+<h3>SOCIAL MEDIA & CONTENT</h3>
+<table>
+<tr><th>Platform</th><th>Handle</th><th>Status</th></tr>
+<tr><td><strong>Instagram</strong></td><td>@drinkpheeew</td><td>⬜ Created, not posting until preorder live</td></tr>
+<tr><td><strong>TikTok</strong></td><td>@drinkpheeew (or similar)</td><td>⬜ Create account</td></tr>
+<tr><td><strong>Website</strong></td><td>www.pheeew.com</td><td>⬜ Dawon building on Shopify</td></tr>
+<tr><td><strong>Email</strong></td><td>hello@pheeew.com, alex@pheeew.com</td><td>⬜ alex@ needs setup</td></tr>
+<tr><td><strong>YouTube</strong></td><td>TBD</td><td>⬜ Not priority until Month 3+</td></tr>
+<tr><td><strong>Linktree / link-in-bio</strong></td><td>TBD</td><td>⬜ Before social launch</td></tr>
+</table>
+</div>
+</div>
+
+<!-- ============================================= -->
+<!-- LEGAL DOCS -->
+<!-- ============================================= -->
+<div class="pg" id="legal_docs">
+<h1>Legal Documents Tracker</h1>
+<div class="sub">Every legal document — status, who signs, where it lives</div>
+
+<div class="S">
+<h3>CORPORATE FORMATION (via Stripe Atlas)</h3>
+<table>
+<tr><th>Document</th><th>Status</th><th>Where</th></tr>
+<tr><td>Certificate of Incorporation</td><td style="color:#27ae60">✅ Filed</td><td>Stripe Atlas dashboard</td></tr>
+<tr><td>Bylaws</td><td style="color:#27ae60">✅ Adopted</td><td>Stripe Atlas</td></tr>
+<tr><td>Action by Written Consent of Sole Incorporator</td><td style="color:#27ae60">✅ Signed</td><td>Stripe Atlas</td></tr>
+<tr><td>Initial Action by Board of Directors</td><td style="color:#27ae60">✅ Signed</td><td>Stripe Atlas</td></tr>
+<tr><td>EIN (CP 575 Letter)</td><td style="color:#27ae60">✅ 41-5111005</td><td>Stripe Atlas</td></tr>
+<tr><td>Certificate of Good Standing</td><td style="color:#27ae60">✅ Issued</td><td>Stripe Atlas</td></tr>
+<tr><td>Indemnification Agreement (Alex)</td><td style="color:#27ae60">✅ Signed</td><td>Stripe Atlas</td></tr>
+</table>
+</div>
+
+<div class="S">
+<h3>EQUITY RESTRUCTURING (drafted April 12, 2026)</h3>
+<table>
+<tr><th>Document</th><th>Who Signs</th><th>Status</th><th>File</th></tr>
+<tr><td><strong>Board Resolution — Equity Restructure</strong></td><td>Alex (Sole Director)</td><td>⬜ Sign first</td><td>Pheeew_Board-Resolution_Equity-Restructure.docx</td></tr>
+<tr><td><strong>Stock Cancellation Agreement</strong></td><td>Alex (CEO) + Alex (Individual)</td><td>⬜ Sign same day as Board Res</td><td>Pheeew_Stock-Cancellation_Seungjoon-Kim.docx</td></tr>
+<tr><td><strong>RSPA — Jason Ko</strong></td><td>Alex (CEO) + Jason</td><td>⬜ Sign within 1 week. Jason files 83(b) within 30 days.</td><td>Pheeew_RSPA_Jason-Ko.docx</td></tr>
+<tr><td><strong>RSPA — Dawon Kim</strong></td><td>Alex (CEO) + Dawon</td><td>⬜ Sign AFTER ITIN arrives. Dawon files 83(b) within 30 days.</td><td>Pheeew_RSPA_Dawon-Kim.docx</td></tr>
+<tr><td><strong>Co-Founder Agreement</strong></td><td>All 3 founders</td><td>⬜ Review → discuss → sign together</td><td>Pheeew_Co-Founder-Agreement.docx</td></tr>
+</table>
+</div>
+
+<div class="S">
+<h3>IP & CONFIDENTIALITY</h3>
+<table>
+<tr><th>Document</th><th>Who</th><th>Status</th><th>Where</th></tr>
+<tr><td>CIIA — Alex (Seungjoon Kim)</td><td>Alex</td><td style="color:#27ae60">✅ Signed at incorporation</td><td>Stripe Atlas</td></tr>
+<tr><td>CIIA — Jason Ko</td><td>Jason</td><td>⬜ Download CA template from Stripe Atlas → send for signature</td><td>Stripe Atlas templates</td></tr>
+<tr><td>CIIA — Dawon Kim</td><td>Dawon</td><td>⬜ Same template. Can sign now (no ITIN needed).</td><td>Stripe Atlas templates</td></tr>
+<tr><td>83(b) Election — Alex</td><td>Alex</td><td style="color:#27ae60">✅ Filed by Stripe Atlas. Proof of mailing on file.</td><td>Stripe Atlas</td></tr>
+<tr><td>83(b) Election — Jason</td><td>Jason</td><td>⬜ File within 30 days of RSPA signing. Certified mail to IRS.</td><td>—</td></tr>
+<tr><td>83(b) Election — Dawon</td><td>Dawon</td><td>⬜ File within 30 days of RSPA signing (after ITIN).</td><td>—</td></tr>
+</table>
+</div>
+
+<div class="S">
+<h3>TRADEMARK & BRAND</h3>
+<table>
+<tr><th>Item</th><th>Status</th><th>Details</th></tr>
+<tr><td>Trademark — "Pheeew"</td><td style="color:#27ae60">✅ Filed</td><td>Class 32 (non-alcoholic beverages). USPTO.</td></tr>
+<tr><td>Domain — pheeew.com</td><td style="color:#27ae60">✅ Owned</td><td>—</td></tr>
+<tr><td>Instagram — @drinkpheeew</td><td style="color:#27ae60">✅ Secured</td><td>—</td></tr>
+</table>
+</div>
+
+<div class="S">
+<h3>FOR CCA (Dawon's ITIN application)</h3>
+<table>
+<tr><th>Document to Share</th><th>Status</th></tr>
+<tr><td>Signed Board Resolution</td><td>⬜ Send after signing</td></tr>
+<tr><td>Dawon's RSPA (unsigned, marked "pending ITIN")</td><td>⬜ Sent for review</td></tr>
+<tr><td>Certificate of Incorporation</td><td>⬜ Download from Stripe Atlas → send</td></tr>
+<tr><td>EIN CP 575 Letter</td><td>⬜ Download from Stripe Atlas → send</td></tr>
+</table>
+<div class="warn"><strong>Do NOT share with CCA:</strong> Jason's RSPA, Stock Cancellation, Co-Founder Agreement, financial details. CCA only needs proof that Dawon has equity allocation in a US entity.</div>
+</div>
+</div>
+
+<!-- ============================================= -->
+<!-- ACTIONS -->
+<!-- ============================================= -->
+<div class="pg" id="actions">
+<h1>Action Items</h1>
+<div class="sub">What to do · By when · By who</div>
+
+<div class="S">
+<h3>MONDAY (April 14)</h3>
+<p style="color:#ccc;line-height:2;font-size:11px">
+<strong style="color:#FF6B35">1.</strong> <strong>Call 좋은영농조합법인.</strong> 9 questions (Product tab). Vitamin C, B vitamins, green tea, GRAS, pouch designs, lead time, CFU.<br>
+<strong style="color:#FF6B35">2.</strong> <strong>Funding gap.</strong> $20K committed. Need $24-34K more. Source: Jason's dad soft commit, personal funds, or small angel.<br>
+<strong style="color:#FF6B35">3.</strong> <strong>Equity contract.</strong> Draft 35/33/32 update. Send to Jason.
+</p>
+
+<h3>THIS WEEK</h3>
+<p style="color:#ccc;line-height:2;font-size:11px">
+<strong style="color:#E8C547">4.</strong> <strong>Place production order</strong> if manufacturer confirms.<br>
+<strong style="color:#E8C547">5.</strong> <strong>Packaging design</strong> — 3 color variants. Dawon leads.<br>
+<strong style="color:#E8C547">6.</strong> <strong>World Cup feasibility</strong> — fan zone permits, porta potty rentals, timeline check.<br>
+<strong style="color:#E8C547">7.</strong> <strong>Investment decision</strong> — 90-day raise vs 1-year raise. Depends on Jason's dad.
+</p>
+
+<h3>THIS MONTH</h3>
+<p style="color:#ccc;line-height:2;font-size:11px">
+<strong style="color:#8B45A6">8.</strong> <strong>Content production.</strong> Film first episodes. Jason on camera. Synbiotic education series.<br>
+<strong style="color:#8B45A6">9.</strong> <strong>Website finalize.</strong> Shopify + Recharge. Subscription-first. Dawon builds.<br>
+<strong style="color:#8B45A6">10.</strong> <strong>Email waitlist.</strong> Klaviyo. Target 1K before launch.<br>
+<strong style="color:#8B45A6">11.</strong> <strong>Social.</strong> @drinkpheeew Instagram. Content bank. No posting until preorder live (May wk 2).<br>
+<strong style="color:#8B45A6">12.</strong> <strong>SKU 1 name final decision.</strong> "Gut + Digestion" vs "Gut + Belly" vs legal-cleared "Gut + Bloat."
+</p>
+</div>
+</div>
+
+</div>
+
+<script>
+function show(id){
+document.querySelectorAll('.pg').forEach(p=>p.classList.remove('a'));
+document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+document.getElementById(id).classList.add('a');
+event.target.classList.add('on');
+}
+</script>
+
+</body>
+</html>
