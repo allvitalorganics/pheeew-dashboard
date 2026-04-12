@@ -4,6 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pheeew — Master Plan & Team Dashboard</title>
+<script>
+(function(){
+  var h='d1e8f3a2b9c5d4e6f7a8b1c3';
+  var k=localStorage.getItem('ph_k');
+  if(k===h)return;
+  var p=prompt('Enter password:');
+  if(!p){document.documentElement.innerHTML='';return;}
+  var s='',c;for(var i=0;i<p.length;i++){c=p.charCodeAt(i).toString(16);s+=c;}
+  if(s!==h){document.documentElement.innerHTML='<body style="background:#0a0a0a;color:#c0392b;display:flex;height:100vh;align-items:center;justify-content:center;font-family:sans-serif"><h1>Wrong password.</h1></body>';return;}
+  localStorage.setItem('ph_k',h);
+})();
+</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#0a0a0a;color:#fff;line-height:1.8;padding:0}
