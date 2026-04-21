@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pheeew — Angel Round · v3</title>
+<style>
+@page { size: 11in 8.5in landscape; margin: 0; }
+:root {
+  --accent: #8B4A2C;
+  --accent-soft: #8B4A2C10;
+  --accent-softer: #8B4A2C06;
+  --accent-ink: #5E3218;
+  --accent-line: #D9A88A;
+  --accent-cream: #FAF6EF;
+  --text: #1a1a1a;
+  --text-2: #3a3a3a;
+  --text-3: #6a6a6a;
+  --text-4: #a0a0a0;
+  --border: #D5D5D9;
+  --divider: #EAEAEF;
+  --bg: #FDFBF7;
+  --card: #FFFFFF;
+  --green: #1F7A2E;
+  --blue: #1D4D8B;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+  --font-serif: "Times New Roman", Georgia, serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); background: #EEEAE1; color: var(--text); -webkit-font-smoothing: antialiased; letter-spacing: -0.005em; padding: 32px 0 80px; }
+.deck { max-width: 11in; margin: 0 auto; }
+
+.slide {
+  background: var(--bg);
+  min-height: 8.5in;
+  padding: 0.7in 0.85in;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.08);
+  display: flex; flex-direction: column;
+  position: relative;
+  border-radius: 2px;
+}
+.slide.cream { background: var(--accent-cream); }
+.slide.ink { background: var(--accent-ink); color: #F5EFE7; }
+.slide.ink h1, .slide.ink h2, .slide.ink .hero, .slide.ink .kick, .slide.ink strong { color: #FAF6EF; }
+.slide.ink .eyebrow, .slide.ink .footer-num, .slide.ink .sub { color: #D9A88A; }
+
+.eyebrow { font-size: 9.5pt; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+.footer-num { position: absolute; bottom: 0.5in; right: 0.85in; font-size: 8.5pt; color: var(--text-4); letter-spacing: 0.2em; text-transform: uppercase; }
+.footer-brand { position: absolute; bottom: 0.5in; left: 0.85in; font-family: var(--font-serif); font-size: 11pt; font-style: italic; color: var(--accent); }
+
+h1.hero { font-family: var(--font-serif); font-weight: 400; font-size: 96pt; line-height: 0.95; letter-spacing: -0.03em; color: var(--accent-ink); margin-bottom: 16px; }
+h1.title { font-family: var(--font-serif); font-weight: 400; font-size: 54pt; line-height: 1.02; letter-spacing: -0.02em; color: var(--accent-ink); margin-bottom: 14px; }
+h2.section { font-family: var(--font-serif); font-weight: 400; font-size: 42pt; line-height: 1.05; letter-spacing: -0.02em; color: var(--accent-ink); margin-bottom: 18px; }
+h3 { font-size: 16pt; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+h4 { font-size: 10pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); margin-bottom: 6px; }
+
+.kick { font-family: var(--font-serif); font-size: 22pt; font-style: italic; color: var(--accent); line-height: 1.35; max-width: 8in; }
+.sub { font-size: 14pt; color: var(--text-2); line-height: 1.45; max-width: 8in; }
+.sub.lg { font-size: 17pt; line-height: 1.4; }
+p.body { font-size: 13pt; line-height: 1.55; color: var(--text-2); max-width: 8in; margin-bottom: 10px; }
+p.body.lg { font-size: 15pt; line-height: 1.5; }
+
+.center { display: flex; flex-direction: column; justify-content: center; flex: 1; }
+.centered { text-align: center; }
+.end { margin-top: auto; }
+
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.pair-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+.pair-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 22px; }
+
+.stat-big { border-top: 1px solid var(--accent-line); padding-top: 12px; }
+.stat-big .n { font-family: var(--font-serif); font-size: 44pt; font-weight: 400; color: var(--accent-ink); line-height: 1; }
+.stat-big .l { font-size: 9.5pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); margin-top: 8px; }
+.stat-big .d { font-size: 11pt; color: var(--text-2); margin-top: 6px; line-height: 1.4; }
+
+.stat-med { }
+.stat-med .n { font-family: var(--font-serif); font-size: 32pt; font-weight: 400; color: var(--accent-ink); line-height: 1; }
+.stat-med .l { font-size: 9pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); margin-top: 6px; }
+
+.divider { height: 1px; background: var(--accent-line); margin: 14px 0; opacity: 0.5; }
+
+.pill-list { list-style: none; margin: 12px 0 0; padding: 0; }
+.pill-list li { position: relative; padding: 10px 0 10px 34px; font-size: 13pt; color: var(--text); border-bottom: 1px solid rgba(139,74,44,0.15); line-height: 1.45; }
+.pill-list li:last-child { border-bottom: none; }
+.pill-list li::before { content: "✓"; position: absolute; left: 0; top: 10px; color: var(--accent); font-weight: 700; font-size: 14pt; }
+.pill-list.num { counter-reset: pl; }
+.pill-list.num li::before { content: counter(pl); counter-increment: pl; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 10pt; font-weight: 700; display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); top: 11px; }
+
+.competitors { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 14px; }
+.comp-col h4 { font-size: 9pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); margin-bottom: 10px; }
+.comp-row { padding: 8px 0; border-bottom: 1px solid var(--divider); font-size: 13pt; display: flex; justify-content: space-between; }
+.comp-row.us { background: var(--accent-soft); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--accent-line); border-bottom: 1px solid var(--accent-line); margin-top: 8px; font-weight: 600; color: var(--accent-ink); }
+.comp-row .f { font-size: 10pt; color: var(--text-3); font-style: italic; align-self: center; }
+
+.timeline { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0; margin-top: 16px; position: relative; }
+.timeline::before { content: ""; position: absolute; top: 28px; left: 8%; right: 8%; height: 1px; background: var(--accent-line); }
+.tstep { text-align: center; position: relative; padding: 0 8px; }
+.tstep .dot { width: 16px; height: 16px; border-radius: 50%; background: var(--accent); margin: 20px auto 14px; position: relative; z-index: 2; border: 3px solid var(--bg); }
+.tstep .w { font-size: 9pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 4px; }
+.tstep .t { font-size: 13pt; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.25; }
+.tstep .d { font-size: 10pt; color: var(--text-2); line-height: 1.4; }
+
+.founders { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 12px; }
+.founder { text-align: left; }
+.founder .avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--accent-soft); border: 2px solid var(--accent-line); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 24pt; color: var(--accent-ink); margin-bottom: 10px; }
+.founder h3 { font-size: 14pt; margin-bottom: 2px; }
+.founder .role { font-size: 10pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 6px; }
+.founder p { font-size: 11pt; color: var(--text-2); line-height: 1.45; }
+
+.ask-card { background: var(--accent-cream); border: 2px solid var(--accent); border-radius: 8px; padding: 36px 44px; margin: 18px 0; }
+.ask-card .row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 14px 0; border-bottom: 1px solid var(--accent-line); }
+.ask-card .row:last-child { border-bottom: none; }
+.ask-card .label { font-size: 10pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); align-self: center; }
+.ask-card .value { font-family: var(--font-serif); font-size: 22pt; color: var(--accent-ink); line-height: 1; }
+.ask-card .value.primary { font-size: 38pt; }
+
+.callout { background: var(--accent-soft); border-left: 4px solid var(--accent); padding: 14px 20px; margin: 16px 0; font-size: 13pt; font-style: italic; color: var(--text); line-height: 1.5; font-family: var(--font-serif); }
+
+.quote-slide { text-align: center; }
+.quote-slide .q { font-family: var(--font-serif); font-size: 32pt; font-style: italic; line-height: 1.3; color: var(--accent-ink); max-width: 9in; margin: 0 auto; }
+.quote-slide .q::before { content: "\201C"; font-size: 1.2em; color: var(--accent-line); margin-right: 4px; }
+.quote-slide .q::after { content: "\201D"; font-size: 1.2em; color: var(--accent-line); margin-left: 4px; }
+.quote-slide .attr { font-size: 12pt; color: var(--text-3); margin-top: 20px; letter-spacing: 0.04em; }
+
+.use-of-funds { display: grid; grid-template-columns: 2fr 3fr; gap: 40px; align-items: center; margin-top: 14px; }
+.uof-bar { display: flex; height: 52px; border-radius: 6px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border); }
+.uof-bar .seg { display: flex; align-items: center; justify-content: center; color: #fff; font-size: 11pt; font-weight: 600; }
+.uof-legend { font-size: 12pt; }
+.uof-legend .item { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--divider); }
+.uof-legend .dot { width: 12px; height: 12px; border-radius: 3px; }
+.uof-legend .p { font-weight: 700; min-width: 40px; }
+
+.risk-list { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; margin-top: 12px; }
+.risk-card { border: 1px solid var(--accent-line); border-radius: 8px; padding: 18px 20px; }
+.risk-card h3 { font-size: 13pt; color: var(--accent-ink); margin-bottom: 6px; line-height: 1.3; }
+.risk-card p { font-size: 11pt; color: var(--text-2); line-height: 1.5; }
+.risk-card .label { font-size: 9pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; font-weight: 700; }
+
+.cover-mark { font-family: var(--font-serif); font-size: 15pt; font-style: italic; color: var(--accent); margin-bottom: 8px; }
+
+@media (max-width: 900px) {
+  body { padding: 12px 0 60px; }
+  .deck { max-width: 100%; }
+  .slide { padding: 36px 28px; min-height: 600px; border-radius: 0; }
+  h1.hero { font-size: 60pt; }
+  h1.title { font-size: 38pt; }
+  h2.section { font-size: 28pt; }
+  .pair, .pair-3, .pair-4, .founders, .risk-list, .use-of-funds, .competitors { grid-template-columns: 1fr; gap: 20px; }
+  .timeline { grid-template-columns: 1fr 1fr; }
+  .timeline::before { display: none; }
+}
+
+@media print {
+  body { padding: 0; background: #fff; }
+  .slide { margin: 0; box-shadow: none; page-break-after: always; border-radius: 0; }
+  .slide:last-child { page-break-after: auto; }
+}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- 01 · COVER -->
+<section class="slide cream">
+<div class="center">
+<h1 class="hero">Pheeew.</h1>
+<div class="kick" style="margin-top:28px">A smoothie for your gut.</div>
+<p class="sub" style="margin-top:50px;max-width:6in">Prepared by Alex Kim, Jason Ko, Dawon Kim<br>Founders · Pheeew, Inc. · Delaware<br>April 2026</p>
+</div>
+<div class="footer-brand">pheeew.com · @saypheeew</div>
+<div class="footer-num">01</div>
+</section>
+
+<!-- 03 · PRODUCT -->
+<section class="slide">
+<div class="eyebrow">Product</div>
+<h2 class="section">100mL puree pouch · synbiotic · shelf-stable.</h2>
+<div class="pair" style="margin-top:40px">
+<div>
+<h3>Format</h3>
+<p class="body">Stand-up spout pouch. Shelf-stable (no refrigeration). One pouch per day. Drink in under thirty seconds. Mobile, one-handed.</p>
+<h3 style="margin-top:24px">Function</h3>
+<p class="body">Synbiotic — prebiotic fiber + live probiotic — the clinically supported gut-health pairing. Not prebiotic-only (Poppi, Olipop). Not postbiotic (a different category entirely).</p>
+</div>
+<div>
+<h3>Three SKUs</h3>
+<ul class="pill-list">
+<li><strong>Wild Berries</strong> — <em>Gut + Energy</em> · Phase 1 (launch)</li>
+<li><strong>Tropical Punch</strong> — <em>Gut + Digestion</em> · Phase 2</li>
+<li><strong>Ginger Pear</strong> — <em>Gut + Immunity</em> · Phase 3</li>
+</ul>
+
+</div>
+</div>
+<div class="footer-brand">pheeew</div>
+<div class="footer-num">02</div>
+</section>
+
+<!-- 04 · THE WEDGE -->
+<section class="slide">
+<div class="eyebrow">Competitive landscape</div>
+<h2 class="section">Pouch × synbiotic: unoccupied lane.</h2>
+<div class="competitors">
+<div class="comp-col">
+<h4>The incumbents</h4>
+<div class="comp-row"><span>Olipop</span><span class="f">can · prebiotic soda</span></div>
+<div class="comp-row"><span>Poppi</span><span class="f">can · prebiotic soda</span></div>
+<div class="comp-row"><span>Culture Pop</span><span class="f">can · prebiotic soda</span></div>
+<div class="comp-row"><span>Suja</span><span class="f">bottle · HPP juice</span></div>
+</div>
+<div class="comp-col">
+<h4>Pheeew's lane</h4>
+<div class="comp-row us"><span>Pheeew</span><span>pouch · synbiotic</span></div>
+<p class="body" style="margin-top:22px;font-size:12pt">Format creates the occasion. Can and bottle are <em>with a meal</em>, <em>at a desk</em>, <em>in a fridge</em>. Pouch is <em>in your bag</em>, <em>between trains</em>, <em>on the walk</em>. Different moment, different customer ritual, different shelf.</p>
+</div>
+</div>
+<div class="footer-brand">pheeew</div>
+<div class="footer-num">03</div>
+</section>
+
+<!-- 05 · WHY NOW -->
+<section class="slide cream">
+<div class="eyebrow">Market</div>
+<h2 class="section">Category growth · 2024–2026.</h2>
+<div class="pair-3" style="margin-top:48px">
+<div class="stat-big">
+<div class="n">~$45B</div>
+<div class="l">US digestive + functional nutrition</div>
+<div class="d">2024 combined category · Grand View Research · Fortune Business Insights</div>
+</div>
+<div class="stat-big">
+<div class="n">~9%</div>
+<div class="l">Functional beverage CAGR</div>
+<div class="d">Global, 2024–2028 · Grand View Research · segment growing fastest in US</div>
+</div>
+<div class="stat-big">
+<div class="n">~12%</div>
+<div class="l">Gut health supplement CAGR</div>
+<div class="d">Global, 2024–2030 · Fortune Business Insights · synbiotics sub-segment growing fastest</div>
+</div>
+</div>
+<div class="callout" style="margin-top:34px"><strong>Olipop</strong> · Feb 2025 Series C · $1.85B post-money at ~4.6× trailing revenue (PitchBook). <strong>Category validated at institutional scale.</strong> Pouch × synbiotic remains unoccupied by funded competitors.</div>
+<p class="body" style="margin-top:18px;font-size:10pt;color:var(--text-3)">Sources: Grand View Research (Functional Beverages Market 2024), Fortune Business Insights (Gut Health Supplements 2024), PitchBook (Olipop valuation Feb 2025).</p>
+<div class="footer-brand">pheeew</div>
+<div class="footer-num">04</div>
+</section>
+
+<!-- 06 · THE PLAN -->
+<section class="slide">
+<div class="eyebrow">Go-to-market</div>
+<h2 class="section">Commit + parallel market test.</h2>
+<p class="body lg" style="margin-top:22px">Korean production lead time: 3–4 months. LA farmer's market validation runs in parallel using pre-production samples. Main inventory lands Week 16 for full DTC launch.</p>
+
+<div class="timeline">
+<div class="tstep">
+<div class="w">Week 1</div>
+<div class="dot"></div>
+<div class="t">Commit</div>
+<div class="d">Wire deposit · place 40K order · pouch procurement</div>
+</div>
+<div class="tstep">
+<div class="w">Week 3</div>
+<div class="dot"></div>
+<div class="t">Deploy</div>
+<div class="d">Alex + Dawon fly LA · sample batch air-shipped · market permits</div>
+</div>
+<div class="tstep">
+<div class="w">Weeks 5–16</div>
+<div class="dot"></div>
+<div class="t">Test</div>
+<div class="d">Farmer's markets · pre-order page live · creator seeding · community build</div>
+</div>
+<div class="tstep">
+<div class="w">Week 16</div>
+<div class="dot"></div>
+<div class="t">Launch</div>
+<div class="d">40K lands LA · full DTC launch · scaled markets · subscription engine</div>
+</div>
+</div>
+
+<div class="footer-brand">pheeew</div>
+<div class="footer-num">05</div>
+</section>
+
+<!-- 07 · TEAM -->
+<section class="slide">
+<div class="eyebrow">Team</div>
+<h2 class="section">Founders.</h2>
+<div class="founders" style="margin-top:30px">
+<div class="founder">
+<div class="avatar">A</div>
+<h3>Alex Kim</h3>
+<div class="role">CEO · 35%</div>
+<p><strong>Builds.</strong> Runs a Korean supplement factory (HACCP-certified) — gives Pheeew direct manufacturing access most first-time CPG founders must buy. Parent HoldCo: All Vital Organics. Prior work building creative infrastructure for a portfolio of Korean food and wellness brands.</p>
+</div>
+<div class="founder">
+<div class="avatar">J</div>
+<h3>Jason Ko</h3>
+<div class="role">COO · 33%</div>
+<p><strong>Ships.</strong> LA-based operator. Provides US ground infrastructure (housing, car, local network). Owns operations, copy, community, and growth. Direct line to the US customer — where the brand actually has to work.</p>
+</div>
+<div class="founder">
+<div class="avatar">D</div>
+<h3>Dawon Kim</h3>
+<div class="role">CDO · 32%</div>
+<p><strong>Makes.</strong> Single-operator full creative output — brand identity, v5 website, packaging, video, photography — all internalized. Most CPG brands pay $100K+ agencies for what Dawon produces in-house. Seoul-based designer with three years of CPG brand work.</p>
+</div>
+</div>
+<div class="callout" style="margin-top:30px">Factory access · full creative production · US ground operations — all three capabilities in-house.</div>
+<div class="footer-brand">pheeew</div>
+<div class="footer-num">06</div>
+</section>
+
+<!-- 08 · PROGRESS -->
+<section class="slide cream">
+<div class="eyebrow">Progress to date</div>
+<h2 class="section">Completed work.</h2>
+<div class="pair" style="margin-top:30px">
+<div>
+<h4>Legal &amp; corporate</h4>
+<ul class="pill-list">
+<li>Delaware C-Corporation · EIN 41-5111005</li>
+<li>Cap table executed · RSPAs signed · Co-Founder Agreement signed</li>
+<li>CIIAAs drafted · circulated for founder signatures</li>
+<li>Section 83(b) elections signed · IRS filings by May 13, 2026</li>
+<li>Trademark Class 32 · USPTO filing in progress</li>
+</ul>
+</div>
+<div>
+<h4>Product &amp; brand</h4>
+<ul class="pill-list">
+<li>Brand system — name, voice, website v5, design system</li>
+<li>Product spec — 3 SKUs, formulation mapped to clinical evidence</li>
+<li>Manufacturer quote in hand — 좋은영농조합법인 (Apr 6)</li>
+<li>Factory-gate cost $0.99/unit confirmed at 40K MOQ</li>
+</ul>
+</div>
+</div>
+<div class="pair" style="margin-top:24px">
+<div>
+<h4>Go-to-market</h4>
+<ul class="pill-list">
+<li>LA housing + car secured (Jason)</li>
+<li>Farmer's market permit path identified</li>
+<li>3PL scouted, pre-order page in build</li>
+</ul>
+</div>
+<div>
+<h4>Founder commitment</h4>
+<ul class="pill-list">
+<li>$20,000 founder capital committed · in bank by mid-May</li>
+<li>Alex full-time · Jason + Dawon part-time scaling to full</li>
+<li>Twelve months of prior work with no outside capital</li>
+</ul>
+</div>
+</div>
+<div class="footer-brand">pheeew</div>
+<div class="footer-num">07</div>
+</section>
+
+<!-- 08.5 · VALIDATED / OPEN -->
+<section class="slide">
+<div class="eyebrow">Pre-launch status</div>
+<h2 class="section">Validated · Open · How we'll test.</h2>
+<div class="pair-3" style="margin-top:26px">
+<div>
+<h4 style="color:var(--green)">✓ Validated</h4>
+<ul class="pill-list" style="margin-top:6px">
+<li style="font-size:11.5pt"><strong>Factory cost</strong> — signed quote from 좋은영농조합법인, $0.99/unit at 40K MOQ</li>
+<li style="font-size:11.5pt"><strong>Formulation direction</strong> — three SKUs specified with evidence-based functional stack</li>
+<li style="font-size:11.5pt"><strong>Brand resonance</strong> — design system, website v5, voice locked through iteration</li>
+<li style="font-size:11.5pt"><strong>Competitive wedge</strong> — zero funded competitors in pouch × synbiotic</li>
+<li style="font-size:11.5pt"><strong>Founder alignment</strong> — $20K committed, agreements signed, 4-yr vest with cliffs</li>
+</ul>
+</div>
+<div>
+<h4 style="color:var(--yellow)">⚠ Open (what we need to test)</h4>
+<ul class="pill-list" style="margin-top:6px">
+<li style="font-size:11.5pt"><strong>Taste + shelf-life</strong> at manufactured scale (factory small-batch validates before main 40K commits)</li>
+<li style="font-size:11.5pt"><strong>Farmer's market demand signal</strong> — does a stranger return a second week?</li>
+<li style="font-size:11.5pt"><strong>Pre-order conversion rate</strong> — what % of landing-page visitors actually pay $34 upfront?</li>
+<li style="font-size:11.5pt"><strong>Subscription retention</strong> — 25% sub conversion is the target; reality TBD</li>
+<li style="font-size:11.5pt"><strong>Creator seeding payoff</strong> — organic content velocity vs paid media</li>
+</ul>
+</div>
+<div>
+<h4 style="color:var(--accent)">→ How we'll test</h4>
+<ul class="pill-list" style="margin-top:6px">
+<li style="font-size:11.5pt"><strong>Sample batch (500–1,000 pouches)</strong> air-shipped early · tests taste/shelf before main run</li>
+<li style="font-size:11.5pt"><strong>10 weeks of LA farmer's markets</strong> · direct customer conversations · repeat-rate tracking</li>
+<li style="font-size:11.5pt"><strong>Pre-order page live Week 5</strong> · documented funnel data before main inventory lands</li>
+<li style="font-size:11.5pt"><strong>30 creators seeded</strong> · content trail measured against paid ads for CAC comparison</li>
+<li style="font-size:11.5pt"><strong>Month 4 kill-switch</strong> · if signal is weak, we reformulate or pivot before DTC launch</li>
+</ul>
+</div>
+</div>
+<div class="callout" style="margin-top:24px">Parallel commit + test is the pilot. $155K funds the test window.</div>
+<div class="footer-brand">pheeew</div>
+<div class="footer-num">08</div>
+</section>
+
+<!-- 09 · UNIT ECONOMICS -->
+<section class="slide">
+<div class="eyebrow">Unit economics</div>
+<h2 class="section">Per-pouch economics at 40K MOQ.</h2>
+<div class="pair-4" style="margin-top:42px">
+<div class="stat-big">
+<div class="n">$1.05</div>
+<div class="l">Landed COGS</div>
+<div class="d">Per pouch, delivered LA, at 40K MOQ. Real number from factory quote.</div>
+</div>
+<div class="stat-big">
+<div class="n">$3.40</div>
+<div class="l">Blended DTC price</div>
+<div class="d">Across pack ladder: 10pk, 20pk, 30pk, 60pk, 120pk.</div>
+</div>
+<div class="stat-big">
+<div class="n">50.6%</div>
+<div class="l">Gross margin</div>
+<div class="d">Supplement-band margin from first batch. Expands to 60%+ at Scenario C scale.</div>
+</div>
+<div class="stat-big">
+<div class="n">4.6×</div>
+<div class="l">LTV:CAC target</div>
+<div class="d">24-month. Conservative. Healthy for DTC CPG.</div>
+</div>
+</div>
+<div class="callout" style="margin-top:40px">Sourced from signed factory quote (좋은영농조합법인, Apr 2026) and priced DTC pack ladder.</div>
+<div class="footer-brand">pheeew</div>
+<div class="footer-num">09</div>
+</section>
+
+<!-- 10 · REVENUE PATH -->
+<section class="slide">
+<div class="eyebrow">Revenue projections · Year 1</div>
+<h2 class="section">Three cases · pouch × price basis.</h2>
+
+<div class="pair-3" style="margin-top:24px">
+<div>
+<h4>Conservative</h4>
+<div class="stat-med"><div class="n">$96K</div><div class="l">Year 1 · $20K MRR at M12</div></div>
+<p class="body" style="margin-top:10px;font-size:10.5pt">~100 pre-orders · slow market ramp · 40K units sold across 14 months<br>
+<em>= 28,000 pouches × $3.40 blended</em></p>
+</div>
+<div style="padding:0 20px;border-left:2px solid var(--accent-line);border-right:2px solid var(--accent-line);">
+<h4 style="color:var(--accent)">Base (plan)</h4>
+<div class="stat-med"><div class="n" style="font-size:40pt">$225K</div><div class="l">Year 1 · $42K MRR at M12</div></div>
+<p class="body" style="margin-top:10px;font-size:10.5pt">~300 pre-orders M3 · full DTC from M5 · 25% sub conversion · 40K fully sold by M14<br>
+<em>= 66,000 pouches × $3.40 blended</em></p>
+</div>
+<div>
+<h4>Upside</h4>
+<div class="stat-med"><div class="n">$385K</div><div class="l">Year 1 · $72K MRR at M12</div></div>
+<p class="body" style="margin-top:10px;font-size:10.5pt">Press or viral moment · Scenario C graduation M7 · Phase 2 SKU preview<br>
+<em>= 113,000 pouches × $3.40 blended</em></p>
+</div>
+</div>
+
+<div class="pair" style="margin-top:26px">
+<div>
+<h4>Key assumptions</h4>
+<ul class="pill-list">
+<li style="font-size:11pt"><strong>AOV $52</strong> — blended across pack ladder (10pk $34, 30pk $99, 60pk $179)</li>
+<li style="font-size:11pt"><strong>Sub mix 25%</strong> — conservative for CPG supplement DTC (industry: 20–35%)</li>
+<li style="font-size:11pt"><strong>CAC $35–$50</strong> — lower than industry avg due to creator-native + organic weight</li>
+</ul>
+</div>
+<div>
+<h4>What triggers the jump</h4>
+<ul class="pill-list">
+<li style="font-size:11pt"><strong>Conservative → Base</strong>: pre-order page converts above 1% from landing · farmer's market repeat rate &gt;12%</li>
+<li style="font-size:11pt"><strong>Base → Upside</strong>: a single earned media hit (SELF, The Cut) or TikTok moment · sub retention &gt;70% at M3</li>
+</ul>
+</div>
+</div>
+
+<div class="callout" style="margin-top:22px">Each case derives from units × $3.40 blended ASP. No TAM-percentage assumptions.</div>
+<div class="footer-brand">pheeew</div>
+<div class="footer-num">10</div>
+</section>
+
+<!-- 11 · JOURNEY -->
+<section class="slide cream">
+<div class="eyebrow">Capital plan</div>
+<h2 class="section">Funding trajectory · angel to exit.</h2>
+
+<div class="timeline" style="margin-top:28px">
+<div class="tstep">
+<div class="w">Q2 2026</div>
+<div class="dot" style="background:var(--accent-ink)"></div>
+<div class="t">Angel · This round</div>
+<div class="d">$155K · Launch Wild Berries · validate market</div>
+</div>
+<div class="tstep">
+<div class="w">Q2 2027</div>
+<div class="dot"></div>
+<div class="t">Seed</div>
+<div class="d">$1.5–2.5M · Team build · SKU expansion</div>
+</div>
+<div class="tstep">
+<div class="w">Q2 2028</div>
+<div class="dot"></div>
+<div class="t">Series A</div>
+<div class="d">$5–10M · Retail + wholesale · international readiness</div>
+</div>
+<div class="tstep">
+<div class="w">2030–2031</div>
+<div class="dot"></div>
+<div class="t">Exit</div>
+<div class="d">$80M–$200M · Strategic acquirer (Nestle, Pepsi, Unilever, General Mills)</div>
+</div>
+</div>
+
+<p class="body lg" style="margin-top:40px">Year 2 onward: business funds its own scale from gross profit reinvestment. External capital compounds across rounds.</p>
+<div class="footer-brand">pheeew</div>
+<div class="footer-num">11</div>
+</section>
+
+<!-- 12 · THE ASK -->
+<section class="slide">
+<div class="eyebrow">Terms</div>
+<h2 class="section">The ask.</h2>
+<div class="ask-card">
+<div class="row">
+<div class="label">Investment</div>
+<div class="value primary">$155,000</div>
+</div>
+<div class="row">
+<div class="label">Pre-money valuation</div>
+<div class="value">$1.65M</div>
+</div>
+<div class="row">
+<div class="label">Post-money valuation</div>
+<div class="value">$1.805M</div>
+</div>
+<div class="row">
+<div class="label">Investor equity</div>
+<div class="value">8.6%</div>
+</div>
+<div class="row">
+<div class="label">Advisor shares (from option pool · 2-yr vest)</div>
+<div class="value">1.0%</div>
+</div>
+<div class="row">
+<div class="label">Total economic stake at full vest</div>
+<div class="value" style="color:var(--accent);font-weight:700">9.6%</div>
+</div>
+<div class="row">
+<div class="label">Structure</div>
+<div class="value" style="font-size:15pt">Priced round · common stock</div>
+</div>
+</div>
+<p class="body" style="margin-top:4px">Founders: 82.3% post-round. Option pool: 8.1%. Priced round, common stock. No SAFE mechanics, no valuation overhang, no board seat.</p>
+<div class="footer-brand">pheeew</div>
+<div class="footer-num">12</div>
+</section>
+
+<!-- 13 · WHY YOU -->
+<section class="slide ink">
+<div class="eyebrow">Advisory role</div>
+<h2 class="section" style="color:#FAF6EF">Scope · beyond capital.</h2>
+<p class="body lg" style="color:#E8DDCB;max-width:8in;margin-top:20px">Six competencies Pheeew does not currently possess internally. Board-level financial oversight is a structural gap through Series A.</p>
+<div class="pair" style="margin-top:32px">
+<div>
+<ul class="pill-list" style="color:#F5EFE7">
+<li style="color:#F5EFE7;border-bottom-color:rgba(217,168,138,0.2)"><strong style="color:#FAF6EF">Monthly financial reviews</strong> — investor-grade books from day one</li>
+<li style="color:#F5EFE7;border-bottom-color:rgba(217,168,138,0.2)"><strong style="color:#FAF6EF">Banking relationships</strong> — non-dilutive credit, working capital, inventory finance</li>
+<li style="color:#F5EFE7;border-bottom-color:rgba(217,168,138,0.2)"><strong style="color:#FAF6EF">Financial model oversight</strong> — independent stress-testing, catches errors before VCs do</li>
+</ul>
+</div>
+<div>
+<ul class="pill-list" style="color:#F5EFE7">
+<li style="color:#F5EFE7;border-bottom-color:rgba(217,168,138,0.2)"><strong style="color:#FAF6EF">Board-level quarterly reviews</strong> — risk &amp; opportunity surfacing</li>
+<li style="color:#F5EFE7;border-bottom-color:rgba(217,168,138,0.2)"><strong style="color:#FAF6EF">Seed round preparation</strong> — clean data room, reference-able financials, institutional reporting</li>
+<li style="color:#F5EFE7;border-bottom-color:rgba(217,168,138,0.2)"><strong style="color:#FAF6EF">Exit readiness</strong> — structural work over 3+ years that materially moves the acquisition multiple</li>
+</ul>
+</div>
+</div>
+<p class="body lg" style="color:#E8DDCB;margin-top:32px;text-align:center">7–10 hrs/mo · 3+ year horizon · covered via 1.0% advisor share grant.</p>
+<div class="footer-brand" style="color:#D9A88A">pheeew</div>
+<div class="footer-num" style="color:#9C7152">13</div>
+</section>
+
+<!-- 14 · USE OF FUNDS -->
+<section class="slide">
+<div class="eyebrow">Use of funds</div>
+<h2 class="section">Allocation · $175K deployable.</h2>
+<div class="uof-bar" style="margin-top:30px">
+<div class="seg" style="background:#8B4A2C;width:27.6%">28%</div>
+<div class="seg" style="background:#A55A38;width:20%">20%</div>
+<div class="seg" style="background:#B86A44;width:14.3%">14%</div>
+<div class="seg" style="background:#C77953;width:10.3%">10%</div>
+<div class="seg" style="background:#D4886A;width:5%">5%</div>
+<div class="seg" style="background:#B89D82;width:22.8%;color:#3a3a3a">23%</div>
+</div>
+<div class="pair" style="margin-top:14px">
+<div class="uof-legend">
+<div class="item"><span class="dot" style="background:#8B4A2C"></span><span class="p">28%</span><span>Korea production + pouches (40K MOQ Wild Berries · landed LA)</span></div>
+<div class="item"><span class="dot" style="background:#A55A38"></span><span class="p">20%</span><span>Founder subsistence stipends (6 months · below market)</span></div>
+<div class="item"><span class="dot" style="background:#B86A44"></span><span class="p">14%</span><span>Marketing &amp; customer acquisition (Meta / TikTok / creator seeding)</span></div>
+</div>
+<div class="uof-legend">
+<div class="item"><span class="dot" style="background:#C77953"></span><span class="p">10%</span><span>Contingency &amp; operational reserve</span></div>
+<div class="item"><span class="dot" style="background:#D4886A"></span><span class="p">5%</span><span>Content production (video, photography, brand film)</span></div>
+<div class="item"><span class="dot" style="background:#B89D82"></span><span class="p">23%</span><span>Legal, insurance, travel, farmer's market ops, compliance, platforms</span></div>
+</div>
+</div>
+<p class="body" style="margin-top:22px;color:var(--text-3);font-size:11pt">Founder capital $20K · external ask $155K · total deployable $175K. Line-item budget available on request.</p>
+<div class="footer-brand">pheeew</div>
+<div class="footer-num">14</div>
+</section>
+
+<!-- 15 · HONEST RISKS -->
+<section class="slide cream">
+<div class="eyebrow">Risk register</div>
+<h2 class="section">Top risks · mitigants.</h2>
+<div class="risk-list" style="margin-top:30px">
+<div class="risk-card">
+<div class="label">Risk 01</div>
+<h3>Formulation may need iteration after lab testing.</h3>
+<p>Mitigant: small sample batch tests before main 40K production commits. $4,000 reformulation reserve built into the budget.</p>
+</div>
+<div class="risk-card">
+<div class="label">Risk 02</div>
+<h3>Farmer's market demand signal may be softer than base case.</h3>
+<p>Mitigant: signal flows back during production lead time, not after. 40K units still launch via DTC regardless. Kill-switch at Month 4 for reformulation if needed.</p>
+</div>
+<div class="risk-card">
+<div class="label">Risk 03</div>
+<h3>All three founders are part-time at start.</h3>
+<p>Mitigant: stipend enables partial full-time for six months. Full-Time Threshold is written into the Co-Founder Agreement — triggered at revenue or funding milestone.</p>
+</div>
+</div>
+<p class="body" style="margin-top:30px;text-align:center;color:var(--text-3);font-size:11pt">Full 9-item register + reserved budgets available in internal financial model (v4).</p>
+<div class="footer-brand">pheeew</div>
+<div class="footer-num">15</div>
+</section>
+
+<!-- 16 · NEXT STEPS -->
+<section class="slide">
+<div class="eyebrow">Process</div>
+<h2 class="section">Path to close.</h2>
+<ul class="pill-list num" style="margin-top:30px">
+<li style="font-size:14pt"><strong>Questions &amp; diligence</strong> — follow-up conversations, request any backup material, walk through the full financial model. Budget one to two weeks.</li>
+<li style="font-size:14pt"><strong>Priced-round paperwork</strong> — standard-form docs prepared by counsel. Stock Purchase Agreement, Board Consent, updated Cap Table. One week turnaround.</li>
+<li style="font-size:14pt"><strong>Funds wire &amp; stock certificate issued</strong> — Certificate number CS-004 on the Pheeew records. Advisor agreement signed in parallel.</li>
+<li style="font-size:14pt"><strong>Week 1 kickoff</strong> — first advisor session with you. Monthly cadence begins. Factory deposit wired. The sprint starts.</li>
+</ul>
+<div class="callout" style="margin-top:36px">Target close: end of May 2026. Production commit: Week 1 post-close. LA deployment: Week 3 post-close.</div>
+<div class="footer-brand">pheeew</div>
+<div class="footer-num">16</div>
+</section>
+
+<!-- 16 · CONTACT -->
+<section class="slide cream">
+<div class="eyebrow">Contact</div>
+<h2 class="section">Pheeew, Inc.</h2>
+<div class="pair" style="margin-top:44px">
+<div>
+<h4>Entity</h4>
+<p class="body" style="font-size:12pt">Pheeew, Inc.<br>Delaware C-Corporation<br>EIN 41-5111005<br>1111b South Governors Ave STE 98188<br>Dover, DE 19904</p>
+<h4 style="margin-top:22px">Founders</h4>
+<p class="body" style="font-size:12pt">Alex Kim · CEO<br>Jason Ko · COO<br>Dawon Kim · CDO</p>
+</div>
+<div>
+<h4>Round</h4>
+<p class="body" style="font-size:12pt">Priced angel · Q2 2026<br>Target close: end of May 2026<br>Counsel: Orrick (via Stripe Atlas)</p>
+<h4 style="margin-top:22px">Correspondence</h4>
+<p class="body" style="font-size:12pt">hello@pheeew.com<br>pheeew.com<br>@saypheeew</p>
+</div>
+</div>
+<div class="footer-brand">pheeew</div>
+<div class="footer-num">17</div>
+</section>
+
+</div>
+</body>
+</html>
