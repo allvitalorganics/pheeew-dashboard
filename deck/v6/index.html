@@ -143,6 +143,38 @@ p.body em { color: var(--accent-ink); font-style: normal; font-weight: 500; }
 .t-missing li::before { content: "○"; position: absolute; left: 0; color: var(--text-4); }
 .t-missing li strong { color: var(--text); font-weight: 600; }
 
+/* Comparison table */
+.compare { margin-top: 24px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #fff; font-variant-numeric: tabular-nums; }
+.compare-head { display: grid; grid-template-columns: 1.3fr 1.5fr 1fr 1fr 1.2fr 1fr; background: var(--accent); color: #fff; font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 12px 16px; gap: 12px; }
+.compare-row { display: grid; grid-template-columns: 1.3fr 1.5fr 1fr 1fr 1.2fr 1fr; padding: 13px 16px; border-top: 1px solid var(--divider); font-size: 13px; gap: 12px; color: var(--text-2); }
+.compare-row .brand { font-weight: 700; color: var(--text); }
+.compare-row.us { background: var(--accent-cream); border-top: 1px solid var(--accent); }
+.compare-row.us .brand { color: var(--accent-ink); }
+.compare-row .mark-yes { color: var(--green); font-weight: 700; }
+.compare-row .mark-no { color: var(--text-4); }
+.compare-row .mark-partial { color: var(--blue); font-weight: 500; }
+@media (max-width: 680px) {
+  .compare-head { display: none; }
+  .compare-row { grid-template-columns: 1fr 1fr; gap: 6px; padding: 14px 18px; font-size: 12.5px; }
+  .compare-row .brand { grid-column: 1 / -1; font-size: 15px; margin-bottom: 4px; border-bottom: 1px solid var(--divider); padding-bottom: 6px; }
+  .compare-row .cell::before { content: attr(data-label) ": "; color: var(--text-3); font-weight: 600; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; margin-right: 6px; }
+}
+.compare-legend { margin-top: 14px; font-size: 12.5px; color: var(--text-3); line-height: 1.7; }
+.compare-legend strong { color: var(--text); font-weight: 600; }
+
+/* Channel roadmap */
+.roadmap { margin-top: 22px; display: grid; gap: 12px; }
+.roadmap-row { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; display: grid; grid-template-columns: 90px 1fr; gap: 18px; font-size: 13.5px; }
+.roadmap-row .phase-label { font-family: var(--font-serif); font-size: 15px; color: var(--accent-ink); font-style: italic; letter-spacing: -0.005em; padding-top: 2px; }
+.roadmap-row .phase-detail { }
+.roadmap-row .phase-detail .head { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.roadmap-row .phase-detail .channels { color: var(--text-2); line-height: 1.55; margin-bottom: 4px; }
+.roadmap-row .phase-detail .cite { font-size: 12px; color: var(--text-3); font-style: italic; line-height: 1.5; }
+@media (max-width: 560px) { .roadmap-row { grid-template-columns: 1fr; gap: 6px; } }
+
+.scale-note { margin-top: 18px; padding: 18px 22px; background: var(--accent-cream); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; font-size: 13.5px; color: var(--text-2); line-height: 1.65; }
+.scale-note strong { color: var(--accent-ink); font-weight: 600; }
+
 /* Go-to-market phases */
 .gtm { margin-top: 24px; display: grid; gap: 0; }
 .phase-row { display: grid; grid-template-columns: 100px 1fr; gap: 20px; padding: 16px 0; border-top: 1px solid var(--divider); }
@@ -362,26 +394,77 @@ footer a { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
 <section>
   <span class="s-num">06</span>
   <h2 class="display">Competitive Position</h2>
-  <p class="body">Pheeew occupies an uncontested quadrant: daily-use format plus full synbiotic function. Every competitor sits in one of the other three quadrants.</p>
+  <p class="body">The synbiotic functional beverage landscape is forming. Multiple brands deliver parts of what Pheeew offers. None deliver the specific combination of single-serve puree pouch format, full synbiotic stack, ambient distribution, and sub-$2 wholesale serving economics.</p>
 
-  <div class="matrix">
-    <div class="axis-y"><div class="lbl-top">Full Synbiotic</div><div class="lbl-bot">Prebiotic Only</div></div>
-    <div class="axis-x"><div class="lbl-left">Occasional Format</div><div class="lbl-right">Daily Format</div></div>
-    <div class="crosshair-h"></div>
-    <div class="crosshair-v"></div>
-
-    <div class="dot us" style="top: 22%; left: 75%;">Pheeew</div>
-    <div class="dot" style="top: 20%; left: 22%;">Athletic Greens</div>
-    <div class="dot" style="top: 30%; left: 15%;">Seed</div>
-    <div class="dot" style="top: 75%; left: 28%;">Poppi</div>
-    <div class="dot" style="top: 72%; left: 38%;">Olipop</div>
-    <div class="dot" style="top: 80%; left: 20%;">Culture Pop</div>
-    <div class="dot" style="top: 65%; left: 18%;">Suja</div>
+  <div class="compare">
+    <div class="compare-head">
+      <div>Brand</div>
+      <div>Format</div>
+      <div>Prebiotic</div>
+      <div>Probiotic</div>
+      <div>Distribution</div>
+      <div>$/Serving</div>
+    </div>
+    <div class="compare-row us">
+      <div class="cell brand" data-label="Brand">Pheeew</div>
+      <div class="cell" data-label="Format">100mL puree pouch</div>
+      <div class="cell mark-yes" data-label="Prebiotic">Yes</div>
+      <div class="cell mark-yes" data-label="Probiotic">Yes</div>
+      <div class="cell" data-label="Distribution">Ambient</div>
+      <div class="cell" data-label="$/Serving">~$3.40</div>
+    </div>
+    <div class="compare-row">
+      <div class="cell brand" data-label="Brand">Poppi</div>
+      <div class="cell" data-label="Format">12oz can</div>
+      <div class="cell mark-yes" data-label="Prebiotic">Yes</div>
+      <div class="cell mark-no" data-label="Probiotic">No</div>
+      <div class="cell" data-label="Distribution">Ambient</div>
+      <div class="cell" data-label="$/Serving">~$2.40</div>
+    </div>
+    <div class="compare-row">
+      <div class="cell brand" data-label="Brand">Olipop</div>
+      <div class="cell" data-label="Format">12oz can</div>
+      <div class="cell mark-yes" data-label="Prebiotic">Yes</div>
+      <div class="cell mark-no" data-label="Probiotic">No</div>
+      <div class="cell" data-label="Distribution">Ambient</div>
+      <div class="cell" data-label="$/Serving">~$3.00</div>
+    </div>
+    <div class="compare-row">
+      <div class="cell brand" data-label="Brand">Culture Pop</div>
+      <div class="cell" data-label="Format">12oz can</div>
+      <div class="cell mark-yes" data-label="Prebiotic">Yes</div>
+      <div class="cell mark-yes" data-label="Probiotic">Yes</div>
+      <div class="cell" data-label="Distribution">Ambient</div>
+      <div class="cell" data-label="$/Serving">~$2.40</div>
+    </div>
+    <div class="compare-row">
+      <div class="cell brand" data-label="Brand">Suja</div>
+      <div class="cell" data-label="Format">16oz HPP bottle</div>
+      <div class="cell mark-no" data-label="Prebiotic">No</div>
+      <div class="cell mark-partial" data-label="Probiotic">Varies</div>
+      <div class="cell" data-label="Distribution">Cold chain</div>
+      <div class="cell" data-label="$/Serving">~$5.00</div>
+    </div>
+    <div class="compare-row">
+      <div class="cell brand" data-label="Brand">Athletic Greens (AG1)</div>
+      <div class="cell" data-label="Format">Powder packet</div>
+      <div class="cell mark-yes" data-label="Prebiotic">Yes</div>
+      <div class="cell mark-yes" data-label="Probiotic">Yes</div>
+      <div class="cell" data-label="Distribution">Ambient</div>
+      <div class="cell" data-label="$/Serving">~$3.30</div>
+    </div>
+    <div class="compare-row">
+      <div class="cell brand" data-label="Brand">Seed DS-01</div>
+      <div class="cell" data-label="Format">Capsule</div>
+      <div class="cell mark-partial" data-label="Prebiotic">Carrier</div>
+      <div class="cell mark-yes" data-label="Probiotic">Yes</div>
+      <div class="cell" data-label="Distribution">Ambient</div>
+      <div class="cell" data-label="$/Serving">~$1.66</div>
+    </div>
   </div>
 
-  <div class="matrix-legend">
-    <strong>Axis read:</strong> Daily format equals single-serve, portable, shelf-stable, priced for routine ($1–$3 per serving). Full synbiotic equals prebiotic fiber <em>and</em> probiotic bacteria, not one or the other.<br>
-    <strong>What the map shows:</strong> Category leaders ($1.85B Olipop, $1.95B Poppi) live in the bottom-left. Capsules live in the upper-left. The upper-right — where daily format meets full synbiotic — is Pheeew's lane.
+  <div class="compare-legend">
+    <strong>What the data shows.</strong> Culture Pop is the closest functional overlap (ambient synbiotic beverage). AG1 matches the synbiotic depth at roughly the same price but requires powder preparation and delivers no fruit base. Seed matches the synbiotic stack in capsule form at a lower price per serving but is not a beverage occasion. <strong>Pheeew's unique combination</strong> is the single-serve puree pouch delivering a full synbiotic stack in an ambient, portable, real-fruit format. Each of those attributes exists individually elsewhere. The combination does not.
   </div>
 </section>
 
@@ -393,24 +476,24 @@ footer a { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
 
   <div class="traction">
     <div class="t-built">
-      <div class="head">What is built</div>
+      <div class="head">Current State</div>
       <ul>
         <li>Delaware C-Corp formed March 24, 2026. EIN 41-5111005.</li>
-        <li>Cap table signed. 3 founders, RSPAs and CIIAAs executed, 83(b) elections filed.</li>
+        <li>Cap table signed. Three founders, RSPAs and CIIAAs executed, 83(b) elections filed.</li>
         <li>$20K founder capital committed. In operating account by mid-May 2026.</li>
-        <li>Brand system complete. Name locked, domain secured, handles secured (@saypheeew).</li>
+        <li>Brand system complete. Name, domain, and social handles secured (@saypheeew).</li>
         <li>Product specified. Three-SKU roadmap, ingredient stack formulated.</li>
-        <li>Factory quote locked. 좋은영농 Naju, Korea. April 6, 2026.</li>
+        <li>Factory quote locked. Puree smoothie ODM in Jeollanam-do, Korea.</li>
         <li>US trademark Class 32 filed.</li>
       </ul>
     </div>
     <div class="t-missing">
-      <div class="head">What is not yet built</div>
+      <div class="head">Priorities for This Round</div>
       <ul>
-        <li>No revenue. No product in market.</li>
-        <li><strong>No waitlist, no pre-orders, no content campaign.</strong> This round funds Week 1 activity.</li>
-        <li>No retail LOIs.</li>
-        <li>No creator partnerships. No press.</li>
+        <li>Commit 40K MOQ production order for Wild Berries.</li>
+        <li><strong>Launch waitlist, pre-order page, and content cadence.</strong> Weeks 1 through 4.</li>
+        <li>Open LA farmer's market channel with pre-production sample batch.</li>
+        <li>Initiate creator seeding and retail buyer outreach for Phase 2.</li>
       </ul>
     </div>
   </div>
@@ -419,8 +502,10 @@ footer a { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
 <!-- 08 · GO-TO-MARKET -->
 <section>
   <span class="s-num">08</span>
-  <h2 class="display">Go-to-Market</h2>
-  <p class="body">Six-month sprint from funding close to full DTC launch. Production commits Week 1. Validation runs in parallel to factory lead time rather than after it. The main inventory lands at Week 16 and full e-commerce activates.</p>
+  <h2 class="display">Go-to-Market and Channel Roadmap</h2>
+  <p class="body">Launch through DTC and LA farmer's markets. Scale through the same specialty-to-mass retail path that carried Poppi from launch to a $1.95B PepsiCo acquisition in four years (CNBC, March 2025) and Olipop to a $1.85B valuation at Series C (Food Dive, 2025).</p>
+
+  <p class="body" style="font-size: 14px; color: var(--text-3); margin-top: 20px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Part A · Launch Sprint (6 Months)</p>
 
   <div class="gtm">
     <div class="phase-row">
@@ -440,6 +525,39 @@ footer a { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
       <div class="what"><strong>Decide next</strong>Signal review. Commit to Phase 2 SKU (Tropical Punch) if repeat purchase and subscription signals hold. Begin prep for Angel extension round (H1 2027).</div>
     </div>
   </div>
+
+  <p class="body" style="font-size: 14px; color: var(--text-3); margin-top: 36px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Part B · Multi-Year Channel Roadmap</p>
+
+  <div class="roadmap">
+    <div class="roadmap-row">
+      <div class="phase-label">Year 1</div>
+      <div class="phase-detail">
+        <div class="head">DTC foundation + Amazon</div>
+        <div class="channels">pheeew.com on Shopify. Subscription (Recharge). LA farmer's markets as brand theater. Amazon listing from Month 6 with Subscribe &amp; Save. Target: first subscriber cohort, repeat purchase validation, early retail buyer conversations.</div>
+        <div class="cite">Precedent: AG1 ran DTC-only for a decade before retail. OLIPOP validated DTC + specialty in parallel from 2018.</div>
+      </div>
+    </div>
+    <div class="roadmap-row">
+      <div class="phase-label">Year 2</div>
+      <div class="phase-detail">
+        <div class="head">Specialty grocery and niche retail</div>
+        <div class="channels">Erewhon (LA premium flagship). Whole Foods lighthouse placement. Sprouts regional natural chain. Target Takeoff emerging-brand program. Regional co-ops and independent naturals.</div>
+        <div class="cite">Precedent: Poppi reached Target through Target Takeoff in 2021, 18 months after Series A. OLIPOP reached Whole Foods in 2019-2020.</div>
+      </div>
+    </div>
+    <div class="roadmap-row">
+      <div class="phase-label">Year 3</div>
+      <div class="phase-detail">
+        <div class="head">Mass retail and club</div>
+        <div class="channels">Target national. CVS and Walgreens drug channel. Costco club. Walmart conventional. Amazon 1P conversion with velocity proof. Channel diversification reduces single-channel concentration risk.</div>
+        <div class="cite">Precedent: Poppi entered Walmart 2023, PepsiCo acquired March 2025 at $1.95B (3.9x revenue, CNBC). Olipop at $1.85B valuation on similar path (Food Dive).</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scale-note">
+    <strong>Economics built for scale.</strong> Unit economics at the 40K MOQ already support retail wholesale margins (35-45% after retailer markup). At 100K+ volume commit, factory quote shows COGS drop of 15-20% per pouch, which fully funds specialty retail slotting and mass retail trade spend without compressing contribution margin below 30% at retail. Sources: 좋은영농 factory quote (April 2026, volume pricing), Auxo Capital Food &amp; Beverage Valuation Multiples 2026, BOTH_STRATEGY Brand Valuation CPG.
+  </div>
 </section>
 
 <!-- 09 · TEAM -->
@@ -451,7 +569,7 @@ footer a { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
   <div class="team-list">
     <div class="t-member">
       <div class="n">Alex Kim<span>CEO</span></div>
-      <div class="r">Brand, product, creative direction. Korea-born, Seattle-raised, LA-based. Operator background.</div>
+      <div class="r">Brand, product, creative support. Operator background.</div>
       <div class="e">35%</div>
     </div>
     <div class="t-member">
@@ -461,7 +579,7 @@ footer a { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     </div>
     <div class="t-member">
       <div class="n">Dawon Kim<span>CDO</span></div>
-      <div class="r">Design, video, web, aesthetics. Seoul.</div>
+      <div class="r">Design, video, web, creative direction. Seoul.</div>
       <div class="e">32%</div>
     </div>
   </div>
@@ -517,8 +635,8 @@ footer a { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
 <footer>
   <div class="inner">
     <div class="tag">Appendix</div>
-    <h3>Full 21-section financial model, line-item budget, factory quote, and cap table available on request.</h3>
-    <p>This deck is the summary. The internal model is the backing.</p>
+    <h3>Cap table, unit economics model, and incorporation documents available on request.</h3>
+    <p>This deck is the summary. Supporting documentation is provided upon serious interest.</p>
     <p style="margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--divider);"><strong>Pheeew, Inc.</strong> · Delaware C-Corporation · EIN 41-5111005<br>
     Alex (Seungjoon) Kim, CEO · <a href="mailto:alex@allvitalorganics.co">alex@allvitalorganics.co</a></p>
   </div>
