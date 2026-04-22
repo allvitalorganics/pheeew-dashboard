@@ -1,0 +1,1199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pheeew · Angel Round · v7</title>
+<meta name="description" content="Pheeew, Inc. Angel round deck. Synbiotic puree pouch. $145K priced round.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+@page { size: 1920px 1080px landscape; margin: 0; }
+
+:root {
+  --yellow: #DAFF00;
+  --yellow-dim: #B8D900;
+  --green: #1E3A1A;
+  --green-deep: #0F2508;
+  --ink: #0A0F05;
+  --text: #1A1F15;
+  --text-2: #3A4035;
+  --text-3: #6E7268;
+  --text-4: #A0A398;
+  --cream: #FAF8EE;
+  --bg: #F7F4E6;
+  --border: #E2DFC8;
+  --divider: #ECE9D3;
+  --card: #FFFFFF;
+  --red: #8B1E1E;
+  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  --font-serif: "Cormorant", "Iowan Old Style", Georgia, serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); background: #1a1a1a; color: var(--text); -webkit-font-smoothing: antialiased; letter-spacing: -0.005em; }
+
+.deck { display: flex; flex-direction: column; align-items: center; padding: 24px 0; gap: 20px; }
+
+.slide {
+  width: 100%;
+  max-width: 1920px;
+  aspect-ratio: 16 / 9;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+  container-type: inline-size;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+
+.inner {
+  position: absolute;
+  inset: 5.5cqw 6cqw;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Slide number label */
+.slide-no {
+  position: absolute;
+  top: 3cqw;
+  right: 4cqw;
+  font-family: var(--font-sans);
+  font-size: 0.75cqw;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* Section number eyebrow */
+.eyebrow-num {
+  font-family: var(--font-serif);
+  font-size: 1cqw;
+  font-style: italic;
+  color: var(--text-4);
+  letter-spacing: 0.12em;
+  margin-bottom: 1.2cqw;
+  display: block;
+}
+
+h2.section-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 4.2cqw;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--text);
+  margin-bottom: 1.8cqw;
+  max-width: 20em;
+}
+h2.section-title em { color: var(--green); font-style: italic; }
+
+p.body {
+  font-family: var(--font-sans);
+  font-size: 1.3cqw;
+  color: var(--text-2);
+  line-height: 1.55;
+  max-width: 42em;
+  font-weight: 400;
+  margin-bottom: 0.8cqw;
+}
+p.body strong { color: var(--text); font-weight: 600; }
+p.body em { color: var(--green); font-style: italic; font-weight: 500; }
+
+p.small { font-size: 0.95cqw; color: var(--text-3); line-height: 1.6; }
+p.small em { font-style: italic; color: var(--text-2); }
+
+/* ============================================ SLIDE 00 · COVER */
+.s-cover { background: var(--green-deep); color: var(--cream); }
+.s-cover .inner { justify-content: space-between; }
+.s-cover .tag { font-family: var(--font-sans); font-size: 0.9cqw; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--yellow); }
+.s-cover h1.logo {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: 14cqw;
+  letter-spacing: -0.045em;
+  line-height: 0.88;
+  color: var(--yellow);
+  margin-top: 2cqw;
+}
+.s-cover .oneliner {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 3.2cqw;
+  letter-spacing: -0.015em;
+  color: var(--cream);
+  line-height: 1.15;
+  margin-top: 1.2cqw;
+  max-width: 20em;
+}
+.s-cover .desc {
+  font-family: var(--font-sans);
+  font-size: 1.3cqw;
+  color: rgba(250, 248, 238, 0.75);
+  line-height: 1.55;
+  margin-top: 1.8cqw;
+  max-width: 34em;
+}
+.s-cover .ask-ribbon {
+  margin-top: 3cqw;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.4cqw;
+  padding: 1cqw 1.6cqw;
+  background: var(--yellow);
+  color: var(--green-deep);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.1cqw;
+  letter-spacing: 0.01em;
+  align-self: flex-start;
+  border-radius: 0.3cqw;
+}
+.s-cover .ask-ribbon strong { font-weight: 900; }
+.s-cover .ask-ribbon .sep { color: rgba(30, 58, 26, 0.4); }
+.s-cover .footer-meta {
+  font-family: var(--font-sans);
+  font-size: 0.85cqw;
+  color: rgba(250, 248, 238, 0.55);
+  line-height: 1.9;
+}
+.s-cover .footer-meta strong { color: var(--yellow); font-weight: 600; }
+.s-cover .slide-no { color: rgba(250, 248, 238, 0.4); }
+
+/* ============================================ SLIDE 01 · PROBLEM */
+.problems { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4cqw; margin-top: 2cqw; }
+.problem-card {
+  padding: 2.2cqw;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.6cqw;
+  position: relative;
+}
+.problem-card .num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.3cqw;
+  color: var(--yellow-dim);
+  letter-spacing: 0.06em;
+  margin-bottom: 1cqw;
+  display: block;
+}
+.problem-card h3 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.5cqw;
+  color: var(--text);
+  margin-bottom: 0.6cqw;
+  line-height: 1.3;
+}
+.problem-card p {
+  font-family: var(--font-sans);
+  font-size: 1cqw;
+  color: var(--text-2);
+  line-height: 1.55;
+}
+
+/* ============================================ SLIDE 02 · WHY NOW */
+.stat-strip { display: flex; gap: 4cqw; margin-top: 2.4cqw; }
+.stat-item .n {
+  font-family: var(--font-serif);
+  font-size: 5cqw;
+  color: var(--green);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.015em;
+}
+.stat-item .l {
+  font-family: var(--font-sans);
+  font-size: 0.95cqw;
+  color: var(--text-3);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 0.6cqw;
+  line-height: 1.4;
+}
+
+/* ============================================ SLIDE 03 · PRODUCT */
+.product-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3cqw; margin-top: 2cqw; flex: 1; }
+
+.pouch-visual {
+  background: linear-gradient(155deg, #F5E6C0, #D4B98C 60%, #8B6D3C);
+  border-radius: 0.8cqw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5cqw;
+  position: relative;
+}
+.pouch-visual .pouch {
+  width: 8cqw;
+  height: 22cqw;
+  background: linear-gradient(180deg, #fff 0%, #fff 12%, var(--green) 12%, var(--green) 88%, #fff 88%, #fff 100%);
+  border-radius: 0.4cqw;
+  box-shadow: 0 1.2cqw 3cqw rgba(15, 37, 8, 0.3);
+  position: relative;
+}
+.pouch-visual .pouch::before {
+  content: "pheeew";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  color: var(--yellow);
+  font-family: var(--font-sans);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  font-size: 1.1cqw;
+  white-space: nowrap;
+}
+.pouch-visual .cap {
+  margin-top: 1.8cqw;
+  font-family: var(--font-sans);
+  font-size: 0.85cqw;
+  font-weight: 700;
+  color: var(--green-deep);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.claims-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1cqw; margin-top: 1cqw; }
+.claim {
+  padding: 1.4cqw 1.6cqw;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.5cqw;
+  display: flex;
+  flex-direction: column;
+}
+.claim .claim-n {
+  font-family: var(--font-serif);
+  font-size: 2.4cqw;
+  font-weight: 500;
+  color: var(--green);
+  line-height: 1;
+  letter-spacing: -0.015em;
+}
+.claim .claim-l {
+  font-family: var(--font-sans);
+  font-size: 0.9cqw;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.6cqw;
+}
+.claim.hilite { background: var(--yellow); border-color: var(--yellow); }
+.claim.hilite .claim-n { color: var(--green-deep); }
+.claim.hilite .claim-l { color: var(--green-deep); }
+
+.product-r .sku-list { margin-top: 1.6cqw; display: grid; gap: 0.7cqw; }
+.product-r .sku-item {
+  display: grid;
+  grid-template-columns: 10cqw 1fr;
+  gap: 1.2cqw;
+  padding: 0.9cqw 0;
+  border-top: 1px solid var(--divider);
+  align-items: baseline;
+}
+.product-r .sku-item:first-child { border-top: 1px solid var(--green); }
+.product-r .sku-item .nm {
+  font-family: var(--font-serif);
+  font-size: 1.5cqw;
+  color: var(--text);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.product-r .sku-item .nm span {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.7cqw;
+  font-weight: 700;
+  color: var(--yellow-dim);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: 0.25cqw;
+}
+.product-r .sku-item .info { font-family: var(--font-sans); font-size: 0.95cqw; color: var(--text-2); line-height: 1.5; }
+.product-r .sku-item .info em { font-style: italic; color: var(--green); }
+
+/* ============================================ SLIDE 04 · BUSINESS MODEL */
+.waterfall {
+  margin-top: 2cqw;
+  padding: 2.2cqw 2.4cqw;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.6cqw;
+  font-variant-numeric: tabular-nums;
+  max-width: 50cqw;
+}
+.wf-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: 0.7cqw 0;
+  font-size: 1.05cqw;
+  border-bottom: 1px solid var(--divider);
+  gap: 1.2cqw;
+}
+.wf-row:last-child { border-bottom: none; }
+.wf-row .k { font-family: var(--font-sans); color: var(--text-2); }
+.wf-row .v { font-family: var(--font-sans); color: var(--text); font-weight: 500; }
+.wf-row.sub-row { background: var(--cream); padding: 0.9cqw 1cqw; margin: 0.3cqw -1cqw; border-radius: 0.3cqw; border-bottom: none; }
+.wf-row.sub-row .k { font-weight: 700; color: var(--green); }
+.wf-row.sub-row .v { font-weight: 700; color: var(--green); }
+.wf-row.total-row { background: var(--green-deep); color: var(--yellow); padding: 1.1cqw 1cqw; margin: 0.4cqw -1cqw 0; border-radius: 0.3cqw; border-bottom: none; }
+.wf-row.total-row .k { color: var(--yellow); font-weight: 700; font-size: 1.15cqw; }
+.wf-row.total-row .v { color: var(--yellow); font-weight: 900; font-size: 1.3cqw; }
+
+.econ-stats { display: flex; gap: 3cqw; margin-top: 1.8cqw; }
+.econ-stats .stat-item .n { font-size: 2.4cqw; color: var(--text); }
+.econ-stats .stat-item .l { font-size: 0.75cqw; }
+
+/* ============================================ SLIDE 05 · MARKET SIZE */
+.market-bars { margin-top: 2cqw; display: grid; gap: 1.2cqw; }
+.m-bar {
+  padding: 1.8cqw 2.4cqw;
+  border-radius: 0.6cqw;
+  display: grid;
+  grid-template-columns: 6cqw 1fr auto;
+  gap: 2cqw;
+  align-items: center;
+}
+.m-bar.tam { background: var(--green-deep); color: var(--cream); width: 100%; }
+.m-bar.sam { background: var(--green); color: var(--cream); width: 72%; }
+.m-bar.som { background: var(--yellow); color: var(--green-deep); width: 44%; }
+.m-bar .tier { font-family: var(--font-serif); font-size: 1.6cqw; font-style: italic; letter-spacing: 0.08em; opacity: 0.95; }
+.m-bar .lbl { font-family: var(--font-sans); font-size: 1.05cqw; opacity: 0.9; line-height: 1.4; }
+.m-bar .amt { font-family: var(--font-serif); font-size: 2.6cqw; font-weight: 500; letter-spacing: -0.015em; }
+
+/* ============================================ SLIDE 06 · COMPETITIVE POSITION */
+.cat-group { margin-top: 1.6cqw; }
+.cat-head {
+  font-family: var(--font-sans);
+  font-size: 0.78cqw;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 0.6cqw;
+  padding-bottom: 0.4cqw;
+  border-bottom: 1px solid var(--border);
+}
+.cat-head.primary { color: var(--green); border-bottom-color: var(--green); }
+.compare-grid { display: grid; grid-template-columns: 1.3fr 1.2fr 0.8fr 1.2fr 1.2fr 0.9fr; font-size: 0.95cqw; font-variant-numeric: tabular-nums; }
+.compare-grid .hdr {
+  font-family: var(--font-sans);
+  font-size: 0.7cqw;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-4);
+  padding: 0.6cqw 0.6cqw;
+  border-bottom: 1px solid var(--border);
+}
+.compare-grid .cell { padding: 0.75cqw 0.6cqw; font-family: var(--font-sans); color: var(--text-2); border-bottom: 1px solid var(--divider); line-height: 1.4; }
+.compare-grid .row-us .cell { background: var(--yellow); color: var(--green-deep); font-weight: 600; border-bottom-color: var(--yellow-dim); }
+.compare-grid .cell.brand { font-weight: 700; color: var(--text); }
+.compare-grid .row-us .cell.brand { color: var(--green-deep); }
+.compare-grid .yes { color: var(--green); font-weight: 700; }
+.compare-grid .no { color: var(--text-4); }
+
+.edge-note { margin-top: 1.2cqw; padding: 1.4cqw 1.6cqw; background: var(--cream); border-left: 0.3cqw solid var(--yellow); border-radius: 0 0.3cqw 0.3cqw 0; font-family: var(--font-sans); font-size: 0.95cqw; color: var(--text-2); line-height: 1.55; }
+.edge-note strong { color: var(--green); font-weight: 700; }
+
+/* ============================================ SLIDE 07 · CURRENT STATE + PRIORITIES */
+.state-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6cqw; margin-top: 2cqw; flex: 1; }
+.state-col { padding: 1.8cqw 2cqw; border-radius: 0.6cqw; background: var(--card); border: 1px solid var(--border); }
+.state-col.now { border-left: 0.3cqw solid var(--green); }
+.state-col.next { border-left: 0.3cqw solid var(--yellow-dim); background: var(--cream); }
+.state-col .head {
+  font-family: var(--font-sans);
+  font-size: 0.85cqw;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 1.1cqw;
+}
+.state-col.next .head { color: var(--text-2); }
+.state-col ul { list-style: none; padding: 0; }
+.state-col li {
+  font-family: var(--font-sans);
+  font-size: 0.98cqw;
+  color: var(--text-2);
+  line-height: 1.55;
+  padding: 0.45cqw 0 0.45cqw 1.6cqw;
+  position: relative;
+}
+.state-col.now li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 700;
+}
+.state-col.next li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--yellow-dim);
+  font-weight: 700;
+}
+.state-col li strong { color: var(--text); font-weight: 600; }
+
+/* ============================================ SLIDE 08 · LAUNCH SPRINT */
+.sprint-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2cqw; margin-top: 2cqw; flex: 1; }
+.sprint-card {
+  padding: 1.8cqw 1.6cqw;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.6cqw;
+  display: flex;
+  flex-direction: column;
+}
+.sprint-card .when {
+  font-family: var(--font-serif);
+  font-size: 1.2cqw;
+  font-style: italic;
+  color: var(--green);
+  margin-bottom: 0.6cqw;
+}
+.sprint-card h3 {
+  font-family: var(--font-sans);
+  font-size: 1.1cqw;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.8cqw;
+  line-height: 1.25;
+}
+.sprint-card p {
+  font-family: var(--font-sans);
+  font-size: 0.88cqw;
+  color: var(--text-2);
+  line-height: 1.55;
+}
+
+/* ============================================ SLIDE 09 · CHANNEL ROADMAP */
+.roadmap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4cqw; margin-top: 1.8cqw; }
+.roadmap-card {
+  padding: 1.8cqw;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.6cqw;
+  display: flex;
+  flex-direction: column;
+}
+.roadmap-card.y1 { border-top: 0.4cqw solid var(--yellow); }
+.roadmap-card.y2 { border-top: 0.4cqw solid var(--green); }
+.roadmap-card.y3 { border-top: 0.4cqw solid var(--green-deep); }
+.roadmap-card .yr {
+  font-family: var(--font-serif);
+  font-size: 1.6cqw;
+  color: var(--green);
+  font-style: italic;
+  font-weight: 500;
+  margin-bottom: 0.4cqw;
+}
+.roadmap-card h3 {
+  font-family: var(--font-sans);
+  font-size: 1.1cqw;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.9cqw;
+  line-height: 1.25;
+}
+.roadmap-card .channels {
+  font-family: var(--font-sans);
+  font-size: 0.9cqw;
+  color: var(--text-2);
+  line-height: 1.55;
+  margin-bottom: 1cqw;
+  flex: 1;
+}
+.roadmap-card .cite {
+  font-family: var(--font-serif);
+  font-size: 0.78cqw;
+  color: var(--text-3);
+  font-style: italic;
+  line-height: 1.5;
+  padding-top: 0.9cqw;
+  border-top: 1px solid var(--divider);
+}
+.scale-note {
+  margin-top: 1.4cqw;
+  padding: 1.2cqw 1.6cqw;
+  background: var(--cream);
+  border-left: 0.3cqw solid var(--yellow);
+  border-radius: 0 0.3cqw 0.3cqw 0;
+  font-family: var(--font-sans);
+  font-size: 0.88cqw;
+  color: var(--text-2);
+  line-height: 1.55;
+}
+.scale-note strong { color: var(--green); font-weight: 700; }
+
+/* ============================================ SLIDE 10 · TEAM */
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6cqw; margin-top: 2cqw; flex: 1; }
+.team-card {
+  padding: 2cqw 2.2cqw;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.6cqw;
+  display: flex;
+  flex-direction: column;
+}
+.team-card .role {
+  font-family: var(--font-sans);
+  font-size: 0.82cqw;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 0.8cqw;
+}
+.team-card h3 {
+  font-family: var(--font-serif);
+  font-size: 2.4cqw;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 1cqw;
+  letter-spacing: -0.015em;
+}
+.team-card .focus {
+  font-family: var(--font-sans);
+  font-size: 0.98cqw;
+  color: var(--text-2);
+  line-height: 1.55;
+  flex: 1;
+}
+.team-card .equity {
+  margin-top: 1.4cqw;
+  padding-top: 1cqw;
+  border-top: 1px solid var(--divider);
+  font-family: var(--font-serif);
+  font-size: 1.8cqw;
+  color: var(--green);
+  font-weight: 500;
+}
+
+/* ============================================ SLIDE 11 · INVESTMENT TERMS */
+.terms-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4cqw; margin-top: 1.6cqw; flex: 1; }
+
+.terms-box { padding: 1.8cqw 2cqw; background: var(--card); border: 1px solid var(--border); border-radius: 0.6cqw; }
+.terms-box .head {
+  font-family: var(--font-sans);
+  font-size: 0.85cqw;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 1cqw;
+  padding-bottom: 0.6cqw;
+  border-bottom: 1px solid var(--border);
+}
+.terms-box .t-row {
+  display: grid;
+  grid-template-columns: 10cqw 1fr;
+  padding: 0.55cqw 0;
+  font-size: 0.95cqw;
+  border-bottom: 1px solid var(--divider);
+  gap: 0.8cqw;
+}
+.terms-box .t-row:last-child { border-bottom: none; }
+.terms-box .t-row .k { font-family: var(--font-sans); color: var(--text-3); font-size: 0.8cqw; font-weight: 600; letter-spacing: 0.04em; padding-top: 0.08cqw; }
+.terms-box .t-row .v { font-family: var(--font-sans); color: var(--text); font-weight: 500; line-height: 1.5; }
+.terms-box .t-row .v strong { color: var(--green); font-weight: 700; }
+
+.uof-box { padding: 1.8cqw 2cqw; background: var(--card); border: 1px solid var(--border); border-radius: 0.6cqw; }
+.uof-box .head {
+  font-family: var(--font-sans);
+  font-size: 0.85cqw;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 1cqw;
+  padding-bottom: 0.6cqw;
+  border-bottom: 1px solid var(--border);
+}
+.uof-items { display: grid; gap: 0.7cqw; }
+.uof-item {
+  padding: 0.9cqw 1.2cqw;
+  background: var(--cream);
+  border-radius: 0.4cqw;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1cqw;
+  align-items: center;
+}
+.uof-item .k { font-family: var(--font-sans); font-size: 0.9cqw; font-weight: 600; color: var(--text); }
+.uof-item .k span { display: block; font-size: 0.78cqw; color: var(--text-3); font-weight: 400; margin-top: 0.15cqw; }
+.uof-item .v { font-family: var(--font-serif); font-size: 1.5cqw; color: var(--green); font-weight: 500; }
+.uof-item .pct { font-family: var(--font-sans); font-size: 0.75cqw; color: var(--text-3); font-weight: 600; }
+
+/* ============================================ SLIDE 12 · APPENDIX/CLOSE */
+.s-close { background: var(--green-deep); color: var(--cream); }
+.s-close .tag { font-family: var(--font-sans); font-size: 0.85cqw; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--yellow); margin-bottom: 1.4cqw; }
+.s-close h2.section-title { color: var(--cream); font-style: italic; }
+.s-close h2.section-title em { color: var(--yellow); }
+.s-close p.body { color: rgba(250, 248, 238, 0.8); }
+.s-close .contact {
+  margin-top: 3cqw;
+  padding-top: 1.6cqw;
+  border-top: 1px solid rgba(218, 255, 0, 0.3);
+  font-family: var(--font-sans);
+  font-size: 0.95cqw;
+  color: rgba(250, 248, 238, 0.7);
+  line-height: 1.9;
+}
+.s-close .contact strong { color: var(--yellow); font-weight: 700; }
+.s-close .contact a { color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(218, 255, 0, 0.5); }
+.s-close .slide-no { color: rgba(250, 248, 238, 0.4); }
+
+/* ============================================ PRINT */
+@media print {
+  body { background: #fff; padding: 0; }
+  .deck { padding: 0; gap: 0; }
+  .slide { box-shadow: none; border-radius: 0; page-break-after: always; margin: 0; width: 100%; max-width: 100%; }
+  .slide:last-child { page-break-after: auto; }
+}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ============================================================ -->
+<!-- SLIDE 00 · COVER                                              -->
+<!-- ============================================================ -->
+<div class="slide s-cover">
+  <div class="inner">
+    <div>
+      <div class="tag">Pheeew, Inc. · Delaware C-Corp · Confidential</div>
+      <h1 class="logo">Pheeew.</h1>
+      <p class="oneliner">A smoothie for your gut, built for daily use.</p>
+      <p class="desc">100mL puree pouch. Synbiotic: 10g prebiotic fiber plus 1 billion live probiotics. Whole real fruit, zero added sugar, shelf-stable.</p>
+    </div>
+    <div>
+      <div class="ask-ribbon">
+        <strong>$145K</strong>
+        <span class="sep">·</span>
+        <span>$1.65M pre-money</span>
+        <span class="sep">·</span>
+        <span>Priced common stock</span>
+        <span class="sep">·</span>
+        <strong>9.1% total stake</strong>
+      </div>
+      <p class="footer-meta" style="margin-top: 2cqw;">
+        <strong>Author</strong>  Alex (Seungjoon) Kim, CEO · alex@allvitalorganics.co<br>
+        <strong>Date</strong>  April 2026
+      </p>
+    </div>
+  </div>
+  <div class="slide-no">00 · Cover</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 01 · THE PROBLEM                                        -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="inner">
+    <span class="eyebrow-num">01 / 12</span>
+    <h2 class="section-title">The Problem</h2>
+    <p class="body">Gut health is the fastest-growing category in CPG wellness. The consumer intent is there, but the daily-use format does not exist. Most products ask people to take a pill, mix a powder, or drink a shot they do not want to drink again.</p>
+
+    <div class="problems">
+      <div class="problem-card">
+        <span class="num">01</span>
+        <h3>Powders get abandoned</h3>
+        <p>Chalky texture, requires mixing, tastes like sand. Used once, pushed to the back of the cabinet within a month.</p>
+      </div>
+      <div class="problem-card">
+        <span class="num">02</span>
+        <h3>Wellness shots taste medicinal</h3>
+        <p>Harsh ginger or herbal blends priced as occasional treats. Cold-chain only, so retail distribution is capped at refrigerated grocery.</p>
+      </div>
+      <div class="problem-card">
+        <span class="num">03</span>
+        <h3>Functional sodas are half-functional</h3>
+        <p>Poppi and Olipop deliver prebiotic fiber in a craveable format. Neither delivers a probiotic. Full synbiotic stack exists only in capsule form.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-no">01 · Problem</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 02 · WHY NOW                                            -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="inner">
+    <span class="eyebrow-num">02 / 12</span>
+    <h2 class="section-title">Why Now</h2>
+    <p class="body">Three market shifts converged in the last eighteen months. Synbiotic search demand is accelerating. Adult pouch format is normalized after a decade of kids' squeezable puree success. Category leaders have validated strong willingness to pay for functional beverages at institutional scale.</p>
+
+    <div class="stat-strip">
+      <div class="stat-item">
+        <div class="n">+22%</div>
+        <div class="l">Synbiotic search growth YoY</div>
+      </div>
+      <div class="stat-item">
+        <div class="n">14%</div>
+        <div class="l">Functional beverage CAGR</div>
+      </div>
+      <div class="stat-item">
+        <div class="n">$1.95B</div>
+        <div class="l">Poppi acquired by PepsiCo<br>March 2025 · CNBC</div>
+      </div>
+    </div>
+
+    <p class="body" style="margin-top: 2.2cqw;">The Poppi exit set the multiple for category leadership in functional beverage at approximately 3.9x trailing revenue. The pouch format opened adult consumer occasions. The full synbiotic positioning is still uncontested in the ready-to-drink segment at scale.</p>
+  </div>
+  <div class="slide-no">02 · Why Now</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 03 · PRODUCT                                            -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="inner">
+    <span class="eyebrow-num">03 / 12</span>
+    <h2 class="section-title">Product</h2>
+    <p class="body">A 100mL puree pouch. Four claims the consumer reads off the pouch: whole real fruit, 10g prebiotic fiber, 1 billion live probiotics, 0g added sugar. Drink in ten seconds, throw in a bag, no refrigeration required. One pouch per day is the intended use pattern.</p>
+
+    <div class="product-grid">
+      <div>
+        <div class="pouch-visual">
+          <div class="pouch"></div>
+          <div class="cap">100mL · 12-mo ambient · 1 pouch/day</div>
+        </div>
+        <div class="claims-grid">
+          <div class="claim hilite">
+            <div class="claim-n">10g</div>
+            <div class="claim-l">Prebiotic Fiber</div>
+          </div>
+          <div class="claim hilite">
+            <div class="claim-n">1B</div>
+            <div class="claim-l">Live Probiotics</div>
+          </div>
+          <div class="claim">
+            <div class="claim-n">100%</div>
+            <div class="claim-l">Whole Real Fruit</div>
+          </div>
+          <div class="claim">
+            <div class="claim-n">0g</div>
+            <div class="claim-l">Added Sugar</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-r">
+        <p class="small" style="letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--green); margin-bottom: 0.6cqw;">Three-SKU Roadmap</p>
+        <div class="sku-list">
+          <div class="sku-item">
+            <div class="nm">Wild Berries<span>Phase 1 · Launch</span></div>
+            <div class="info"><em>Gut + Energy.</em> Apple, raspberry, strawberry, and blueberry purées. Lemon juice acidulant. Fibersol-2L and XOS fibers with shelf-stable probiotic.</div>
+          </div>
+          <div class="sku-item">
+            <div class="nm">Tropical Punch<span>Phase 2 · Follow-on</span></div>
+            <div class="info"><em>Gut + Digestion.</em> Apple, mango, banana, pineapple, and passion fruit purées. Same functional stack.</div>
+          </div>
+          <div class="sku-item">
+            <div class="nm">Ginger Pear<span>Phase 3 · Follow-on</span></div>
+            <div class="info"><em>Gut + Immunity.</em> Pear, apple, and kiwi purées. Ginger concentrate with natural oligosaccharides. Same functional stack.</div>
+          </div>
+        </div>
+        <p class="small" style="margin-top: 1.4cqw;">Manufactured by a puree smoothie ODM specialist in Jeollanam-do, Korea. MOQ 40,000 units per SKU. Quote locked April 2026.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-no">03 · Product</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 04 · BUSINESS MODEL                                     -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="inner">
+    <span class="eyebrow-num">04 / 12</span>
+    <h2 class="section-title">Business Model</h2>
+    <p class="body">Direct-to-consumer subscription layered on a pack-size ladder ($34 for 10, $59 for 20, $99 for 30). Subscription saves up to 30%. Unit economics pulled directly from the signed factory quote at the committed 40K MOQ.</p>
+
+    <div style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 2.4cqw; margin-top: 0.6cqw;">
+      <div class="waterfall">
+        <div class="wf-row"><div class="k">Blended DTC revenue per pouch</div><div class="v">$3.40</div></div>
+        <div class="wf-row"><div class="k">Landed COGS (ingredients, packaging, manufacturing, freight)</div><div class="v">–$1.05</div></div>
+        <div class="wf-row sub-row"><div class="k">Gross profit per pouch</div><div class="v">$2.35 · ~69% GM</div></div>
+        <div class="wf-row"><div class="k">Shipping and pick/pack</div><div class="v">–$0.40</div></div>
+        <div class="wf-row"><div class="k">Payment processing</div><div class="v">–$0.13</div></div>
+        <div class="wf-row"><div class="k">Returns and defect reserve</div><div class="v">–$0.10</div></div>
+        <div class="wf-row total-row"><div class="k">Contribution margin per pouch</div><div class="v">$1.72 · ~51%</div></div>
+      </div>
+
+      <div>
+        <div class="econ-stats" style="flex-direction: column; gap: 1.4cqw; margin-top: 0;">
+          <div class="stat-item">
+            <div class="n">~$35–50</div>
+            <div class="l">Target CAC</div>
+          </div>
+          <div class="stat-item">
+            <div class="n">~$230</div>
+            <div class="l">24-month LTV per customer</div>
+          </div>
+          <div class="stat-item">
+            <div class="n">~5x</div>
+            <div class="l">Target LTV to CAC ratio</div>
+          </div>
+          <div class="stat-item">
+            <div class="n">~69%</div>
+            <div class="l">Gross margin at 40K MOQ</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-no">04 · Business Model</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 05 · MARKET SIZE                                        -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="inner">
+    <span class="eyebrow-num">05 / 12</span>
+    <h2 class="section-title">Market Size</h2>
+    <p class="body">US gut health is a $50B+ total addressable market. The serviceable segment for Pheeew, ambient-stable functional beverage in the DTC and specialty grocery channel, is approximately $8B. A realistic three-year obtainable share for a single-brand DTC is $15M in revenue.</p>
+
+    <div class="market-bars">
+      <div class="m-bar tam">
+        <div class="tier">TAM</div>
+        <div class="lbl">US gut health category, functional plus supplement</div>
+        <div class="amt">$50B+</div>
+      </div>
+      <div class="m-bar sam">
+        <div class="tier">SAM</div>
+        <div class="lbl">Ambient-stable functional beverage, US DTC and specialty grocery</div>
+        <div class="amt">~$8B</div>
+      </div>
+      <div class="m-bar som">
+        <div class="tier">SOM</div>
+        <div class="lbl">Realistic 3-year revenue from single-brand DTC</div>
+        <div class="amt">~$15M</div>
+      </div>
+    </div>
+
+    <p class="small" style="margin-top: 1.8cqw;">Bottom-up SOM: ~12,000 active subscribers at ~$100 monthly AOV equals ~$14.4M run-rate by end of Year 3. Sources: Grand View Research (gut health category), IRI Worldwide (functional beverage growth), SPINS Natural channel (category share data).</p>
+  </div>
+  <div class="slide-no">05 · Market Size</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 06 · COMPETITIVE POSITION                               -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="inner">
+    <span class="eyebrow-num">06 / 12</span>
+    <h2 class="section-title">Competitive Position</h2>
+    <p class="body">Pheeew competes in the <em>wellness shot</em> category, not in functional soda. The direct comparison set is cold-chain juice shots (Suja, Vive, So Good So You). Functional sodas and capsule supplements are category-adjacent references, not head-to-head competitors.</p>
+
+    <div class="cat-group">
+      <div class="cat-head primary">Direct Category · Wellness Shot</div>
+      <div class="compare-grid">
+        <div class="hdr">Brand</div>
+        <div class="hdr">Format</div>
+        <div class="hdr">Size</div>
+        <div class="hdr">Function</div>
+        <div class="hdr">Distribution</div>
+        <div class="hdr">$/Serving</div>
+
+        <div class="row-us" style="display: contents;">
+          <div class="cell brand">Pheeew</div>
+          <div class="cell">Puree pouch</div>
+          <div class="cell">3.4 fl oz</div>
+          <div class="cell">Full synbiotic</div>
+          <div class="cell">Ambient</div>
+          <div class="cell">~$3.40</div>
+        </div>
+
+        <div class="cell brand">Suja Shots</div>
+        <div class="cell">Bottle</div>
+        <div class="cell">1.5 fl oz</div>
+        <div class="cell">Ginger / juice</div>
+        <div class="cell">Cold chain</div>
+        <div class="cell">~$3.50</div>
+
+        <div class="cell brand">Vive Organic</div>
+        <div class="cell">Bottle</div>
+        <div class="cell">2 fl oz</div>
+        <div class="cell">Immunity</div>
+        <div class="cell">Cold chain</div>
+        <div class="cell">~$3.50</div>
+
+        <div class="cell brand">So Good So You</div>
+        <div class="cell">Bottle</div>
+        <div class="cell">1.7 fl oz</div>
+        <div class="cell">Probiotic only</div>
+        <div class="cell">Cold chain</div>
+        <div class="cell">~$3.00</div>
+
+        <div class="cell brand">KOR Shots</div>
+        <div class="cell">Bottle</div>
+        <div class="cell">2 fl oz</div>
+        <div class="cell">Immunity</div>
+        <div class="cell">Cold chain</div>
+        <div class="cell">~$3.50</div>
+      </div>
+    </div>
+
+    <div class="cat-group" style="margin-top: 1.2cqw;">
+      <div class="cat-head">Adjacent References (not direct competition)</div>
+      <div class="compare-grid">
+        <div class="cell brand">Culture Pop</div>
+        <div class="cell">12 fl oz can</div>
+        <div class="cell">Social</div>
+        <div class="cell">Pre + Pro</div>
+        <div class="cell">Ambient</div>
+        <div class="cell">~$2.40</div>
+
+        <div class="cell brand">Poppi / Olipop</div>
+        <div class="cell">12 fl oz can</div>
+        <div class="cell">Social</div>
+        <div class="cell">Prebiotic only</div>
+        <div class="cell">Ambient</div>
+        <div class="cell">~$2.40–3.00</div>
+
+        <div class="cell brand">Seed DS-01 / AG1</div>
+        <div class="cell">Capsule / powder</div>
+        <div class="cell">Routine</div>
+        <div class="cell">Pre + Pro</div>
+        <div class="cell">Ambient</div>
+        <div class="cell">~$1.66–3.30</div>
+      </div>
+    </div>
+
+    <div class="edge-note">
+      <strong>Pheeew's edge over the wellness shot set:</strong> ambient distribution (mass retail and Amazon viable day one, not limited to refrigerated grocery), real-fruit smoothie taste (craveable, not medicinal), full synbiotic stack (10g fiber plus 1B CFU probiotic vs. single-ingredient shots), and 3.4 fl oz serving with room for the functional payload.
+    </div>
+  </div>
+  <div class="slide-no">06 · Competitive Position</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 07 · CURRENT STATE AND PRIORITIES                       -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="inner">
+    <span class="eyebrow-num">07 / 12</span>
+    <h2 class="section-title">Current State &amp; Priorities</h2>
+    <p class="body">This round is pre-revenue and pre-launch. Below is what is in place today and what this round funds immediately.</p>
+
+    <div class="state-grid">
+      <div class="state-col now">
+        <div class="head">Current State · In Place Today</div>
+        <ul>
+          <li>Delaware C-Corp formed March 2026. EIN assigned.</li>
+          <li>Cap table signed. Three founders. RSPAs and CIIAAs executed, 83(b) elections filed.</li>
+          <li><strong>$20K founder capital committed.</strong> In operating account by mid-May 2026.</li>
+          <li>Brand system complete. Name, domain, social handles secured.</li>
+          <li>Product specified. Three-SKU roadmap, ingredient stack formulated.</li>
+          <li>Factory quote locked. Puree smoothie ODM in Jeollanam-do, Korea.</li>
+          <li>US trademark Class 32 filed.</li>
+        </ul>
+      </div>
+      <div class="state-col next">
+        <div class="head">Priorities for This Round</div>
+        <ul>
+          <li>Commit the 40K MOQ production order for Wild Berries (Phase 1).</li>
+          <li><strong>Launch waitlist, pre-order page, and content cadence</strong> within Weeks 1–4.</li>
+          <li>Open the LA farmer's market channel with a pre-production sample batch.</li>
+          <li>Initiate creator seeding program (30 creators, Wave 1).</li>
+          <li>Begin specialty retail buyer outreach for Year 2 channel phase.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="slide-no">07 · State &amp; Priorities</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 08 · LAUNCH SPRINT                                      -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="inner">
+    <span class="eyebrow-num">08 / 12</span>
+    <h2 class="section-title">Six-Month Launch Sprint</h2>
+    <p class="body">From funding close to full DTC launch in six months. Production commits Week 1. Market validation runs in parallel to factory lead time. Main inventory lands at Week 16 and full e-commerce activates.</p>
+
+    <div class="sprint-grid">
+      <div class="sprint-card">
+        <div class="when">Month 1</div>
+        <h3>Deploy capital</h3>
+        <p>Wire factory deposit for Wild Berries 40K MOQ. Order pouches (120K procurement). Alex and Dawon arrive in Los Angeles. Sample batch air-shipped from Korea.</p>
+      </div>
+      <div class="sprint-card">
+        <div class="when">Months 2–4</div>
+        <h3>Validate in parallel</h3>
+        <p>Two LA farmer's markets per week with sample pouches. Pre-order page live. Thirty-creator seed wave. Community warm-up on Instagram and TikTok. Email list build.</p>
+      </div>
+      <div class="sprint-card">
+        <div class="when">Month 4–5</div>
+        <h3>Launch DTC</h3>
+        <p>Main 40K shipment lands in LA. 3PL intake. Full Shopify launch. Subscription stack live (Recharge). Scaled Meta and TikTok paid. First subscription cohort.</p>
+      </div>
+      <div class="sprint-card">
+        <div class="when">Month 6</div>
+        <h3>Decide next</h3>
+        <p>Signal review. Commit to Phase 2 SKU (Tropical Punch) if repeat purchase and subscription signals hold. Begin prep for the Angel extension round (H1 2027).</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-no">08 · Launch Sprint</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 09 · CHANNEL ROADMAP                                    -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="inner">
+    <span class="eyebrow-num">09 / 12</span>
+    <h2 class="section-title">Three-Year Channel Roadmap</h2>
+    <p class="body">Scale through the same specialty-to-mass retail path that carried Poppi from launch to a $1.95B PepsiCo acquisition in four years (CNBC, March 2025) and Olipop to a $1.85B valuation at Series C (Food Dive, 2025).</p>
+
+    <div class="roadmap-grid">
+      <div class="roadmap-card y1">
+        <div class="yr">Year 1</div>
+        <h3>DTC foundation plus Amazon</h3>
+        <div class="channels">pheeew.com on Shopify. Subscription (Recharge). LA farmer's markets as brand theater. Amazon listing with Subscribe &amp; Save from Month 6. Target: first subscriber cohort, repeat purchase validation, early retail buyer conversations.</div>
+        <div class="cite">Precedent · Athletic Greens ran DTC-only for a decade. Olipop ran DTC alongside specialty retail from 2018 onward.</div>
+      </div>
+      <div class="roadmap-card y2">
+        <div class="yr">Year 2</div>
+        <h3>Specialty grocery and niche retail</h3>
+        <div class="channels">Erewhon (LA premium flagship). Whole Foods lighthouse placement. Sprouts regional natural chain. Target Takeoff emerging-brand program. Regional co-ops and independent natural stores.</div>
+        <div class="cite">Precedent · Poppi reached Target through Target Takeoff in 2021, 18 months after Series A. Olipop reached Whole Foods in 2019–2020.</div>
+      </div>
+      <div class="roadmap-card y3">
+        <div class="yr">Year 3</div>
+        <h3>Mass retail and club</h3>
+        <div class="channels">Target national. CVS and Walgreens drug channel. Costco club. Walmart conventional. Amazon 1P conversion with velocity proof. Channel diversification reduces single-channel concentration risk.</div>
+        <div class="cite">Precedent · Poppi entered Walmart 2023, acquired by PepsiCo March 2025 at $1.95B (3.9x revenue). Olipop at $1.85B valuation on same path.</div>
+      </div>
+    </div>
+
+    <div class="scale-note">
+      <strong>Economics built for scale.</strong> Unit economics at the 40K MOQ already support retail wholesale margins (35–45% after retailer markup). At 100K+ volume commit, factory quote shows COGS drop of 15–20% per pouch, which fully funds specialty retail slotting and mass retail trade spend without compressing contribution margin below 30% at retail.
+    </div>
+  </div>
+  <div class="slide-no">09 · Channel Roadmap</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 10 · TEAM                                               -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="inner">
+    <span class="eyebrow-num">10 / 12</span>
+    <h2 class="section-title">Team</h2>
+    <p class="body">Three founders. Complementary skill coverage. $20K of personal capital committed to the business before this round closes. Four-year vesting, one-year cliff, double-trigger acceleration. 83(b) elections filed. Ten percent option pool reserved for future hires and advisors.</p>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="role">Chief Executive</div>
+        <h3>Alex Kim</h3>
+        <div class="focus">Brand, product, and creative support. Operator background.</div>
+        <div class="equity">35%</div>
+      </div>
+      <div class="team-card">
+        <div class="role">Chief Operating</div>
+        <h3>Jason Ko</h3>
+        <div class="focus">Operations, copy, growth, community. Los Angeles-based.</div>
+        <div class="equity">33%</div>
+      </div>
+      <div class="team-card">
+        <div class="role">Chief Design</div>
+        <h3>Dawon Kim</h3>
+        <div class="focus">Design, video, web, and creative direction. Seoul-based.</div>
+        <div class="equity">32%</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-no">10 · Team</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 11 · INVESTMENT TERMS                                   -->
+<!-- ============================================================ -->
+<div class="slide">
+  <div class="inner">
+    <span class="eyebrow-num">11 / 12</span>
+    <h2 class="section-title">Investment Terms</h2>
+    <p class="body">A clean priced round at a defensible pre-revenue CPG valuation. Terms anchored to published industry benchmarks for prototype-stage consumer brands ($1M–$3M pre-money range).</p>
+
+    <div class="terms-layout">
+      <div class="terms-box">
+        <div class="head">Deal Structure</div>
+        <div class="t-row"><div class="k">Investment</div><div class="v"><strong>$145,000</strong> common stock</div></div>
+        <div class="t-row"><div class="k">Pre-Money</div><div class="v"><strong>$1,650,000</strong></div></div>
+        <div class="t-row"><div class="k">Post-Money</div><div class="v"><strong>$1,795,000</strong></div></div>
+        <div class="t-row"><div class="k">Share Price</div><div class="v">$0.165 per share (878,788 shares issued)</div></div>
+        <div class="t-row"><div class="k">Investor Equity</div><div class="v"><strong>8.1%</strong> fully diluted</div></div>
+        <div class="t-row"><div class="k">Advisor Shares</div><div class="v">1.0% from option pool · 2-year vest · 6-month cliff</div></div>
+        <div class="t-row"><div class="k">Total Stake</div><div class="v"><strong>9.1%</strong> at full vest</div></div>
+        <div class="t-row"><div class="k">Runway</div><div class="v">~9 months to next capital milestone</div></div>
+        <div class="t-row"><div class="k">Filing Path</div><div class="v">Reg D Rule 506(b) · accredited-investor attestation · standard Form D and blue sky filings</div></div>
+      </div>
+
+      <div class="uof-box">
+        <div class="head">Use of Funds · $165K Deployable (Incl. $20K Founder Capital)</div>
+        <div class="uof-items">
+          <div class="uof-item">
+            <div class="k">Inventory &amp; Logistics<span>Production, packaging, freight, fulfillment</span></div>
+            <div class="v">~$60K</div>
+            <div class="pct">36%</div>
+          </div>
+          <div class="uof-item">
+            <div class="k">Marketing &amp; Creative<span>Paid media, creator seeding, content, market activation</span></div>
+            <div class="v">~$50K</div>
+            <div class="pct">30%</div>
+          </div>
+          <div class="uof-item">
+            <div class="k">Operations &amp; G&amp;A<span>LA deployment, legal, insurance, regulatory, fees</span></div>
+            <div class="v">~$25K</div>
+            <div class="pct">15%</div>
+          </div>
+          <div class="uof-item">
+            <div class="k">Working Capital Reserve<span>Contingency for formulation, freight, launch adjustments</span></div>
+            <div class="v">~$30K</div>
+            <div class="pct">18%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-no">11 · Investment Terms</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 12 · APPENDIX / CLOSE                                   -->
+<!-- ============================================================ -->
+<div class="slide s-close">
+  <div class="inner">
+    <span class="eyebrow-num" style="color: rgba(218, 255, 0, 0.6);">12 / 12</span>
+    <div class="tag">Appendix</div>
+    <h2 class="section-title">Cap table, unit economics, and incorporation <em>documents available on request.</em></h2>
+    <p class="body">Supporting documentation is provided upon serious interest. This deck is the summary view.</p>
+
+    <div class="contact">
+      <strong>Pheeew, Inc.</strong>  ·  Delaware C-Corporation  ·  EIN 41-5111005<br>
+      Alex (Seungjoon) Kim, CEO  ·  <a href="mailto:alex@allvitalorganics.co">alex@allvitalorganics.co</a>
+    </div>
+  </div>
+  <div class="slide-no">12 · Close</div>
+</div>
+
+</div>
+</body>
+</html>
