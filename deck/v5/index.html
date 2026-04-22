@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pheeew · Angel Round · v5</title>
+<meta name="description" content="Pheeew, Inc. Angel round pitch. Raising $145K at $1.65M pre-money, priced common stock.">
+<style>
+@page { size: letter; margin: 0.5in; }
+:root {
+  --accent: #8B4A2C;
+  --accent-ink: #4F2913;
+  --accent-cream: #FAF6EF;
+  --accent-peach: #F4DCC5;
+  --text: #0F0F12;
+  --text-2: #404048;
+  --text-3: #72727A;
+  --text-4: #A5A5AD;
+  --border: #E5E1D8;
+  --divider: #EFEBE1;
+  --bg: #FDFBF7;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+  --font-serif: "Iowan Old Style", "Charter", "Georgia", "Times New Roman", serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); background: var(--bg); color: var(--text); line-height: 1.55; -webkit-font-smoothing: antialiased; letter-spacing: -0.008em; font-size: 16px; }
+
+.bar { background: var(--accent-ink); color: var(--accent-cream); text-align: center; padding: 8px 16px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+
+.wrap { max-width: 680px; margin: 0 auto; padding: 0 20px; }
+
+/* Section */
+section { padding: 88px 0; border-bottom: 1px solid var(--divider); }
+section:last-of-type { border-bottom: none; }
+.s-num { font-family: var(--font-serif); font-size: 13px; color: var(--text-4); letter-spacing: 0.14em; font-style: italic; font-weight: 400; margin-bottom: 18px; display: block; }
+
+h2.display { font-family: var(--font-serif); font-size: 44px; font-weight: 400; letter-spacing: -0.03em; line-height: 1.1; color: var(--text); margin-bottom: 24px; max-width: 14em; }
+h2.display em { color: var(--accent); font-style: italic; }
+p.body { font-size: 17px; color: var(--text-2); line-height: 1.65; margin-bottom: 14px; max-width: 34em; }
+p.body strong { color: var(--text); font-weight: 600; }
+
+.stat-row { display: flex; gap: 36px; margin-top: 28px; flex-wrap: wrap; }
+.stat { display: flex; flex-direction: column; }
+.stat .n { font-family: var(--font-serif); font-size: 32px; font-weight: 400; color: var(--accent-ink); letter-spacing: -0.015em; line-height: 1; }
+.stat .l { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; color: var(--text-3); text-transform: uppercase; margin-top: 6px; }
+
+/* HERO */
+.hero { padding: 120px 20px 88px; background: linear-gradient(180deg, var(--accent-cream) 0%, var(--accent-peach) 100%); position: relative; overflow: hidden; }
+.hero::before { content: ""; position: absolute; top: -160px; right: -120px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(139,74,44,0.14), transparent 70%); z-index: 0; }
+.hero::after { content: ""; position: absolute; bottom: -100px; left: -80px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(201,144,108,0.22), transparent 70%); z-index: 0; }
+.hero .inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; padding: 0 20px; }
+.hero h1 { font-family: var(--font-serif); font-size: 88px; font-weight: 400; letter-spacing: -0.045em; line-height: 0.95; color: var(--text); margin-bottom: 20px; }
+.hero .pitch { font-family: var(--font-serif); font-size: 26px; font-weight: 400; color: var(--accent-ink); line-height: 1.3; font-style: italic; margin-bottom: 36px; max-width: 16em; letter-spacing: -0.015em; }
+.hero .desc { font-size: 17px; color: var(--text-2); line-height: 1.5; margin-bottom: 42px; max-width: 28em; }
+.hero .ask-line { padding: 22px 0 0; border-top: 1px solid var(--accent); font-size: 15px; color: var(--text-2); line-height: 1.7; }
+.hero .ask-line strong { color: var(--text); font-weight: 600; }
+
+/* Product SKUs */
+.skus { margin-top: 24px; display: grid; gap: 16px; }
+.sku { padding: 18px 0; border-top: 1px solid var(--divider); }
+.sku:first-child { border-top: 1px solid var(--accent); }
+.sku .label { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 4px; }
+.sku .name { font-family: var(--font-serif); font-size: 22px; color: var(--text); margin-bottom: 4px; letter-spacing: -0.01em; }
+.sku .arch { font-size: 14px; color: var(--accent-ink); font-style: italic; margin-bottom: 6px; }
+.sku .desc { font-size: 14px; color: var(--text-3); line-height: 1.55; }
+
+/* Plan phases */
+.phases { margin-top: 28px; display: grid; gap: 20px; }
+.phase { display: grid; grid-template-columns: 110px 1fr; gap: 20px; padding: 16px 0; border-top: 1px solid var(--divider); }
+.phase:first-child { border-top: 1px solid var(--accent); }
+.phase .when { font-family: var(--font-serif); font-size: 18px; color: var(--accent); font-style: italic; letter-spacing: -0.01em; padding-top: 2px; }
+.phase .what { font-size: 15px; color: var(--text-2); line-height: 1.6; }
+.phase .what strong { color: var(--text); font-weight: 600; display: block; margin-bottom: 4px; font-size: 15.5px; }
+@media (max-width: 560px) { .phase { grid-template-columns: 1fr; gap: 6px; } }
+
+/* Team */
+.team-list { margin-top: 24px; display: grid; gap: 18px; }
+.t-member { display: grid; grid-template-columns: 160px 1fr auto; gap: 20px; padding: 18px 0; border-top: 1px solid var(--divider); align-items: baseline; }
+.t-member:first-child { border-top: 1px solid var(--accent); }
+.t-member .n { font-family: var(--font-serif); font-size: 22px; color: var(--text); letter-spacing: -0.01em; }
+.t-member .n span { display: block; font-family: var(--font-sans); font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; margin-top: 3px; font-style: normal; }
+.t-member .r { font-size: 14.5px; color: var(--text-2); line-height: 1.55; }
+.t-member .e { font-family: var(--font-serif); font-size: 22px; color: var(--accent-ink); letter-spacing: -0.01em; }
+@media (max-width: 560px) { .t-member { grid-template-columns: 1fr; gap: 6px; } .t-member .e { font-size: 18px; } }
+
+/* Econ line */
+.econ-head { margin-top: 26px; padding: 24px 0; border-top: 1px solid var(--accent); border-bottom: 1px solid var(--divider); }
+.econ-head .line { font-family: var(--font-serif); font-size: 28px; color: var(--text); letter-spacing: -0.015em; line-height: 1.3; }
+.econ-head .line em { color: var(--accent); font-style: italic; }
+.econ-head .sub { font-size: 13px; color: var(--text-3); margin-top: 8px; letter-spacing: 0.02em; }
+
+/* Use of funds 4-bucket */
+.uof-grid { margin-top: 24px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.uof-card { padding: 22px 22px; border: 1px solid var(--border); border-radius: 12px; background: #fff; }
+.uof-card .amt { font-family: var(--font-serif); font-size: 26px; color: var(--accent-ink); letter-spacing: -0.015em; line-height: 1; margin-bottom: 4px; }
+.uof-card .pct { font-size: 12px; color: var(--text-3); font-weight: 600; letter-spacing: 0.08em; margin-bottom: 12px; }
+.uof-card .label { font-family: var(--font-serif); font-size: 17px; color: var(--text); margin-bottom: 4px; line-height: 1.25; letter-spacing: -0.005em; }
+.uof-card .detail { font-size: 12.5px; color: var(--text-3); line-height: 1.5; }
+@media (max-width: 560px) { .uof-grid { grid-template-columns: 1fr; } }
+
+/* Terms */
+.terms-list { margin-top: 26px; padding: 28px 0; border-top: 1px solid var(--accent); }
+.terms-list .row { display: grid; grid-template-columns: 180px 1fr; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--divider); font-size: 15px; }
+.terms-list .row:last-child { border-bottom: none; }
+.terms-list .row .k { color: var(--text-3); font-weight: 500; font-size: 13px; letter-spacing: 0.02em; padding-top: 1px; }
+.terms-list .row .v { color: var(--text); font-weight: 500; line-height: 1.55; }
+.terms-list .row .v strong { color: var(--accent-ink); font-weight: 700; }
+@media (max-width: 560px) { .terms-list .row { grid-template-columns: 1fr; gap: 2px; } }
+
+/* Footer */
+footer { background: var(--bg); padding: 64px 20px 80px; border-top: 1px solid var(--divider); }
+footer .inner { max-width: 680px; margin: 0 auto; padding: 0 20px; }
+footer .tag { font-size: 10.5px; font-weight: 700; letter-spacing: 0.2em; color: var(--accent); text-transform: uppercase; margin-bottom: 18px; }
+footer h3 { font-family: var(--font-serif); font-size: 24px; font-weight: 400; color: var(--text); margin-bottom: 18px; letter-spacing: -0.015em; line-height: 1.3; }
+footer p { font-size: 14px; color: var(--text-3); line-height: 1.75; margin-bottom: 10px; }
+footer p strong { color: var(--text-2); font-weight: 600; }
+footer a { color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid var(--accent); }
+
+/* Responsive */
+@media (max-width: 560px) {
+  .hero h1 { font-size: 64px; }
+  .hero .pitch { font-size: 22px; }
+  h2.display { font-size: 34px; }
+  section { padding: 68px 0; }
+  .hero { padding: 80px 20px 68px; }
+}
+
+@media print {
+  body { background: #fff; font-size: 11pt; }
+  .bar { background: #fff; color: var(--accent-ink); border-bottom: 1px solid var(--border); }
+  .hero { background: #fff; padding: 40pt 0; }
+  .hero::before, .hero::after { display: none; }
+  section { padding: 32pt 0; page-break-inside: avoid; }
+  h2.display { page-break-after: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="bar">Confidential · Angel Round · v5</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="inner">
+    <h1>Pheeew.</h1>
+    <p class="pitch">A smoothie for your gut.</p>
+    <p class="desc">Synbiotic. 100mL pouch. Shelf-stable. Built for daily use.</p>
+    <div class="ask-line">
+      Raising <strong>$145K</strong> · $1.65M pre-money · Priced common stock · <strong>8.1% + 1% advisor</strong>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- 01 · THE PROBLEM -->
+<section>
+  <span class="s-num">01</span>
+  <h2 class="display">Gut health is the fastest-growing CPG category, but nothing on the shelf is built for <em>daily use.</em></h2>
+  <p class="body">Functional beverages are dominated by bottles and cans. Powders taste like sand, shots are premium and occasional, juice is not functional. A daily gut-support product that is small, craveable, and shelf-stable does not exist.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="n">$50B+</div><div class="l">US Gut Health TAM</div></div>
+    <div class="stat"><div class="n">14%</div><div class="l">Beverage CAGR</div></div>
+    <div class="stat"><div class="n">+22%</div><div class="l">Synbiotic Search YoY</div></div>
+  </div>
+</section>
+
+<!-- 02 · THE SOLUTION -->
+<section>
+  <span class="s-num">02</span>
+  <h2 class="display">A 100mL puree pouch, <em>synbiotic,</em> shelf-stable for 12 months.</h2>
+  <p class="body">Prebiotic fiber (Fibersol-2L + XOS) plus a shelf-stable probiotic, blended into real-fruit puree. Drink in 10 seconds, throw in a bag, no refrigeration. Not juice. Not a shot. Not a bottle.</p>
+
+  <div class="skus">
+    <div class="sku">
+      <div class="label">Phase 1 — Launch</div>
+      <div class="name">Wild Berries</div>
+      <div class="arch">Gut + Energy</div>
+      <div class="desc">Apple, raspberry, strawberry, and blueberry purées. Lemon juice acidulant.</div>
+    </div>
+    <div class="sku">
+      <div class="label">Phase 2 — Follow-on</div>
+      <div class="name">Tropical Punch</div>
+      <div class="arch">Gut + Digestion</div>
+      <div class="desc">Apple, mango, banana, pineapple, and passion fruit purées.</div>
+    </div>
+    <div class="sku">
+      <div class="label">Phase 3 — Follow-on</div>
+      <div class="name">Ginger Pear</div>
+      <div class="arch">Gut + Immunity</div>
+      <div class="desc">Pear, apple, and kiwi purées. Ginger concentrate with natural oligosaccharides.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · WHY NOW -->
+<section>
+  <span class="s-num">03</span>
+  <h2 class="display">The pouch lane is empty. The synbiotic wedge is <em>open.</em></h2>
+  <p class="body">Poppi (~$150M valuation), Olipop (~$1.85B), Culture Pop — all prebiotic sodas in cans. Suja — premium HPP in bottles. None in pouch format. None with a full synbiotic stack. The structural wedge is format plus function.</p>
+</section>
+
+<!-- 04 · THE PLAN -->
+<section>
+  <span class="s-num">04</span>
+  <h2 class="display">Commit production, validate in parallel, <em>launch DTC by Week 16.</em></h2>
+  <p class="body">Factory lead time is 3 to 4 months. We commit the first MOQ at funding close, then run LA farmer's markets with pre-production samples during the wait. Main inventory lands Week 16 and full DTC launch begins.</p>
+
+  <div class="phases">
+    <div class="phase">
+      <div class="when">Month 1</div>
+      <div class="what"><strong>Deploy capital</strong>Wire factory deposit. Order packaging. Alex and Dawon arrive in LA. Sample batch air-shipped.</div>
+    </div>
+    <div class="phase">
+      <div class="when">Months 2–4</div>
+      <div class="what"><strong>Validate in parallel</strong>LA farmer's markets twice a week. Pre-order page live. Creator seeding. Community building.</div>
+    </div>
+    <div class="phase">
+      <div class="when">Month 4–5</div>
+      <div class="what"><strong>Launch DTC</strong>Main inventory lands. Full e-commerce launch. Subscription stack live. Scaled paid media.</div>
+    </div>
+    <div class="phase">
+      <div class="when">Month 6</div>
+      <div class="what"><strong>Decide Phase 2</strong>Signal review. Commit to Tropical Punch SKU. Prep for Angel extension round.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · TEAM -->
+<section>
+  <span class="s-num">05</span>
+  <h2 class="display">Three founders, locked cap table, <em>$20K of our own money in first.</em></h2>
+  <p class="body">Delaware C-Corp formed March 2026. Cap table signed. RSPAs and CIIAAs executed. 83(b) elections filed. Founder share purchases in bank by mid-May.</p>
+
+  <div class="team-list">
+    <div class="t-member">
+      <div class="n">Alex Kim <span>CEO</span></div>
+      <div class="r">Brand, product, creative direction. Korea-born, Seattle-raised, LA-based.</div>
+      <div class="e">35%</div>
+    </div>
+    <div class="t-member">
+      <div class="n">Jason Ko <span>COO</span></div>
+      <div class="r">Operations, copy, growth, community. Los Angeles.</div>
+      <div class="e">33%</div>
+    </div>
+    <div class="t-member">
+      <div class="n">Dawon Kim <span>CDO</span></div>
+      <div class="r">Design, video, web, aesthetics. Seoul.</div>
+      <div class="e">32%</div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 · ECONOMICS + USE OF FUNDS -->
+<section>
+  <span class="s-num">06</span>
+  <h2 class="display">Healthy margins from day one. <em>Every dollar deployed on business.</em></h2>
+  <p class="body">Unit economics pulled from the signed factory quote at 40K MOQ. Founders draw no salary from this round, which keeps capital focused on production, marketing, and launch.</p>
+
+  <div class="econ-head">
+    <div class="line">~<strong>$1.05</strong> landed COGS, ~<strong>$3.40</strong> blended DTC, <em>~50% gross margin.</em></div>
+    <div class="sub">Year 1 revenue range: ~$100K conservative · ~$225K base · ~$385K upside</div>
+  </div>
+
+  <p class="body" style="margin-top: 32px; font-size: 14px; color: var(--text-3); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600;">Use of Funds · $165K Deployable</p>
+
+  <div class="uof-grid">
+    <div class="uof-card">
+      <div class="amt">~$60K</div>
+      <div class="pct">36% · Production</div>
+      <div class="label">Inventory &amp; Logistics</div>
+      <div class="detail">40K MOQ production, packaging, freight, fulfillment setup.</div>
+    </div>
+    <div class="uof-card">
+      <div class="amt">~$50K</div>
+      <div class="pct">30% · Growth</div>
+      <div class="label">Marketing &amp; Creative</div>
+      <div class="detail">Paid media, creator seeding, content production, farmer's market activation.</div>
+    </div>
+    <div class="uof-card">
+      <div class="amt">~$25K</div>
+      <div class="pct">15% · Ops</div>
+      <div class="label">Operations &amp; G&amp;A</div>
+      <div class="detail">LA deployment, legal, insurance, regulatory testing, transaction fees.</div>
+    </div>
+    <div class="uof-card">
+      <div class="amt">~$30K</div>
+      <div class="pct">18% · Buffer</div>
+      <div class="label">Working Capital Reserve</div>
+      <div class="detail">Contingency for formulation iteration, freight variance, or launch adjustments.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 · THE ASK -->
+<section>
+  <span class="s-num">07</span>
+  <h2 class="display">The round: <em>$145K, priced, common stock.</em></h2>
+  <p class="body">Combined with $20K of founder capital already committed, this round funds the six-month validation-to-launch sprint. Close target is four to six weeks from first conversation to wire.</p>
+
+  <div class="terms-list">
+    <div class="row"><div class="k">Investment</div><div class="v"><strong>$145,000</strong> common stock</div></div>
+    <div class="row"><div class="k">Pre-Money</div><div class="v"><strong>$1.65M</strong> (center of defensible pre-revenue CPG range)</div></div>
+    <div class="row"><div class="k">Post-Money</div><div class="v"><strong>$1.8M</strong></div></div>
+    <div class="row"><div class="k">Investor Equity</div><div class="v"><strong>8.1%</strong> fully diluted</div></div>
+    <div class="row"><div class="k">Advisor Shares</div><div class="v">1.0% from option pool, 2-year vest, 6-month cliff</div></div>
+    <div class="row"><div class="k">Total Stake</div><div class="v"><strong>9.1%</strong> at full vest</div></div>
+    <div class="row"><div class="k">Runway</div><div class="v">~9 months to the next capital milestone</div></div>
+    <div class="row"><div class="k">Close Path</div><div class="v">4 to 6 weeks · standard Reg D filings · Carta execution</div></div>
+  </div>
+</section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="inner">
+    <div class="tag">Appendix</div>
+    <h3>Full financial model, line-item budget, factory quote, and cap table available on request.</h3>
+    <p>Internal working document covers 21 sections of detail: unit economics, revenue scenarios, round-by-round dilution, risk register, and sourcing. This deck is the summary. The model is the backing.</p>
+    <p style="margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--divider);"><strong>Pheeew, Inc.</strong> · Delaware C-Corporation · EIN 41-5111005<br>
+    Alex (Seungjoon) Kim, CEO · <a href="mailto:alex@allvitalorganics.co">alex@allvitalorganics.co</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
