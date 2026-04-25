@@ -355,7 +355,7 @@ p.section-lede strong { color: var(--ink); font-weight: 600; }
   box-shadow: var(--shadow-card);
 }
 .act {
-  display: grid; grid-template-columns: 1.6fr 80px 80px 90px 100px 80px;
+  display: grid; grid-template-columns: 2fr 100px 110px 100px 90px;
   gap: 12px; padding: 14px 22px;
   border-bottom: .5px solid var(--separator);
   align-items: center; font-size: 13px;
@@ -517,7 +517,7 @@ p.section-lede strong { color: var(--ink); font-weight: 600; }
     <div class="icon">!</div>
     <div>
       <h4>Full launch = 3 SKUs at MOQ each = 120,000 pouches</h4>
-      <p>When we trigger Naju, all three flavors go at once — <strong>Berry Mix · Pear Ginger · Tropical Punch</strong>, 40K each. Not a phased rollout from the factory. The phases in the brand roadmap (Phase 1 anchor, Phase 2, Phase 3) refer to what we lead with in marketing, not what comes off the production line. Production is one big run.</p>
+      <p>When we trigger Naju, all three flavors go at once — <strong>Wild Berries · Ginger Pear · Tropical Punch</strong>, 40K each. Not a phased rollout from the factory. The phases in the brand roadmap (Phase 1 anchor, Phase 2, Phase 3) refer to what we lead with in marketing, not what comes off the production line. Production is one big run.</p>
     </div>
   </div>
 
@@ -540,7 +540,7 @@ p.section-lede strong { color: var(--ink); font-weight: 600; }
   </div>
 
   <h2 class="section-title">The <em>real</em> Naju number.</h2>
-  <p class="section-lede">When we trigger Naju, this is what comes due. Per-SKU pricing varies (Berry ₩1,392 · Pear Ginger ₩1,358 · Tropical Punch ₩1,462 ex-factory at 40K). All numbers in USD at ₩1,400 per dollar.</p>
+  <p class="section-lede">When we trigger Naju, this is what comes due. Per-SKU pricing varies (Berry ₩1,392 · Ginger Pear ₩1,358 · Tropical Punch ₩1,462 ex-factory at 40K). All numbers in USD at ₩1,400 per dollar.</p>
 
   <div class="budget">
     <div class="brow head">
@@ -551,19 +551,19 @@ p.section-lede strong { color: var(--ink); font-weight: 600; }
     </div>
     <div class="brow">
       <div class="ico">A</div>
-      <div class="name">Berry Mix · 40,000 units<div class="sub">₩1,392 EXW × 40K = ₩55.68M · Phase 1 anchor SKU</div></div>
+      <div class="name">Wild Berries · 40,000 units<div class="sub">₩1,392 EXW × 40K = ₩55.68M · Gut + Energy · Phase 1 anchor</div></div>
       <div class="amt">$39,770</div>
       <div class="time">8–12 wk prod</div>
     </div>
     <div class="brow">
       <div class="ico">B</div>
-      <div class="name">Pear Ginger · 40,000 units<div class="sub">₩1,358 EXW × 40K = ₩54.30M</div></div>
+      <div class="name">Ginger Pear · 40,000 units<div class="sub">₩1,358 EXW × 40K = ₩54.30M · Gut + Immunity</div></div>
       <div class="amt">$38,790</div>
       <div class="time">parallel</div>
     </div>
     <div class="brow">
       <div class="ico">C</div>
-      <div class="name">Tropical Punch · 40,000 units<div class="sub">₩1,462 EXW × 40K = ₩58.46M</div></div>
+      <div class="name">Tropical Punch · 40,000 units<div class="sub">₩1,462 EXW × 40K = ₩58.46M · Gut + Digestion</div></div>
       <div class="amt">$41,760</div>
       <div class="time">parallel</div>
     </div>
@@ -634,7 +634,7 @@ p.section-lede strong { color: var(--ink); font-weight: 600; }
       </div>
       <ul>
         <li><strong>3 production runs</strong> at commissary, ~2K units each</li>
-        <li>Berry Mix only · Phase 1 anchor</li>
+        <li>Wild Berries only · Phase 1 anchor</li>
         <li>$2.50 unit landed cost · thin margin</li>
         <li>Sales fund the next batch</li>
         <li>Content captured organically</li>
@@ -798,14 +798,6 @@ p.section-lede strong { color: var(--ink); font-weight: 600; }
       <button class="filter-pill" data-filter="mode" data-value="always">always</button>
     </div>
     <div class="filter-row">
-      <span class="label">owner</span>
-      <button class="filter-pill active" data-filter="owner" data-value="all">all</button>
-      <button class="filter-pill" data-filter="owner" data-value="alex">alex</button>
-      <button class="filter-pill" data-filter="owner" data-value="jason">jason</button>
-      <button class="filter-pill" data-filter="owner" data-value="dawon">dawon</button>
-      <button class="filter-pill" data-filter="owner" data-value="team">team</button>
-    </div>
-    <div class="filter-row">
       <span class="label">who does</span>
       <button class="filter-pill active" data-filter="license" data-value="all">all</button>
       <button class="filter-pill" data-filter="license" data-value="in">in-house</button>
@@ -832,7 +824,6 @@ p.section-lede strong { color: var(--ink); font-weight: 600; }
     <div class="act head">
       <span>activity</span>
       <span style="text-align:center;">mode</span>
-      <span style="text-align:center;">owner</span>
       <span style="text-align:center;">who does</span>
       <span style="text-align:right;">cost</span>
       <span style="text-align:right;">time</span>
@@ -840,90 +831,79 @@ p.section-lede strong { color: var(--ink); font-weight: 600; }
 
     <!-- ────── REGULATORY ────── -->
 
-    <div class="act" data-mode="now" data-owner="alex" data-license="lic" data-cat="reg">
+    <div class="act" data-mode="now" data-license="lic" data-cat="reg">
       <div class="activity"><span class="blocker-flag"></span>Confirm probiotic strain heat-stability<div class="sub">Spore-form (BC30) survives hot-fill · L. acidophilus does not. Gates the entire commissary path.</div></div>
       <div class="pip now">now</div>
-      <div class="pip alex">alex</div>
       <div class="pip lic">licensed</div>
       <div class="cost">$0</div>
       <div class="time">3 days</div>
     </div>
-    <div class="act" data-mode="now" data-owner="alex" data-license="lic" data-cat="reg">
+    <div class="act" data-mode="now" data-license="lic" data-cat="reg">
       <div class="activity">Process Authority letter · hot-fill validation<div class="sub">UC Davis Extension · Cornell · independent food scientist. Required for commissary acidified foods process.</div></div>
       <div class="pip now">now</div>
-      <div class="pip alex">alex</div>
       <div class="pip lic">licensed</div>
       <div class="cost">$1,000</div>
       <div class="time">2–6 wk</div>
     </div>
-    <div class="act" data-mode="now" data-owner="alex" data-license="lic" data-cat="reg">
+    <div class="act" data-mode="now" data-license="lic" data-cat="reg">
       <div class="activity">Better Process Control School certification<div class="sub">UC Davis Extension · 2-day class · waitlist 1–3 mo · one founder must hold cert.</div></div>
       <div class="pip now">now</div>
-      <div class="pip alex">alex</div>
       <div class="pip lic">licensed</div>
       <div class="cost">$700</div>
       <div class="time">4–14 wk</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="alex" data-license="both" data-cat="reg">
+    <div class="act" data-mode="ready" data-license="both" data-cat="reg">
       <div class="activity">Acidified Foods FDA registration · Forms 2541 + 2541e<div class="sub">In-house filing, but Process Authority must validate process first. FDA review 3–6 mo.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip alex">alex</div>
       <div class="pip both">both</div>
       <div class="cost">$0</div>
       <div class="time">3–6 mo</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="alex" data-license="in" data-cat="reg">
+    <div class="act" data-mode="ready" data-license="in" data-cat="reg">
       <div class="activity">FDA Food Facility Registration<div class="sub">Free · online · instant · annual renewal.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip alex">alex</div>
       <div class="pip in">in-house</div>
       <div class="cost">$0</div>
       <div class="time">30 min</div>
     </div>
-    <div class="act" data-mode="now" data-owner="alex" data-license="lic" data-cat="reg">
+    <div class="act" data-mode="now" data-license="lic" data-cat="reg">
       <div class="activity">LA County DPH process approval (commissary)<div class="sub">Required to operate hot-fill in shared commercial kitchen. Inspector signs off.</div></div>
       <div class="pip now">now</div>
-      <div class="pip alex">alex</div>
       <div class="pip lic">licensed</div>
       <div class="cost">$0</div>
       <div class="time">2–4 wk</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="alex" data-license="both" data-cat="reg">
+    <div class="act" data-mode="ready" data-license="both" data-cat="reg">
       <div class="activity">HACCP plan drafted · CCPs documented<div class="sub">pH, fill temp, cool time, hold time. PCQI-reviewed if commissary path.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip alex">alex</div>
       <div class="pip both">both</div>
       <div class="cost">$1,500</div>
       <div class="time">2–4 wk</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="alex" data-license="lic" data-cat="reg">
+    <div class="act" data-mode="ready" data-license="lic" data-cat="reg">
       <div class="activity">PCQI certification (Preventive Controls Qualified Individual)<div class="sub">FSMA requirement for commissary-side oversight. Co-packer covers if outsourced.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip alex">alex</div>
       <div class="pip lic">licensed</div>
       <div class="cost">$900</div>
       <div class="time">2.5 days</div>
     </div>
-    <div class="act" data-mode="always" data-owner="jason" data-license="in" data-cat="reg">
+    <div class="act" data-mode="always" data-license="in" data-cat="reg">
       <div class="activity">CDTFA seller's permit (CA)<div class="sub">Free · online · required before any retail sale or market booth.</div></div>
       <div class="pip always">always</div>
-      <div class="pip jason">jason</div>
       <div class="pip in">in-house</div>
       <div class="cost">$0</div>
       <div class="time">1 hr</div>
     </div>
-    <div class="act" data-mode="trigger" data-owner="alex" data-license="in" data-cat="reg">
+    <div class="act" data-mode="trigger" data-license="in" data-cat="reg">
       <div class="activity">FDA Prior Notice (per Naju shipment)<div class="sub">Free · online · required for every import. File 8–24 hrs before arrival.</div></div>
       <div class="pip trigger">trigger</div>
-      <div class="pip alex">alex</div>
       <div class="pip in">in-house</div>
       <div class="cost">$0</div>
       <div class="time">30 min</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="alex" data-license="both" data-cat="reg">
+    <div class="act" data-mode="ready" data-license="both" data-cat="reg">
       <div class="activity">Trademark filing · "Pheeew" wordmark + logo<div class="sub">USPTO TEAS · self-file or attorney-assisted · Class 32 (beverages).</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip alex">alex</div>
       <div class="pip both">both</div>
       <div class="cost">$350</div>
       <div class="time">8–12 mo</div>
@@ -931,50 +911,44 @@ p.section-lede strong { color: var(--ink); font-weight: 600; }
 
     <!-- ────── COMMERCIAL · INSURANCE / BROKER ────── -->
 
-    <div class="act" data-mode="ready" data-owner="jason" data-license="lic" data-cat="com">
+    <div class="act" data-mode="ready" data-license="lic" data-cat="com">
       <div class="activity">Product liability insurance · $1M<div class="sub">Required before any sale. THIMBLE · NEXT · Hiscox · The Hartford. Annual.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip jason">jason</div>
       <div class="pip lic">licensed</div>
       <div class="cost">$1,000/yr</div>
       <div class="time">3–7 days</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="jason" data-license="lic" data-cat="com">
+    <div class="act" data-mode="ready" data-license="lic" data-cat="com">
       <div class="activity">US customs broker · retainer relationship<div class="sub">Pre-engage Flexport · C.H. Robinson · Expeditors. Saves 1–2 wk when trigger fires.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip jason">jason</div>
       <div class="pip lic">licensed</div>
       <div class="cost">$0 setup</div>
       <div class="time">1–2 wk</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="jason" data-license="lic" data-cat="com">
+    <div class="act" data-mode="ready" data-license="lic" data-cat="com">
       <div class="activity">Continuous import bond ($50K minimum)<div class="sub">$300/yr through customs broker · covers all year's entries · file once, use repeatedly.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip jason">jason</div>
       <div class="pip lic">licensed</div>
       <div class="cost">$300/yr</div>
       <div class="time">1 wk</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="alex" data-license="lic" data-cat="com">
+    <div class="act" data-mode="ready" data-license="lic" data-cat="com">
       <div class="activity">KORUS Origin Cert process pre-arranged with Naju<div class="sub">Saves ~3% duty per shipment · in writing on every PO. Naju issues; we receive.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip alex">alex</div>
       <div class="pip lic">licensed</div>
       <div class="cost">$0</div>
       <div class="time">1 email</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="jason" data-license="in" data-cat="com">
+    <div class="act" data-mode="ready" data-license="in" data-cat="com">
       <div class="activity">UPC / GTIN registration (GS1)<div class="sub">Required for retail · Amazon barcode · register once for full SKU set. Annual renewal.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip jason">jason</div>
       <div class="pip in">in-house</div>
       <div class="cost">$250</div>
       <div class="time">1 wk</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="jason" data-license="in" data-cat="com">
+    <div class="act" data-mode="ready" data-license="in" data-cat="com">
       <div class="activity">Wholesale pricing tiers built (Naju COGS-based)<div class="sub">Case price · MOQ · payment terms · slotting policy · sample policy. Shareable PDF sell sheet.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip jason">jason</div>
       <div class="pip in">in-house</div>
       <div class="cost">$0</div>
       <div class="time">2 wk</div>
@@ -982,18 +956,16 @@ p.section-lede strong { color: var(--ink); font-weight: 600; }
 
     <!-- ────── LAB ────── -->
 
-    <div class="act" data-mode="now" data-owner="alex" data-license="lic" data-cat="reg">
+    <div class="act" data-mode="now" data-license="lic" data-cat="reg">
       <div class="activity">Lab testing · nutrition + microbial + accelerated shelf-life<div class="sub">Eurofins · Microbac · Covance · NSF. Batched. Required for label + Acidified Foods filing.</div></div>
       <div class="pip now">now</div>
-      <div class="pip alex">alex</div>
       <div class="pip lic">licensed</div>
       <div class="cost">$2,500</div>
       <div class="time">3–6 wk</div>
     </div>
-    <div class="act" data-mode="trigger" data-owner="alex" data-license="lic" data-cat="reg">
+    <div class="act" data-mode="trigger" data-license="lic" data-cat="reg">
       <div class="activity">Production-run validation lab tests · post-Naju<div class="sub">Re-confirm shelf-life, CFU, nutrition on actual Naju batch · per MSA terms.</div></div>
       <div class="pip trigger">trigger</div>
-      <div class="pip alex">alex</div>
       <div class="pip lic">licensed</div>
       <div class="cost">$1,500</div>
       <div class="time">3–6 wk</div>
@@ -1001,66 +973,58 @@ p.section-lede strong { color: var(--ink); font-weight: 600; }
 
     <!-- ────── PRODUCTION ────── -->
 
-    <div class="act" data-mode="now" data-owner="alex" data-license="lic" data-cat="prod">
+    <div class="act" data-mode="now" data-license="lic" data-cat="prod">
       <div class="activity">Tour 2 LA-area commissary kitchens · hot-fill capable<div class="sub">Hood Kitchen · Cube · Hatchery · Kitchen Match. Confirm pouch-fill permitted.</div></div>
       <div class="pip now">now</div>
-      <div class="pip alex">alex</div>
       <div class="pip lic">licensed</div>
       <div class="cost">$0</div>
       <div class="time">1 wk</div>
     </div>
-    <div class="act" data-mode="now" data-owner="alex" data-license="in" data-cat="prod">
+    <div class="act" data-mode="now" data-license="in" data-cat="prod">
       <div class="activity">Buy benchtop pouch sealer + pH meter + thermometer<div class="sub">Used 2K range. Capital equipment for commissary path.</div></div>
       <div class="pip now">now</div>
-      <div class="pip alex">alex</div>
       <div class="pip in">in-house</div>
       <div class="cost">$1,500</div>
       <div class="time">1 wk</div>
     </div>
-    <div class="act" data-mode="now" data-owner="alex" data-license="in" data-cat="prod">
+    <div class="act" data-mode="now" data-license="in" data-cat="prod">
       <div class="activity">Source pouch material · small-batch run (3K)<div class="sub">China direct · 30K MOQ but split across 5 batches · or local pouch printer at higher unit cost.</div></div>
       <div class="pip now">now</div>
-      <div class="pip alex">alex</div>
       <div class="pip in">in-house</div>
       <div class="cost">$300</div>
       <div class="time">2–4 wk</div>
     </div>
-    <div class="act" data-mode="now" data-owner="alex" data-license="in" data-cat="prod">
-      <div class="activity">Commissary production run #1 · 2,000 units<div class="sub">Berry Mix Phase 1 · 1 day kitchen + ingredients + labor.</div></div>
+    <div class="act" data-mode="now" data-license="in" data-cat="prod">
+      <div class="activity">Commissary production run #1 · 2,000 units<div class="sub">Wild Berries Phase 1 · 1 day kitchen + ingredients + labor.</div></div>
       <div class="pip now">now</div>
-      <div class="pip alex">alex</div>
       <div class="pip in">in-house</div>
       <div class="cost">$1,500</div>
       <div class="time">1 day</div>
     </div>
-    <div class="act" data-mode="now" data-owner="alex" data-license="in" data-cat="prod">
+    <div class="act" data-mode="now" data-license="in" data-cat="prod">
       <div class="activity">Commissary production runs #2 + #3 · 2K each<div class="sub">Iterate as needed · same workflow · ingredient-cost driven.</div></div>
       <div class="pip now">now</div>
-      <div class="pip alex">alex</div>
       <div class="pip in">in-house</div>
       <div class="cost">$3,000</div>
       <div class="time">2 days</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="alex" data-license="in" data-cat="prod">
+    <div class="act" data-mode="ready" data-license="in" data-cat="prod">
       <div class="activity">Naju quote final · 40K × 3 SKU pricing locked<div class="sub">Confirm KORUS Origin Cert clause · payment terms · production calendar.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip alex">alex</div>
       <div class="pip in">in-house</div>
       <div class="cost">$0</div>
       <div class="time">2–3 wk</div>
     </div>
-    <div class="act" data-mode="trigger" data-owner="alex" data-license="in" data-cat="prod">
+    <div class="act" data-mode="trigger" data-license="in" data-cat="prod">
       <div class="activity">Naju PO sent · 50% deposit wired<div class="sub">$65K wire · production starts · pouch art final to Naju.</div></div>
       <div class="pip trigger">trigger</div>
-      <div class="pip alex">alex</div>
       <div class="pip in">in-house</div>
       <div class="cost">$65,000</div>
       <div class="time">1 wk</div>
     </div>
-    <div class="act" data-mode="trigger" data-owner="alex" data-license="in" data-cat="prod">
+    <div class="act" data-mode="trigger" data-license="in" data-cat="prod">
       <div class="activity">Naju balance + freight + customs<div class="sub">Final 50% · sea freight · customs clearance · LA inland.</div></div>
       <div class="pip trigger">trigger</div>
-      <div class="pip alex">alex</div>
       <div class="pip in">in-house</div>
       <div class="cost">$65,000</div>
       <div class="time">8–14 wk</div>
@@ -1068,66 +1032,58 @@ p.section-lede strong { color: var(--ink); font-weight: 600; }
 
     <!-- ────── OPERATIONAL ────── -->
 
-    <div class="act" data-mode="ready" data-owner="jason" data-license="in" data-cat="ops">
+    <div class="act" data-mode="ready" data-license="in" data-cat="ops">
       <div class="activity">ShipBob 3PL account · Shopify integration<div class="sub">No setup fee · ~$5–8/pallet/mo storage + ~$3–6 per pick/pack.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip jason">jason</div>
       <div class="pip in">in-house</div>
       <div class="cost">$500 reserve</div>
       <div class="time">1–2 wk</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="jason" data-license="in" data-cat="ops">
+    <div class="act" data-mode="ready" data-license="in" data-cat="ops">
       <div class="activity">Shopify build · pheeew.com<div class="sub">Theme · checkout · subscription tiers · Klaviyo connected.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip jason">jason</div>
       <div class="pip in">in-house</div>
       <div class="cost">$300/yr</div>
       <div class="time">2 wk</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="jason" data-license="in" data-cat="ops">
+    <div class="act" data-mode="ready" data-license="in" data-cat="ops">
       <div class="activity">Klaviyo · welcome flow + cart abandonment<div class="sub">Tier $35/mo entry · upgrades with list growth.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip jason">jason</div>
       <div class="pip in">in-house</div>
       <div class="cost">$140/yr</div>
       <div class="time">1 wk</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="jason" data-license="in" data-cat="ops">
+    <div class="act" data-mode="ready" data-license="in" data-cat="ops">
       <div class="activity">Amazon Seller Central application<div class="sub">2–4 wk approval · brand registry · listing prep. Start now even if SKUs not live.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip jason">jason</div>
       <div class="pip in">in-house</div>
       <div class="cost">$40/mo</div>
       <div class="time">2–4 wk</div>
     </div>
-    <div class="act" data-mode="now" data-owner="team" data-license="in" data-cat="ops">
+    <div class="act" data-mode="now" data-license="in" data-cat="ops">
       <div class="activity">LA Temporary Food Facility permits · 5 markets<div class="sub">Per-event permit · prepackaged non-hazardous · LA County DPH.</div></div>
       <div class="pip now">now</div>
-      <div class="pip team">team</div>
       <div class="pip in">in-house</div>
       <div class="cost">$500</div>
       <div class="time">2–3 wk</div>
     </div>
-    <div class="act" data-mode="now" data-owner="team" data-license="in" data-cat="ops">
+    <div class="act" data-mode="now" data-license="in" data-cat="ops">
       <div class="activity">Farmers market booth setup · banner + display<div class="sub">In-brand · cooler-free · prepackaged display only.</div></div>
       <div class="pip now">now</div>
-      <div class="pip team">team</div>
       <div class="pip in">in-house</div>
       <div class="cost">$400</div>
       <div class="time">1 wk</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="dawon" data-license="in" data-cat="ops">
+    <div class="act" data-mode="ready" data-license="in" data-cat="ops">
       <div class="activity">Pouch artwork final · CMYK · with-bleed · Korea + China specs<div class="sub">Reserve Nutrition Facts + Best By date areas until lab returns.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip dawon">dawon</div>
       <div class="pip in">in-house</div>
       <div class="cost">$0</div>
       <div class="time">2 wk</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="dawon" data-license="in" data-cat="ops">
+    <div class="act" data-mode="ready" data-license="in" data-cat="ops">
       <div class="activity">Sell sheet PDF · COA · sample case template<div class="sub">For wholesale buyer outreach · 1-pager + case price + lead time + compliance docs.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip dawon">dawon</div>
       <div class="pip in">in-house</div>
       <div class="cost">$0</div>
       <div class="time">1 wk</div>
@@ -1135,34 +1091,30 @@ p.section-lede strong { color: var(--ink); font-weight: 600; }
 
     <!-- ────── FINANCE ────── -->
 
-    <div class="act" data-mode="ready" data-owner="alex" data-license="in" data-cat="fin">
+    <div class="act" data-mode="ready" data-license="in" data-cat="fin">
       <div class="activity">Mercury account · spend tracking · reserve $20K<div class="sub">Already in place · Alex's $6,750 contribution clearing.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip alex">alex</div>
       <div class="pip in">in-house</div>
       <div class="cost">$0</div>
       <div class="time">done</div>
     </div>
-    <div class="act" data-mode="trigger" data-owner="alex" data-license="in" data-cat="fin">
+    <div class="act" data-mode="trigger" data-license="in" data-cat="fin">
       <div class="activity">Naju trigger funding source<div class="sub">Raise next round · buyer advance PO · founder bridge · partnership capital.</div></div>
       <div class="pip trigger">trigger</div>
-      <div class="pip alex">alex</div>
       <div class="pip in">in-house</div>
       <div class="cost">$130K need</div>
       <div class="time">trigger</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="alex" data-license="in" data-cat="fin">
+    <div class="act" data-mode="ready" data-license="in" data-cat="fin">
       <div class="activity">COGS modeling at full scale · pricing ladder<div class="sub">Sell sheet pricing · margin tiers · Net 30 vs Net 60 cash impact.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip alex">alex</div>
       <div class="pip in">in-house</div>
       <div class="cost">$0</div>
       <div class="time">1 wk</div>
     </div>
-    <div class="act" data-mode="always" data-owner="jason" data-license="in" data-cat="fin">
+    <div class="act" data-mode="always" data-license="in" data-cat="fin">
       <div class="activity">Bookkeeping · QuickBooks or similar<div class="sub">Track spend · revenue · margin per channel. Required for tax.</div></div>
       <div class="pip always">always</div>
-      <div class="pip jason">jason</div>
       <div class="pip in">in-house</div>
       <div class="cost">$30/mo</div>
       <div class="time">ongoing</div>
@@ -1170,58 +1122,51 @@ p.section-lede strong { color: var(--ink); font-weight: 600; }
 
     <!-- ────── COMMERCIAL · GO-TO-MARKET ────── -->
 
-    <div class="act" data-mode="now" data-owner="team" data-license="in" data-cat="com">
+    <div class="act" data-mode="now" data-license="in" data-cat="com">
       <div class="activity">Visit 5 LA farmers markets · in-person scout<div class="sub">Smorgasburg · Atwater · Silver Lake · Mar Vista · Larchmont.</div></div>
       <div class="pip now">now</div>
-      <div class="pip team">team</div>
       <div class="pip in">in-house</div>
       <div class="cost">$0</div>
       <div class="time">1 wk</div>
     </div>
-    <div class="act" data-mode="now" data-owner="team" data-license="in" data-cat="com">
+    <div class="act" data-mode="now" data-license="in" data-cat="com">
       <div class="activity">Book 3 farmers market booths · season opener<div class="sub">First sales channel · brand exposure · content capture.</div></div>
       <div class="pip now">now</div>
-      <div class="pip team">team</div>
       <div class="pip in">in-house</div>
       <div class="cost">$300</div>
       <div class="time">2 wk</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="dawon" data-license="in" data-cat="com">
+    <div class="act" data-mode="ready" data-license="in" data-cat="com">
       <div class="activity">Storyboards 04–06 capture · founder-led content<div class="sub">Per the storyboards doc · raw, candid, iPhone-native.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip dawon">dawon</div>
       <div class="pip in">in-house</div>
       <div class="cost">$0</div>
       <div class="time">2 wk</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="dawon" data-license="in" data-cat="com">
+    <div class="act" data-mode="ready" data-license="in" data-cat="com">
       <div class="activity">Brand stills library · Track 02 · ongoing<div class="sub">Desert / sun / shade / toe-tingle · evergreen · per brand world doc.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip dawon">dawon</div>
       <div class="pip in">in-house</div>
       <div class="cost">$0</div>
       <div class="time">ongoing</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="jason" data-license="in" data-cat="com">
+    <div class="act" data-mode="ready" data-license="in" data-cat="com">
       <div class="activity">@saypheeew Instagram launch · 30-day calendar<div class="sub">Per brand world playbook · 5 pillars · 1 post/day.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip jason">jason</div>
       <div class="pip in">in-house</div>
       <div class="cost">$0</div>
       <div class="time">2 wk</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="jason" data-license="in" data-cat="com">
+    <div class="act" data-mode="ready" data-license="in" data-cat="com">
       <div class="activity">Wholesale buyer outreach list · top 10 LA accounts<div class="sub">Erewhon · Whole Foods · Sprouts · Gelson's · Bristol Farms · regional indies.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip jason">jason</div>
       <div class="pip in">in-house</div>
       <div class="cost">$0</div>
       <div class="time">1 wk</div>
     </div>
-    <div class="act" data-mode="ready" data-owner="jason" data-license="in" data-cat="com">
+    <div class="act" data-mode="ready" data-license="in" data-cat="com">
       <div class="activity">Sample case prep · 24 pouches per buyer<div class="sub">From commissary inventory · with sell sheet + COA.</div></div>
       <div class="pip ready">ready</div>
-      <div class="pip jason">jason</div>
       <div class="pip in">in-house</div>
       <div class="cost">$200</div>
       <div class="time">1 wk</div>
@@ -1229,18 +1174,16 @@ p.section-lede strong { color: var(--ink); font-weight: 600; }
 
     <!-- ────── REGULATORY · POST-TRIGGER ────── -->
 
-    <div class="act" data-mode="trigger" data-owner="jason" data-license="lic" data-cat="reg">
+    <div class="act" data-mode="trigger" data-license="lic" data-cat="reg">
       <div class="activity">Customs entry filing · CBP Form 7501 (Naju)<div class="sub">Through retained customs broker · KORUS preference claimed · per shipment.</div></div>
       <div class="pip trigger">trigger</div>
-      <div class="pip jason">jason</div>
       <div class="pip lic">licensed</div>
       <div class="cost">$450</div>
       <div class="time">3–5 days</div>
     </div>
-    <div class="act" data-mode="trigger" data-owner="alex" data-license="in" data-cat="reg">
+    <div class="act" data-mode="trigger" data-license="in" data-cat="reg">
       <div class="activity">Acidified Foods 2541e · refile per Naju process<div class="sub">If hot-fill at commissary, then again at Naju. Different process, different filing.</div></div>
       <div class="pip trigger">trigger</div>
-      <div class="pip alex">alex</div>
       <div class="pip in">in-house</div>
       <div class="cost">$0</div>
       <div class="time">3–6 mo</div>
@@ -1248,18 +1191,16 @@ p.section-lede strong { color: var(--ink); font-weight: 600; }
 
     <!-- ────── FINANCE · POST-TRIGGER ────── -->
 
-    <div class="act" data-mode="trigger" data-owner="alex" data-license="in" data-cat="fin">
+    <div class="act" data-mode="trigger" data-license="in" data-cat="fin">
       <div class="activity">Wholesale invoicing · Net 30 · QuickBooks<div class="sub">PO acceptance · invoice generation · A/R follow-up · cash collection.</div></div>
       <div class="pip trigger">trigger</div>
-      <div class="pip alex">alex</div>
       <div class="pip in">in-house</div>
       <div class="cost">$0</div>
       <div class="time">ongoing</div>
     </div>
-    <div class="act" data-mode="trigger" data-owner="jason" data-license="in" data-cat="fin">
+    <div class="act" data-mode="trigger" data-license="in" data-cat="fin">
       <div class="activity">Re-order forecast · 90-day rolling<div class="sub">Naju lead time means 4-month rolling forecast required to avoid stockouts.</div></div>
       <div class="pip trigger">trigger</div>
-      <div class="pip jason">jason</div>
       <div class="pip in">in-house</div>
       <div class="cost">$0</div>
       <div class="time">ongoing</div>
@@ -1267,26 +1208,23 @@ p.section-lede strong { color: var(--ink); font-weight: 600; }
 
     <!-- ────── OPERATIONAL · ALWAYS ────── -->
 
-    <div class="act" data-mode="always" data-owner="alex" data-license="in" data-cat="ops">
+    <div class="act" data-mode="always" data-license="in" data-cat="ops">
       <div class="activity">Lot tracking system · COA per batch<div class="sub">Required for recall capability · spreadsheet or simple inventory tool.</div></div>
       <div class="pip always">always</div>
-      <div class="pip alex">alex</div>
       <div class="pip in">in-house</div>
       <div class="cost">$0</div>
       <div class="time">ongoing</div>
     </div>
-    <div class="act" data-mode="always" data-owner="alex" data-license="in" data-cat="ops">
+    <div class="act" data-mode="always" data-license="in" data-cat="ops">
       <div class="activity">Recall plan documented · contact list · communication template<div class="sub">Required by FDA · 24-hr response · drafted before any sale.</div></div>
       <div class="pip always">always</div>
-      <div class="pip alex">alex</div>
       <div class="pip in">in-house</div>
       <div class="cost">$0</div>
       <div class="time">1 wk</div>
     </div>
-    <div class="act" data-mode="always" data-owner="alex" data-license="in" data-cat="ops">
+    <div class="act" data-mode="always" data-license="in" data-cat="ops">
       <div class="activity">Naju relationship maintenance · quarterly check-in<div class="sub">Stay top of mind · rate updates · scheduling availability · keep door open.</div></div>
       <div class="pip always">always</div>
-      <div class="pip alex">alex</div>
       <div class="pip in">in-house</div>
       <div class="cost">$0</div>
       <div class="time">ongoing</div>
@@ -1364,6 +1302,479 @@ p.section-lede strong { color: var(--ink); font-weight: 600; }
   </div>
 </section>
 
+
+<!-- ════════ FORMULATION NOTES ════════ -->
+<section>
+  <div class="section-banner">
+    <span class="pip"></span>
+    <span class="num">07 / formulation</span>
+    <span class="name">Estimated formula per 100mL pouch</span>
+    <span class="desc">our calc · Naju has actual</span>
+  </div>
+
+  <h2 class="section-title">What's in <em>each pouch.</em></h2>
+  <p class="section-lede">Naju ODM doesn't disclose exact percentages — that's their IP. Below are <strong>our estimated formulations</strong> back-calculated from the Naju quote (₩716–780 raw materials per pouch), the disclosed ingredient list, and standard CPG puree-pouch ratios. Validate against the formulator before locking the spec sheet.</p>
+
+  <div class="modes" style="grid-template-columns: 1fr 1fr 1fr;">
+
+    <div class="mode now">
+      <span class="mode-tag" style="background: rgba(196,69,54,.16); color: var(--rust);"><span class="pip" style="background: var(--rust);"></span>SKU 1 · WILD BERRIES</span>
+      <h3>Gut + Energy.</h3>
+      <p class="modesub">Berry-forward · Phase 1 anchor SKU. Targets afternoon energy + gut support.</p>
+      <div class="stat-grid">
+        <div class="stat"><div class="k">cost ex-fact</div><div class="v">₩1,392</div></div>
+        <div class="stat"><div class="k">raw mat</div><div class="v">₩716</div></div>
+        <div class="stat"><div class="k">target ph</div><div class="v">≤ 4.0</div></div>
+        <div class="stat"><div class="k">cfu probiotic</div><div class="v">1B</div></div>
+      </div>
+      <ul>
+        <li>Apple puree · ~28% (~28g) · base, low cost</li>
+        <li>Strawberry puree · ~14% (~14g)</li>
+        <li>Blueberry puree · ~13% (~13g)</li>
+        <li>Raspberry puree · ~9% (~9g)</li>
+        <li>Lemon juice · ~2.5% · pH adjust</li>
+        <li>Fibersol-2L · 11g (delivers 10g soluble fiber)</li>
+        <li>XOS prebiotic · ~2g</li>
+        <li>Heat-stable probiotic (BC30) · ~0.05g · 1B CFU</li>
+        <li>Water balance · ~17g</li>
+      </ul>
+    </div>
+
+    <div class="mode ready">
+      <span class="mode-tag" style="background: rgba(245,194,101,.20); color: #8A5A00;"><span class="pip" style="background: var(--sun);"></span>SKU 2 · TROPICAL PUNCH</span>
+      <h3>Gut + Digestion.</h3>
+      <p class="modesub">Tropical · supports digestion + post-meal comfort. Bromelain in pineapple = bonus.</p>
+      <div class="stat-grid">
+        <div class="stat"><div class="k">cost ex-fact</div><div class="v">₩1,462</div></div>
+        <div class="stat"><div class="k">raw mat</div><div class="v">₩780</div></div>
+        <div class="stat"><div class="k">target ph</div><div class="v">≤ 4.0</div></div>
+        <div class="stat"><div class="k">cfu probiotic</div><div class="v">1B</div></div>
+      </div>
+      <ul>
+        <li>Apple puree · ~20% · base</li>
+        <li>Mango puree · ~18%</li>
+        <li>Banana puree · ~12% · sweetness, body</li>
+        <li>Pineapple puree · ~12% · bromelain enzyme</li>
+        <li>Passion fruit puree · ~6% · intense flavor lift</li>
+        <li>Lemon juice · ~2% · pH adjust</li>
+        <li>Fibersol-2L · 11g</li>
+        <li>XOS prebiotic · ~2g</li>
+        <li>Heat-stable probiotic · ~0.05g · 1B CFU</li>
+        <li>Water balance · ~17g</li>
+      </ul>
+    </div>
+
+    <div class="mode trigger">
+      <span class="mode-tag" style="background: rgba(156,169,140,.22); color: #4A6038;"><span class="pip" style="background: var(--sage);"></span>SKU 3 · GINGER PEAR</span>
+      <h3>Gut + Immunity.</h3>
+      <p class="modesub">Pear-forward · ginger-warmed · immune support. Lighter on fruit acid for sensitive tummies.</p>
+      <div class="stat-grid">
+        <div class="stat"><div class="k">cost ex-fact</div><div class="v">₩1,358</div></div>
+        <div class="stat"><div class="k">raw mat</div><div class="v">₩685</div></div>
+        <div class="stat"><div class="k">target ph</div><div class="v">≤ 4.2</div></div>
+        <div class="stat"><div class="k">cfu probiotic</div><div class="v">1B</div></div>
+      </div>
+      <ul>
+        <li>Pear puree · ~25% · base, gentle</li>
+        <li>Apple puree · ~20% · sweetness</li>
+        <li>Kiwi puree · ~12% · vitamin C lift</li>
+        <li>Ginger concentrate (ginger + oligosaccharide) · ~5%</li>
+        <li>Lemon juice · ~2% · pH adjust</li>
+        <li>Fibersol-2L · 11g</li>
+        <li>XOS prebiotic · ~2g</li>
+        <li>Heat-stable probiotic · ~0.05g · 1B CFU</li>
+        <li>Water balance · ~22g</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="callout warn" style="margin-top: 24px;">
+    <div class="icon">!</div>
+    <div>
+      <h4>Critical formulation decision: probiotic strain selection</h4>
+      <p>The choice of probiotic strain governs whether commissary hot-fill is even possible. <strong>Heat-sensitive strains</strong> (Lactobacillus acidophilus, Bifidobacterium lactis) are killed at 180°F hot-fill — they need cold-chain or post-pasteurization add-back. <strong>Spore-form strains</strong> (Bacillus coagulans GBI-30 6086 / GanedenBC30, Bacillus subtilis DE111, B. coagulans MTCC 5856 / LactoSpore) survive 195°F+ as spores, germinate in the gut. <strong>For Pheeew's spec — room-temp shelf-stable hot-filled pouch — only spore-form works.</strong></p>
+      <p style="margin-top:10px;">Source ref: <a href="https://www.kerry.com/products/proactive-health/probiotics/ganedenbc30" style="color:var(--coral);">Kerry GanedenBC30</a> · <a href="https://deerlandprobiotics.com/de111/" style="color:var(--coral);">Deerland DE111</a> · <a href="https://sabinsa.com/products/standardized-extracts/lactospore" style="color:var(--coral);">Sabinsa LactoSpore</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ SOURCING ════════ -->
+<section>
+  <div class="section-banner">
+    <span class="pip"></span>
+    <span class="num">08 / sourcing</span>
+    <span class="name">Where each ingredient comes from</span>
+    <span class="desc">commissary qty · linked sources</span>
+  </div>
+
+  <h2 class="section-title">The <em>supplier map.</em></h2>
+  <p class="section-lede">For commissary-scale validation runs (~2K pouches each), we buy ingredients in food-service quantities from US distributors. Naju sources their own ingredients in Korean industrial volumes — these prices below are <strong>our pilot-batch sourcing</strong>, not what Naju pays.</p>
+
+  <div class="budget">
+    <div class="brow head">
+      <span></span>
+      <span>ingredient · supplier</span>
+      <span style="text-align:right;">unit price</span>
+      <span style="text-align:right;">2K-pouch need</span>
+    </div>
+    <div class="brow">
+      <div class="ico">F</div>
+      <div class="name">Apple puree<div class="sub">Tree Top Inc · 40-lb pail · foodservice channel · <a href="https://treetop.com/our-ingredients" style="color:var(--coral);">treetop.com/our-ingredients</a></div></div>
+      <div class="amt">$3.50/lb</div>
+      <div class="time">~50 lbs · $175</div>
+    </div>
+    <div class="brow">
+      <div class="ico">F</div>
+      <div class="name">Strawberry · blueberry · raspberry purees<div class="sub">The Perfect Puree of Napa Valley · 30-oz frozen · <a href="https://www.perfectpuree.com" style="color:var(--coral);">perfectpuree.com</a> · or Tree Top bulk</div></div>
+      <div class="amt">$8–14/lb</div>
+      <div class="time">~70 lbs combined · $700</div>
+    </div>
+    <div class="brow">
+      <div class="ico">F</div>
+      <div class="name">Mango · banana · pineapple · passion fruit<div class="sub">Tree Top + Perfect Puree + Goya foodservice · passion fruit from Inca's Food</div></div>
+      <div class="amt">$5–12/lb</div>
+      <div class="time">~75 lbs combined · $600</div>
+    </div>
+    <div class="brow">
+      <div class="ico">F</div>
+      <div class="name">Pear puree · kiwi puree · ginger concentrate<div class="sub">Tree Top pear/apple · Boiron kiwi · Ginger People for ginger · <a href="https://gingerpeople.com" style="color:var(--coral);">gingerpeople.com</a></div></div>
+      <div class="amt">$4–10/lb</div>
+      <div class="time">~70 lbs combined · $500</div>
+    </div>
+    <div class="brow">
+      <div class="ico">A</div>
+      <div class="name">Lemon juice concentrate<div class="sub">Sysco / US Foods / RealLemon foodservice · acidifies pH to ≤ 4.2</div></div>
+      <div class="amt">$4/L</div>
+      <div class="time">~5L · $20</div>
+    </div>
+    <div class="brow">
+      <div class="ico">B</div>
+      <div class="name">Fibersol-2L · soluble corn fiber<div class="sub">ADM-Matsutani manufacturer · BulkSupplements.com small qty · <a href="https://www.matsutani.co.jp/english/products/fibersol/" style="color:var(--coral);">matsutani.co.jp/english/products/fibersol</a></div></div>
+      <div class="amt">$22/lb bulk</div>
+      <div class="time">~50 lbs · $1,100</div>
+    </div>
+    <div class="brow">
+      <div class="ico">B</div>
+      <div class="name">XOS · xylo-oligosaccharide prebiotic<div class="sub">Compound Solutions US · Shandong Longlive original · <a href="https://compoundsolutions.com" style="color:var(--coral);">compoundsolutions.com</a></div></div>
+      <div class="amt">$50/kg</div>
+      <div class="time">~4 kg · $200</div>
+    </div>
+    <div class="brow">
+      <div class="ico">P</div>
+      <div class="name">Probiotic · GanedenBC30 (Bacillus coagulans GBI-30 6086)<div class="sub">Kerry Group · spore-form, heat-stable to 195°F · <a href="https://www.kerry.com/products/proactive-health/probiotics/ganedenbc30" style="color:var(--coral);">kerry.com/ganedenbc30</a></div></div>
+      <div class="amt">$120/kg</div>
+      <div class="time">~0.5 kg · $60</div>
+    </div>
+    <div class="brow">
+      <div class="ico">C</div>
+      <div class="name">Stand-up pouch · 100mL · spout + safety cap<div class="sub">Alibaba · Beigu Packaging or Shantou Sumkoka · 30K MOQ but split across 5 batches · or local: Standard Multiwall Bag · <a href="https://www.epacflexibles.com" style="color:var(--coral);">ePac Flexibles US</a></div></div>
+      <div class="amt">$0.07–0.15</div>
+      <div class="time">2K · $200</div>
+    </div>
+    <div class="brow total">
+      <div class="ico">Σ</div>
+      <div class="name">Per 2K-pouch batch · ingredient + pouch total<div class="sub">~$1.78/pouch in raw cost only · before kitchen rental + labor + sealer</div></div>
+      <div class="amt">~$3,555</div>
+      <div class="time">2K pouches</div>
+    </div>
+  </div>
+
+  <div class="callout info" style="margin-top: 24px;">
+    <div class="icon">i</div>
+    <div>
+      <h4>Why the commissary unit cost is so much higher than Naju</h4>
+      <p>Naju buys puree by the metric ton from Korean fruit consolidators at <strong>industrial pricing</strong>. We're buying by the pail at foodservice pricing. Their ex-factory at $1.04/pouch reflects that scale advantage. Our commissary unit cost (~$2.50–3.00 landed including kitchen + labor) reflects the small-batch reality. Both are correct — they're different operating modes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ EQUIPMENT — McDONALD'S SETUP ════════ -->
+<section>
+  <div class="section-banner">
+    <span class="pip"></span>
+    <span class="num">09 / equipment</span>
+    <span class="name">The "McDonald's setup" — three tiers</span>
+    <span class="desc">scale by tier · don't over-buy at pilot</span>
+  </div>
+
+  <h2 class="section-title">The <em>line,</em> tiered.</h2>
+  <p class="section-lede">McDonald's didn't start with a 1,000-burger-an-hour flat-top. They iterated. Same here — three tiers of capital investment, sized to the volume you're actually moving. <strong>Buy Tier 1 now. Earn Tier 2 with revenue. Skip Tier 3 — that's Naju's job.</strong></p>
+
+  <div class="modes" style="grid-template-columns: 1fr 1fr 1fr;">
+
+    <div class="mode now">
+      <span class="mode-tag"><span class="pip"></span>tier 1 · pilot</span>
+      <h3>$1,500 · 50–100/hr.</h3>
+      <p class="modesub">Hand-fill, hand-seal. Good for first 1–3 batches up to ~6K pouches lifetime.</p>
+      <div class="stat-grid">
+        <div class="stat"><div class="k">throughput</div><div class="v">~80/hr</div></div>
+        <div class="stat"><div class="k">cap ex</div><div class="v">$1,500</div></div>
+        <div class="stat"><div class="k">payback</div><div class="v">batch 1</div></div>
+        <div class="stat"><div class="k">good for</div><div class="v">≤6K total</div></div>
+      </div>
+      <ul>
+        <li>Hanna HI98129 pH meter · $150 · <a href="https://hannainst.com" style="color:var(--coral);">hannainst.com</a></li>
+        <li>Thermapen ONE thermometer · $99</li>
+        <li>Vitamix Pro 750 commercial blender · $600</li>
+        <li>Bench scale 5kg/0.1g · $100</li>
+        <li>Manual stand-up pouch sealer · $250 · Amazon</li>
+        <li>Hand-held inkjet date stamper · $150</li>
+        <li>Steam kettle · provided by commissary kitchen</li>
+        <li>Sanitizer (Star San) + 3-bay sink · provided</li>
+        <li>Total · approx $1,350–1,500</li>
+      </ul>
+    </div>
+
+    <div class="mode ready">
+      <span class="mode-tag"><span class="pip"></span>tier 2 · sustained</span>
+      <h3>$5,000 · 200–500/hr.</h3>
+      <p class="modesub">Semi-auto pouch filler. Bridge from pilot to first wholesale orders.</p>
+      <div class="stat-grid">
+        <div class="stat"><div class="k">throughput</div><div class="v">~350/hr</div></div>
+        <div class="stat"><div class="k">cap ex</div><div class="v">$5,000</div></div>
+        <div class="stat"><div class="k">payback</div><div class="v">~5K units</div></div>
+        <div class="stat"><div class="k">good for</div><div class="v">≤25K total</div></div>
+      </div>
+      <ul>
+        <li>Semi-auto stand-up pouch filler/sealer · $2,800 used · <a href="https://hgrinc.com" style="color:var(--coral);">HGR Industrial</a> · <a href="https://genemco.com" style="color:var(--coral);">Genemco</a></li>
+        <li>Used Cleveland 10-gal steam kettle (BYO) · $1,500</li>
+        <li>Robot Coupe Magimix immersion blender · $800</li>
+        <li>Hanna HI3221 benchtop pH meter · $400</li>
+        <li>Tabletop inline date stamper · $500</li>
+        <li>Total · approx $5,000–6,000</li>
+      </ul>
+    </div>
+
+    <div class="mode trigger">
+      <span class="mode-tag"><span class="pip"></span>tier 3 · skip</span>
+      <h3>~$15K · DON'T BUY.</h3>
+      <p class="modesub">Auto pouch line, cooling tunnel, walk-in storage. <strong>Don't invest — Naju is the answer at this scale.</strong></p>
+      <div class="stat-grid">
+        <div class="stat"><div class="k">throughput</div><div class="v">~1000/hr</div></div>
+        <div class="stat"><div class="k">cap ex</div><div class="v">$15K+</div></div>
+        <div class="stat"><div class="k">payback</div><div class="v">never · Naju cheaper</div></div>
+        <div class="stat"><div class="k">decision</div><div class="v">SKIP</div></div>
+      </div>
+      <ul>
+        <li>If we hit Tier 3 demand, we should be triggering Naju, not buying more equipment</li>
+        <li>Naju at full launch: ~$1.07/unit landed</li>
+        <li>Tier 3 commissary: ~$1.50–2.00/unit + capex</li>
+        <li>The right move at Tier 3 demand: get a buyer commit, fund Naju, let them be the factory</li>
+        <li>Listed here only so we can recognize the line we shouldn't cross</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════ PROCESS STEPS — WE vs PARTNER ════════ -->
+<section>
+  <div class="section-banner">
+    <span class="pip"></span>
+    <span class="num">10 / process</span>
+    <span class="name">Step-by-step · WE do vs partner does</span>
+    <span class="desc">one full production cycle · commissary path</span>
+  </div>
+
+  <h2 class="section-title">One <em>production cycle,</em> step by step.</h2>
+  <p class="section-lede">23 steps from PO to ShipBob. Each tagged WE (in-house) or PARTNER (licensed/registered third party). <strong>Most steps are ours.</strong> The credentialed steps are bottlenecks but small in count — they cluster around process validation, lab work, and cert.</p>
+
+  <div class="registry">
+    <div class="act head" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span>#</span>
+      <span>step</span>
+      <span style="text-align:center;">who</span>
+      <span style="text-align:right;">cost</span>
+      <span style="text-align:right;">time</span>
+    </div>
+
+    <!-- PRE-PRODUCTION -->
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px; background:rgba(40,200,64,.04);">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">P–1</span>
+      <div class="activity"><strong>PRE-PRODUCTION</strong> · book commissary kitchen for production day<div class="sub">Hood Kitchen / Cube / Hatchery — confirm steam kettle, blender, sink available</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$300–800</div>
+      <div class="time">1 day</div>
+    </div>
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">P–2</span>
+      <div class="activity">Order ingredients from suppliers · 1 wk lead<div class="sub">Tree Top, Perfect Puree, BulkSupplements, Kerry · refer §08 sourcing</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$3,200</div>
+      <div class="time">1 wk</div>
+    </div>
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">P–3</span>
+      <div class="activity">Order pouches · China direct (4 wk lead) or local rush (2 wk)<div class="sub">2K pouches with Pheeew print · spout + safety cap</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$200</div>
+      <div class="time">2–4 wk</div>
+    </div>
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">P–4</span>
+      <div class="activity">Pull Process Authority letter from file<div class="sub">Required to operate · keep on-site at commissary</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$0</div>
+      <div class="time">5 min</div>
+    </div>
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">P–5</span>
+      <div class="activity">Pre-batch ingredients · weigh to spec<div class="sub">Use bench scale · seal in food-grade containers · transport to kitchen</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$0</div>
+      <div class="time">2 hr</div>
+    </div>
+
+    <!-- PRODUCTION DAY -->
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px; background:rgba(58,156,255,.06);">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">D–1</span>
+      <div class="activity"><strong>PRODUCTION DAY</strong> · sanitize all equipment + workspace<div class="sub">Star San or kitchen's sanitizer · 3-bay sink protocol · log start time</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$0</div>
+      <div class="time">30 min</div>
+    </div>
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">D–2</span>
+      <div class="activity">Mix non-probiotic ingredients in steam kettle<div class="sub">Fruit purees + Fibersol + XOS + lemon juice · blend to homogeneous</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$0</div>
+      <div class="time">45 min</div>
+    </div>
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">D–3</span>
+      <div class="activity">Heat to 180°F · hold 5 min · log temperature continuously<div class="sub">Critical Control Point · time-temperature log per HACCP</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$0</div>
+      <div class="time">25 min</div>
+    </div>
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">D–4</span>
+      <div class="activity">Measure pH · must be ≤ 4.2 · log result<div class="sub">Calibrated pH meter · if &gt; 4.2, add citric or lemon and retest</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$0</div>
+      <div class="time">10 min</div>
+    </div>
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">D–5</span>
+      <div class="activity">Cool to ~110°F · probiotic add window<div class="sub">Cold-water bath in kitchen sinks · log cool-down time</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$0</div>
+      <div class="time">30 min</div>
+    </div>
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">D–6</span>
+      <div class="activity">Add heat-stable probiotic + final mix<div class="sub">GanedenBC30 spore-form · weighed to deliver 1B CFU/pouch · quick blend</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$0</div>
+      <div class="time">10 min</div>
+    </div>
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">D–7</span>
+      <div class="activity">Fill pouches at controlled volume · 100mL each<div class="sub">Manual or semi-auto filler · weigh-check every 50 pouches</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$0</div>
+      <div class="time">3–4 hr</div>
+    </div>
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">D–8</span>
+      <div class="activity">Heat-seal pouches · cap inspection<div class="sub">Tabletop sealer · visual inspection for incomplete seals · reject quarantine</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$0</div>
+      <div class="time">parallel w/ fill</div>
+    </div>
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">D–9</span>
+      <div class="activity">Date stamp · lot code · best-by<div class="sub">Inkjet stamp · format LOT YYYYMMDD-### · BB MM/YY · per HACCP</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$0</div>
+      <div class="time">parallel</div>
+    </div>
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">D–10</span>
+      <div class="activity">Final cool to room temp · ice bath<div class="sub">All sealed pouches into bath · 60–90 min to ambient</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$0</div>
+      <div class="time">90 min</div>
+    </div>
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">D–11</span>
+      <div class="activity">Pack into cartons · inner box → master carton<div class="sub">10 pouches per inner box · 4 inner boxes per master carton (40-pack)</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$0</div>
+      <div class="time">45 min</div>
+    </div>
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">D–12</span>
+      <div class="activity">Update HACCP log · sign-off · file<div class="sub">Date · operator · CCP readings · deviations · corrective actions</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$0</div>
+      <div class="time">15 min</div>
+    </div>
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">D–13</span>
+      <div class="activity">Reserve sample pouches · 10 units · refrigerate<div class="sub">Required for shelf-life monitoring + recall response · seal in marked bag</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$0</div>
+      <div class="time">5 min</div>
+    </div>
+
+    <!-- POST-PRODUCTION -->
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px; background:rgba(255,155,113,.06);">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">A–1</span>
+      <div class="activity"><strong>POST-PRODUCTION</strong> · ship reserve sample to lab for end-of-run microbial<div class="sub">Eurofins or Microbac · per HACCP verification schedule</div></div>
+      <div class="pip lic">partner</div>
+      <div class="cost">$300</div>
+      <div class="time">1 wk</div>
+    </div>
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">A–2</span>
+      <div class="activity">Transport finished cartons to ShipBob LA warehouse<div class="sub">Personal vehicle for first batches · UPS Ground for larger</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$50</div>
+      <div class="time">half day</div>
+    </div>
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">A–3</span>
+      <div class="activity">ShipBob receives + adds to inventory · Shopify sync<div class="sub">SKU + lot tracked in WMS · available for order fulfillment</div></div>
+      <div class="pip lic">partner</div>
+      <div class="cost">included</div>
+      <div class="time">1–2 days</div>
+    </div>
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">A–4</span>
+      <div class="activity">Generate COA from production log + lab results<div class="sub">For wholesale buyer outreach · per-batch · keep on file</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$0</div>
+      <div class="time">30 min</div>
+    </div>
+    <div class="act" style="grid-template-columns: 40px 1fr 90px 80px 80px;">
+      <span style="font:600 11px ui-monospace,monospace; color:var(--ink-faded);">A–5</span>
+      <div class="activity">Update inventory log · trigger reorder if &lt; 30% stock<div class="sub">Track sell-through · plan next production day</div></div>
+      <div class="pip in">we</div>
+      <div class="cost">$0</div>
+      <div class="time">15 min</div>
+    </div>
+
+  </div>
+
+  <div class="callout go" style="margin-top: 24px;">
+    <div class="icon">✓</div>
+    <div>
+      <h4>Per-batch summary · 2,000 pouches end-to-end</h4>
+      <p>Pre-prod (1 wk) + production day (~10 hrs hands-on) + post-prod (1 wk) = <strong>~16 days from kitchen booking to ShipBob inventory live</strong>. Total cost (kitchen + ingredients + post-lab + transport) ≈ <strong>$4,000–4,800 per batch</strong>. Per-pouch landed COGS = <strong>$2.00–$2.40</strong> at this volume. Drops as Tier 2 equipment unlocks faster throughput.</p>
+    </div>
+  </div>
+
+  <div class="callout warn" style="margin-top: 16px;">
+    <div class="icon">!</div>
+    <div>
+      <h4>The 3 partner-only steps · the bottleneck cluster</h4>
+      <p><strong>P–1 commissary booking</strong> · <strong>A–1 lab microbial test</strong> · <strong>A–3 ShipBob receiving</strong>. These are the only steps where someone outside the team controls our timeline. Build the relationships in advance: pre-confirm kitchen days, have lab account live, ShipBob inbound paperwork pre-filed. Saves ~3–5 days per cycle.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ════════ FOOTER ════════ -->
 <div class="docfoot">
   <div>pheeew · launch path · v3 · live<br>
@@ -1376,7 +1787,7 @@ p.section-lede strong { color: var(--ink); font-weight: 600; }
 <script>
 (function() {
   // Filter state
-  const state = { mode: 'all', owner: 'all', license: 'all', cat: 'all', search: '' };
+  const state = { mode: 'all', license: 'all', cat: 'all', search: '' };
   const allItems = document.querySelectorAll('#registry .act:not(.head)');
   const visCt = document.getElementById('visCt');
   const searchBox = document.getElementById('searchBox');
@@ -1385,11 +1796,10 @@ p.section-lede strong { color: var(--ink); font-weight: 600; }
     let visible = 0;
     allItems.forEach(item => {
       const matchesMode = state.mode === 'all' || item.dataset.mode === state.mode;
-      const matchesOwner = state.owner === 'all' || item.dataset.owner === state.owner;
       const matchesLic = state.license === 'all' || item.dataset.license === state.license;
       const matchesCat = state.cat === 'all' || item.dataset.cat === state.cat;
       const matchesSearch = state.search === '' || item.textContent.toLowerCase().includes(state.search);
-      const show = matchesMode && matchesOwner && matchesLic && matchesCat && matchesSearch;
+      const show = matchesMode && matchesLic && matchesCat && matchesSearch;
       item.classList.toggle('hidden', !show);
       if (show) visible++;
     });
