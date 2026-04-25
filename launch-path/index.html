@@ -1,0 +1,1424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pheeew · launch path</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --paper: #FAFAF6;
+  --paper-2: #F4F0E8;
+  --ink: #1C1C1E;
+  --ink-soft: #3A3A3C;
+  --ink-faded: #8E8E93;
+  --separator: rgba(60,60,67,.10);
+  --peach: #FF9B71;
+  --coral: #FF6F61;
+  --sun: #F5C265;
+  --terracotta: #C77B4E;
+  --sage: #9CA98C;
+  --sky: #BCD8E8;
+  --forest: #1E3A1A;
+  --rust: #C44536;
+  --green: #28C840;
+  --yellow: #FEBC2E;
+  --red: #FF5F57;
+  --blue: #3A9CFF;
+  --glass-stroke: rgba(255,255,255,.55);
+  --shadow-soft: 0 1px 2px rgba(28,28,30,.04), 0 12px 36px -10px rgba(28,28,30,.10);
+  --shadow-card: 0 1px 0 rgba(255,255,255,.7) inset, 0 1px 2px rgba(28,28,30,.05), 0 16px 40px -12px rgba(28,28,30,.12);
+}
+html { scroll-behavior: smooth; }
+html, body {
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
+  font-size: 16px; line-height: 1.5;
+  letter-spacing: -.011em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 700px at 80% -10%, rgba(255,188,138,.42), transparent 55%),
+    radial-gradient(900px 600px at 5% 18%, rgba(255,222,184,.35), transparent 55%),
+    radial-gradient(1100px 800px at 95% 110%, rgba(255,158,138,.22), transparent 60%),
+    radial-gradient(800px 600px at 0% 100%, rgba(232,198,152,.20), transparent 60%),
+    #FAFAF6;
+  background-attachment: fixed;
+  position: relative;
+  padding: 56px 24px 160px;
+  overflow-x: hidden;
+}
+body::before {
+  content: ""; position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.045 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  pointer-events: none; mix-blend-mode: multiply; z-index: 0;
+}
+.page { max-width: 1240px; margin: 0 auto; position: relative; z-index: 1; }
+
+/* ── window chrome ── */
+.winbar {
+  height: 36px; border-radius: 14px 14px 0 0;
+  background: rgba(255,255,255,.62);
+  backdrop-filter: blur(28px) saturate(180%); -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: .5px solid var(--glass-stroke);
+  border-bottom: .5px solid var(--separator);
+  display: flex; align-items: center; padding: 0 14px; gap: 8px;
+  box-shadow: var(--shadow-soft);
+}
+.lt { width: 12px; height: 12px; border-radius: 50%; box-shadow: inset 0 0 0 .5px rgba(0,0,0,.18); }
+.lt.r { background: var(--red); } .lt.y { background: var(--yellow); } .lt.g { background: var(--green); }
+.winbar .url {
+  flex: 1; text-align: center;
+  font: 500 12px/1 ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  color: var(--ink-faded);
+}
+.frame {
+  background: rgba(255,255,255,.46);
+  backdrop-filter: blur(36px) saturate(190%); -webkit-backdrop-filter: blur(36px) saturate(190%);
+  border: .5px solid var(--glass-stroke); border-top: 0;
+  border-radius: 0 0 18px 18px;
+  box-shadow: var(--shadow-card);
+  padding: 88px 80px 96px; margin-bottom: 48px;
+}
+
+/* ── hero ── */
+.eyebrow {
+  font: 500 12px/1 ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--ink-faded); margin-bottom: 28px;
+}
+.eyebrow .dot {
+  display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--peach); margin: 0 10px 0 4px; vertical-align: 1px;
+  box-shadow: 0 0 10px rgba(255,155,113,.6);
+}
+.eyebrow .v {
+  display: inline-block; padding: 3px 8px; margin-left: 10px;
+  background: rgba(40,200,64,.18); color: #1A6A28; border-radius: 999px;
+  font-size: 10.5px;
+}
+h1.hero {
+  font-size: clamp(44px, 7.4vw, 100px);
+  font-weight: 700; line-height: .95;
+  letter-spacing: -.045em; margin-bottom: 24px;
+}
+h1.hero em {
+  font-style: italic; font-weight: 300;
+  background: linear-gradient(105deg, var(--coral), var(--peach) 40%, var(--sun));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero-sub {
+  font-size: clamp(17px, 1.9vw, 21px);
+  line-height: 1.4; font-weight: 400; color: var(--ink-soft);
+  max-width: 800px; margin-bottom: 40px;
+  letter-spacing: -.014em;
+}
+.hero-sub strong { color: var(--ink); font-weight: 600; }
+.meta-row {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: .5px solid var(--separator); padding-top: 24px;
+}
+.meta-cell { padding-right: 20px; }
+.meta-cell .k {
+  font: 500 10.5px/1 ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--ink-faded); margin-bottom: 8px;
+}
+.meta-cell .v { font-size: 14px; font-weight: 500; line-height: 1.3; }
+
+/* ── section header ── */
+section { margin: 64px 0; }
+.section-banner {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 24px;
+  background: rgba(255,255,255,.5);
+  backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: .5px solid var(--glass-stroke);
+  border-radius: 999px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 28px;
+}
+.section-banner .pip { width: 8px; height: 8px; border-radius: 50%; background: var(--peach); box-shadow: 0 0 8px var(--peach); }
+.section-banner .num {
+  font: 700 11px/1 ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faded);
+}
+.section-banner .name { font-weight: 600; font-size: 16px; letter-spacing: -.01em; }
+.section-banner .desc {
+  margin-left: auto; font-size: 13px; color: var(--ink-soft); font-style: italic;
+}
+h2.section-title {
+  font-size: clamp(32px, 4.4vw, 56px);
+  font-weight: 700; line-height: .98;
+  letter-spacing: -.034em; margin-bottom: 14px;
+}
+h2.section-title em { font-style: italic; font-weight: 300; color: var(--coral); }
+p.section-lede {
+  font-size: clamp(17px, 1.8vw, 19px);
+  line-height: 1.45; color: var(--ink-soft);
+  max-width: 840px; margin-bottom: 32px;
+  letter-spacing: -.014em;
+}
+p.section-lede strong { color: var(--ink); font-weight: 600; }
+
+/* ── three-mode operating model ── */
+.modes {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;
+  margin-bottom: 24px;
+}
+.mode {
+  background: rgba(255,255,255,.55);
+  backdrop-filter: blur(28px) saturate(180%); -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: .5px solid var(--glass-stroke);
+  border-radius: 18px;
+  box-shadow: var(--shadow-card);
+  padding: 28px 26px;
+  position: relative;
+}
+.mode .mode-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 5px 11px; border-radius: 999px;
+  font: 700 10.5px/1 ui-monospace, "SF Mono", monospace;
+  letter-spacing: .14em; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.mode .mode-tag .pip { width: 6px; height: 6px; border-radius: 50%; }
+.mode.now .mode-tag { background: rgba(40,200,64,.16); color: #1A6A28; }
+.mode.now .mode-tag .pip { background: var(--green); }
+.mode.ready .mode-tag { background: rgba(254,188,46,.18); color: #8A5A00; }
+.mode.ready .mode-tag .pip { background: var(--yellow); }
+.mode.trigger .mode-tag { background: rgba(58,156,255,.18); color: #1A4A8A; }
+.mode.trigger .mode-tag .pip { background: var(--blue); }
+.mode h3 { font-size: 20px; font-weight: 700; letter-spacing: -.018em; line-height: 1.1; margin-bottom: 6px; }
+.mode .modesub { font-size: 12.5px; color: var(--ink-soft); margin-bottom: 16px; line-height: 1.5; font-style: italic; }
+.mode .stat-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  margin-bottom: 14px;
+  padding: 10px 0;
+  border-top: .5px solid var(--separator);
+  border-bottom: .5px solid var(--separator);
+}
+.mode .stat .k {
+  font: 600 9.5px/1 ui-monospace, "SF Mono", monospace;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink-faded); margin-bottom: 4px;
+}
+.mode .stat .v { font: 600 14px/1 ui-monospace, "SF Mono", monospace; color: var(--ink); letter-spacing: 0; }
+.mode ul { list-style: none; }
+.mode li {
+  font-size: 12.5px; line-height: 1.5; color: var(--ink-soft);
+  padding: 4px 0 4px 14px; position: relative;
+  border-bottom: 1px dashed var(--separator);
+}
+.mode li:last-child { border-bottom: 0; }
+.mode li::before {
+  content: ""; position: absolute; left: 0; top: 11px;
+  width: 6px; height: 1px; background: var(--ink-faded);
+}
+.mode li strong { color: var(--ink); font-weight: 600; }
+
+/* ── callout ── */
+.callout {
+  padding: 24px 28px;
+  background: linear-gradient(105deg, rgba(255,95,87,.10), rgba(255,188,46,.08));
+  border: .5px solid rgba(255,95,87,.25);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 20px;
+  display: flex; gap: 18px; align-items: flex-start;
+}
+.callout .icon {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--red);
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 700; font-size: 15px;
+  box-shadow: 0 0 10px rgba(255,95,87,.45);
+}
+.callout.warn .icon { background: var(--yellow); color: #1C1C1E; }
+.callout.info .icon { background: var(--peach); }
+.callout.go { background: linear-gradient(105deg, rgba(40,200,64,.10), rgba(155,215,175,.08)); border-color: rgba(40,200,64,.28); }
+.callout.go .icon { background: var(--green); }
+.callout h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; letter-spacing: -.012em; }
+.callout p { font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+.callout p strong { color: var(--ink); font-weight: 600; }
+
+/* ── budget table ── */
+.budget {
+  background: rgba(255,255,255,.55);
+  backdrop-filter: blur(28px) saturate(180%); -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: .5px solid var(--glass-stroke);
+  border-radius: 18px; overflow: hidden;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 20px;
+}
+.brow {
+  display: grid; grid-template-columns: 36px 1fr 110px 110px;
+  gap: 16px; padding: 14px 24px;
+  border-bottom: .5px solid var(--separator);
+  align-items: center;
+}
+.brow.head {
+  background: rgba(255,255,255,.4);
+  border-bottom: .5px solid var(--ink); padding: 12px 24px;
+}
+.brow.head span {
+  font: 600 10.5px/1 ui-monospace, "SF Mono", monospace;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faded);
+}
+.brow.total {
+  background: linear-gradient(100deg, rgba(255,155,113,.10), rgba(255,222,184,.10));
+  border-top: 1px solid var(--ink); border-bottom: 0;
+}
+.brow.total .name { font-weight: 700; }
+.brow.total .amt { font-weight: 700; }
+.brow .ico {
+  width: 22px; height: 22px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,.6);
+  border: .5px solid var(--separator);
+  font: 600 11px/1 ui-monospace, "SF Mono", monospace; color: var(--ink-faded);
+}
+.brow .name { font-size: 14px; font-weight: 500; color: var(--ink); }
+.brow .name .sub { display: block; font-size: 12px; color: var(--ink-faded); font-weight: 400; margin-top: 2px; }
+.brow .amt {
+  font: 600 14px/1 ui-monospace, "SF Mono", monospace; color: var(--ink);
+  text-align: right; letter-spacing: .04em;
+}
+.brow .time {
+  font: 500 11px/1 ui-monospace, "SF Mono", monospace; color: var(--ink-faded);
+  text-align: right; letter-spacing: .04em;
+}
+
+/* ── filter bar ── */
+.filter-stack {
+  position: sticky; top: 12px; z-index: 50;
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 14px 18px;
+  background: rgba(255,255,255,.78);
+  backdrop-filter: blur(28px) saturate(180%); -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: .5px solid var(--glass-stroke);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 24px;
+}
+.filter-row {
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+}
+.filter-row .label {
+  font: 600 9.5px/1 ui-monospace, "SF Mono", monospace;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--ink-faded); min-width: 70px;
+}
+.filter-pill {
+  padding: 7px 13px; border-radius: 999px;
+  font: 600 11px/1 ui-monospace, "SF Mono", monospace;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink-faded); background: transparent;
+  border: .5px solid var(--separator); cursor: pointer;
+  transition: all .15s;
+}
+.filter-pill:hover { color: var(--ink); border-color: var(--ink-faded); }
+.filter-pill.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.filter-pill .ct { margin-left: 5px; opacity: .6; font-size: 10px; }
+.search-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: .5px solid var(--separator);
+  border-radius: 10px;
+  background: rgba(255,255,255,.6);
+  font: 400 13px/1 -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  color: var(--ink);
+  outline: none;
+}
+.search-input::placeholder { color: var(--ink-faded); }
+.search-input:focus { border-color: var(--coral); box-shadow: 0 0 0 3px rgba(255,111,97,.10); }
+.filter-meta {
+  display: flex; justify-content: space-between; align-items: center;
+  font: 500 11px/1 ui-monospace, "SF Mono", monospace;
+  color: var(--ink-faded); letter-spacing: .08em;
+  padding-top: 4px;
+}
+.filter-meta .ct-display { color: var(--ink); font-weight: 600; }
+
+/* ── activity registry ── */
+.registry {
+  background: rgba(255,255,255,.42);
+  backdrop-filter: blur(28px) saturate(180%); -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: .5px solid var(--glass-stroke);
+  border-radius: 18px; overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.act {
+  display: grid; grid-template-columns: 1.6fr 80px 80px 90px 100px 80px;
+  gap: 12px; padding: 14px 22px;
+  border-bottom: .5px solid var(--separator);
+  align-items: center; font-size: 13px;
+}
+.act:last-child { border-bottom: 0; }
+.act.head {
+  background: rgba(255,255,255,.4);
+  border-bottom: .5px solid var(--ink); padding: 12px 22px;
+}
+.act.head span {
+  font: 600 10px/1 ui-monospace, "SF Mono", monospace;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faded);
+}
+.act .activity { font-weight: 600; color: var(--ink); line-height: 1.4; letter-spacing: -.008em; }
+.act .activity .sub { display: block; font-size: 11.5px; color: var(--ink-faded); font-weight: 400; margin-top: 2px; line-height: 1.4; }
+.act .pip {
+  font: 700 9.5px/1 ui-monospace, "SF Mono", monospace;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 4px 7px; border-radius: 999px; text-align: center;
+}
+.act .pip.in { background: rgba(40,200,64,.18); color: #1A6A28; }
+.act .pip.lic { background: rgba(255,95,87,.18); color: #B82828; }
+.act .pip.both { background: rgba(254,188,46,.18); color: #8A5A00; }
+.act .pip.alex { background: rgba(255,111,97,.16); color: #B83828; }
+.act .pip.jason { background: rgba(58,90,122,.16); color: #2A547A; }
+.act .pip.dawon { background: rgba(196,138,54,.18); color: #8A5A20; }
+.act .pip.team { background: rgba(199,123,78,.18); color: var(--terracotta); }
+.act .pip.now { background: rgba(40,200,64,.16); color: #1A6A28; }
+.act .pip.ready { background: rgba(254,188,46,.18); color: #8A5A00; }
+.act .pip.trigger { background: rgba(58,156,255,.16); color: #1A4A8A; }
+.act .pip.always { background: rgba(142,142,147,.16); color: var(--ink-faded); }
+.act .cost {
+  font: 600 12px/1 ui-monospace, "SF Mono", monospace;
+  letter-spacing: .04em; text-align: right; color: var(--ink);
+}
+.act .time {
+  font: 500 11px/1 ui-monospace, "SF Mono", monospace;
+  letter-spacing: .04em; text-align: right; color: var(--ink-soft);
+}
+.act .blocker-flag {
+  display: inline-block;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--rust); margin-right: 6px; vertical-align: 1px;
+  box-shadow: 0 0 6px rgba(196,69,54,.5);
+}
+.act.hidden { display: none; }
+
+/* ── trigger scenario ── */
+.trigger-card {
+  background: rgba(255,255,255,.5);
+  backdrop-filter: blur(28px) saturate(180%); -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: .5px solid var(--glass-stroke);
+  border-radius: 18px;
+  box-shadow: var(--shadow-card);
+  padding: 32px 36px;
+  margin-bottom: 16px;
+}
+.trigger-card h4 {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 18px; font-weight: 700; letter-spacing: -.014em;
+  margin-bottom: 6px;
+}
+.trigger-card h4 .num {
+  font: 700 11px/1 ui-monospace, "SF Mono", monospace;
+  letter-spacing: .14em; color: var(--blue);
+  padding: 5px 9px; border-radius: 999px;
+  background: rgba(58,156,255,.16);
+}
+.trigger-card p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; }
+.trigger-card p strong { color: var(--ink); font-weight: 600; }
+.trigger-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 24px; margin-top: 18px;
+}
+.trigger-grid h5 {
+  font: 600 10.5px/1 ui-monospace, "SF Mono", monospace;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--peach); margin-bottom: 10px;
+}
+.trigger-grid ul { list-style: none; padding: 0; margin: 0; }
+.trigger-grid li {
+  font-size: 12.5px; line-height: 1.5; color: var(--ink-soft);
+  padding: 4px 0 4px 14px; position: relative;
+}
+.trigger-grid li::before { content: "→"; position: absolute; left: 0; color: var(--peach); }
+.trigger-grid li strong { color: var(--ink); font-weight: 600; }
+
+/* ── footer ── */
+.docfoot {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 24px 0; margin-top: 64px;
+  border-top: .5px solid var(--separator);
+  font: 500 11px/1.5 ui-monospace, "SF Mono", monospace;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faded);
+}
+.docfoot a { color: var(--coral); text-decoration: none; }
+
+@media (max-width: 1100px) {
+  .modes { grid-template-columns: 1fr; }
+  .trigger-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 900px) {
+  body { padding: 32px 14px 100px; }
+  .frame { padding: 56px 28px 64px; }
+  .meta-row { grid-template-columns: 1fr 1fr; gap: 16px 24px; }
+  .act { grid-template-columns: 1fr 70px 70px; gap: 8px; padding: 14px 16px; font-size: 12px; }
+  .act .cost, .act .time { grid-column: 1 / -1; text-align: left; padding-top: 4px; }
+  .brow { grid-template-columns: 22px 1fr 90px; padding: 12px 14px; }
+  .brow .time { display: none; }
+  .filter-row { gap: 6px; }
+  .filter-pill { padding: 6px 10px; font-size: 10px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ════════ WINDOW + HERO ════════ -->
+<div class="winbar">
+  <div class="lt r"></div><div class="lt y"></div><div class="lt g"></div>
+  <div class="url">pheeew · launch path · v3 · live</div>
+</div>
+
+<main class="frame">
+  <div class="eyebrow"><span class="dot"></span>launch path · ops dashboard<span class="v">v3 · interactive</span></div>
+
+  <h1 class="hero">validate <em>now.</em><br>be <em>scale-ready</em> always.<br>flip the switch <em>on trigger.</em></h1>
+
+  <p class="hero-sub">Naju MOQ is <strong>40K per SKU × 3 SKUs = 120K pouches at full launch</strong>. No pilot at Naju. Cost ≈ <strong>$130K landed</strong>. We don't have $130K — we have <strong>$20K</strong>. The plan: validate at a commissary kitchen now, prep every license / registration / relationship in parallel, and when a wholesale buyer commits or we close the next round, we flip the switch and ship.</p>
+
+  <div class="meta-row">
+    <div class="meta-cell"><div class="k">budget now</div><div class="v">$20,000 · single shot</div></div>
+    <div class="meta-cell"><div class="k">naju full launch</div><div class="v">$130K · 120K pouches</div></div>
+    <div class="meta-cell"><div class="k">trigger window</div><div class="v">14–20 wk to landed</div></div>
+    <div class="meta-cell"><div class="k">format</div><div class="v">100mL puree pouch</div></div>
+  </div>
+</main>
+
+<!-- ════════ THE REALITY ════════ -->
+<section>
+  <div class="section-banner">
+    <span class="pip"></span>
+    <span class="num">01 / reality</span>
+    <span class="name">Three things to internalize before planning</span>
+    <span class="desc">corrected from earlier drafts</span>
+  </div>
+
+  <h2 class="section-title">The <em>locked</em> facts.</h2>
+
+  <div class="callout">
+    <div class="icon">!</div>
+    <div>
+      <h4>Naju MOQ is 40,000 per SKU. No pilot. No exceptions.</h4>
+      <p>Naju (좋은영농조합법인) production MOQ is firm at 40K. Their pouch material MOQ is 120K (with safety cap, carries to next batch). Anyone telling us a "10K pilot" is misreading the quote — it doesn't exist.</p>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <div class="icon">!</div>
+    <div>
+      <h4>Full launch = 3 SKUs at MOQ each = 120,000 pouches</h4>
+      <p>When we trigger Naju, all three flavors go at once — <strong>Berry Mix · Pear Ginger · Tropical Punch</strong>, 40K each. Not a phased rollout from the factory. The phases in the brand roadmap (Phase 1 anchor, Phase 2, Phase 3) refer to what we lead with in marketing, not what comes off the production line. Production is one big run.</p>
+    </div>
+  </div>
+
+  <div class="callout info">
+    <div class="icon">i</div>
+    <div>
+      <h4>Commissary kitchen is for validation only — and scale-readiness in parallel</h4>
+      <p>$20K can't fund Naju. It can fund <strong>~6,000 pouches in commissary hot-fill batches</strong> for farmers markets + DTC validation, while the same $20K covers <strong>all the licenses, registrations, broker setup, and insurance we'll need on day one of the Naju run</strong>. The investment is in two things: validation (right now) and infrastructure (for whenever the trigger comes).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FULL NAJU COST ════════ -->
+<section>
+  <div class="section-banner">
+    <span class="pip"></span>
+    <span class="num">02 / full naju run</span>
+    <span class="name">The $130K trigger event, broken down</span>
+    <span class="desc">120K pouches across 3 SKUs · landed in LA</span>
+  </div>
+
+  <h2 class="section-title">The <em>real</em> Naju number.</h2>
+  <p class="section-lede">When we trigger Naju, this is what comes due. Per-SKU pricing varies (Berry ₩1,392 · Pear Ginger ₩1,358 · Tropical Punch ₩1,462 ex-factory at 40K). All numbers in USD at ₩1,400 per dollar.</p>
+
+  <div class="budget">
+    <div class="brow head">
+      <span></span>
+      <span>line item</span>
+      <span style="text-align:right;">cost</span>
+      <span style="text-align:right;">time / note</span>
+    </div>
+    <div class="brow">
+      <div class="ico">A</div>
+      <div class="name">Berry Mix · 40,000 units<div class="sub">₩1,392 EXW × 40K = ₩55.68M · Phase 1 anchor SKU</div></div>
+      <div class="amt">$39,770</div>
+      <div class="time">8–12 wk prod</div>
+    </div>
+    <div class="brow">
+      <div class="ico">B</div>
+      <div class="name">Pear Ginger · 40,000 units<div class="sub">₩1,358 EXW × 40K = ₩54.30M</div></div>
+      <div class="amt">$38,790</div>
+      <div class="time">parallel</div>
+    </div>
+    <div class="brow">
+      <div class="ico">C</div>
+      <div class="name">Tropical Punch · 40,000 units<div class="sub">₩1,462 EXW × 40K = ₩58.46M</div></div>
+      <div class="amt">$41,760</div>
+      <div class="time">parallel</div>
+    </div>
+    <div class="brow">
+      <div class="ico">D</div>
+      <div class="name">Korea inland + export docs<div class="sub">Naju → Busan trucking · Korean Origin Certificate · forwarder fee</div></div>
+      <div class="amt">$1,500</div>
+      <div class="time">1 wk</div>
+    </div>
+    <div class="brow">
+      <div class="ico">E</div>
+      <div class="name">Sea freight · 40ft FCL<div class="sub">Busan → Long Beach · transit 14–18 days · marine insurance ~0.5%</div></div>
+      <div class="amt">$5,500</div>
+      <div class="time">4–6 wk</div>
+    </div>
+    <div class="brow">
+      <div class="ico">F</div>
+      <div class="name">US import · customs broker + bond + fees<div class="sub">CBP Form 7501 · KORUS preference (0% duty) · HMF + MPF</div></div>
+      <div class="amt">$1,500</div>
+      <div class="time">3–5 days</div>
+    </div>
+    <div class="brow">
+      <div class="ico">G</div>
+      <div class="name">LA inland to ShipBob<div class="sub">Long Beach port → 3PL warehouse · two truckloads</div></div>
+      <div class="amt">$700</div>
+      <div class="time">1–2 days</div>
+    </div>
+    <div class="brow total">
+      <div class="ico">Σ</div>
+      <div class="name">Total landed at ShipBob LA<div class="sub">120,000 pouches · ~$1.07/unit landed at full scale</div></div>
+      <div class="amt">$129,520</div>
+      <div class="time">14–20 wk total</div>
+    </div>
+  </div>
+
+  <div class="callout info">
+    <div class="icon">i</div>
+    <div>
+      <h4>Per-unit landed at full launch is the actual unit economics</h4>
+      <p><strong>$1.07 per pouch landed</strong> on a $3.40 blended DTC MSRP = <strong>69% gross margin</strong>. After ShipBob pick/pack (~$0.40) + payment processing (~3%) = <strong>~52% contribution margin</strong>. That's the math that makes paid acquisition viable, that supports wholesale margins, and that justifies the $130K commitment. Validation-mode commissary economics ($2.50 COGS, 26% gross margin) only work for organic farmers-market sales, not scale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ THREE-MODE OPERATING MODEL ════════ -->
+<section>
+  <div class="section-banner">
+    <span class="pip"></span>
+    <span class="num">03 / operating model</span>
+    <span class="name">Three modes that run in parallel</span>
+    <span class="desc">validate now · be ready always · trigger when it fires</span>
+  </div>
+
+  <h2 class="section-title">Three modes, <em>one company.</em></h2>
+  <p class="section-lede">Most CPG founders run sequentially: validate first, then build infrastructure, then go to scale. <strong>That's a 6-month cold-start when the buyer walks in</strong>. We can't afford that wait. Validation, scale-readiness, and trigger-prep run in parallel from day one.</p>
+
+  <div class="modes">
+
+    <div class="mode now">
+      <span class="mode-tag"><span class="pip"></span>mode 1 · now</span>
+      <h3>Validate.</h3>
+      <p class="modesub">Commissary hot-fill, small batches, farmers markets, DTC. Get the product on real shelves and into real mouths.</p>
+      <div class="stat-grid">
+        <div class="stat"><div class="k">budget</div><div class="v">$10K</div></div>
+        <div class="stat"><div class="k">duration</div><div class="v">3–6 mo</div></div>
+        <div class="stat"><div class="k">volume</div><div class="v">~6K units</div></div>
+        <div class="stat"><div class="k">channels</div><div class="v">DTC + market</div></div>
+      </div>
+      <ul>
+        <li><strong>3 production runs</strong> at commissary, ~2K units each</li>
+        <li>Berry Mix only · Phase 1 anchor</li>
+        <li>$2.50 unit landed cost · thin margin</li>
+        <li>Sales fund the next batch</li>
+        <li>Content captured organically</li>
+      </ul>
+    </div>
+
+    <div class="mode ready">
+      <span class="mode-tag"><span class="pip"></span>mode 2 · ready</span>
+      <h3>Scale-ready.</h3>
+      <p class="modesub">Every license, registration, broker, insurance, warehouse, and software ready before the trigger fires. Buyers commit when we can deliver fast.</p>
+      <div class="stat-grid">
+        <div class="stat"><div class="k">budget</div><div class="v">$8K</div></div>
+        <div class="stat"><div class="k">duration</div><div class="v">parallel</div></div>
+        <div class="stat"><div class="k">items</div><div class="v">~22 setups</div></div>
+        <div class="stat"><div class="k">value</div><div class="v">cuts 4–6 wk off trigger response</div></div>
+      </div>
+      <ul>
+        <li>FDA Food Facility Registration</li>
+        <li>Acidified Foods filing</li>
+        <li>Lab testing complete</li>
+        <li>Customs broker on retainer</li>
+        <li>Continuous import bond active</li>
+        <li>Insurance bound</li>
+        <li>Naju PO terms pre-negotiated</li>
+        <li>ShipBob + Shopify + Amazon live</li>
+      </ul>
+    </div>
+
+    <div class="mode trigger">
+      <span class="mode-tag"><span class="pip"></span>mode 3 · trigger</span>
+      <h3>Flip the switch.</h3>
+      <p class="modesub">A buyer commits. A funding round closes. DTC traction warrants scale. Any one of these triggers the $130K Naju commit.</p>
+      <div class="stat-grid">
+        <div class="stat"><div class="k">commit</div><div class="v">$130K</div></div>
+        <div class="stat"><div class="k">to landed</div><div class="v">14–20 wk</div></div>
+        <div class="stat"><div class="k">volume</div><div class="v">120K units</div></div>
+        <div class="stat"><div class="k">SKUs</div><div class="v">all 3 at once</div></div>
+      </div>
+      <ul>
+        <li><strong>Trigger #1:</strong> wholesale buyer signs $50K+ PO</li>
+        <li><strong>Trigger #2:</strong> next round closes ($150K+ earmarked)</li>
+        <li><strong>Trigger #3:</strong> DTC sustained $10K+/mo demand signal</li>
+        <li><strong>Trigger #4:</strong> strategic partnership requires inventory</li>
+        <li>Naju PO + 50% deposit ($65K) within 1 week</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════ WHEN BUYER WALKS IN ════════ -->
+<section>
+  <div class="section-banner">
+    <span class="pip"></span>
+    <span class="num">04 / buyer scenario</span>
+    <span class="name">"A wholesale buyer wants to talk."</span>
+    <span class="desc">14–20 wk if scale-ready · 24+ wk if not</span>
+  </div>
+
+  <h2 class="section-title">When the <em>phone rings.</em></h2>
+  <p class="section-lede">A buyer (Erewhon, Whole Foods, Sprouts, Gelson's, Bristol Farms, regional independents) sees the brand at a market or online and wants to talk wholesale. <strong>Whether the deal happens depends on what we already have in place when they ask.</strong></p>
+
+  <div class="trigger-card">
+    <h4><span class="num">Day 0</span> Buyer email · "we'd like to discuss carrying you"</h4>
+    <p>Standard opener. Buyer has either tasted us at a market, seen us on Instagram, or heard about us from a broker. They'll ask three things: <strong>do you have product · what's your wholesale price · can you commit to a delivery date.</strong> Our answer to all three needs to be ready before the email arrives.</p>
+    <div class="trigger-grid">
+      <div>
+        <h5>What they ask</h5>
+        <ul>
+          <li><strong>Cases on hand?</strong> "How much can you ship this month?"</li>
+          <li><strong>Wholesale price?</strong> "Your case price for X units?"</li>
+          <li><strong>Lead time?</strong> "Reorder window if we move volume?"</li>
+          <li><strong>Compliance?</strong> "FDA registered? Insurance? Recall plan?"</li>
+          <li><strong>Logistics?</strong> "EDI / 3PL / shipping terms?"</li>
+        </ul>
+      </div>
+      <div>
+        <h5>What we need ready</h5>
+        <ul>
+          <li>Wholesale price tiers built (Naju COGS-based)</li>
+          <li>Sample case pulled from commissary inventory</li>
+          <li>Insurance certificate copy on file</li>
+          <li>FDA Food Facility Registration #</li>
+          <li>Sell sheet PDF · COA from lab</li>
+          <li>UPC/GTIN registered (GS1)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="trigger-card">
+    <h4><span class="num">Week 1</span> Sample sent · negotiation</h4>
+    <p>Buyer tastes, decides, comes back with terms. Standard ask: <strong>Net 30 payment, slotting fee waived, demo budget shared, 90-day fill-rate guarantee</strong>. Our job: don't say yes to anything we can't fulfill. The biggest trap is committing to volume we can't ship.</p>
+    <div class="trigger-grid">
+      <div>
+        <h5>If they want &lt;5K units / month</h5>
+        <ul>
+          <li>Possibly fillable from <strong>commissary inventory</strong> if we've stockpiled</li>
+          <li>Naju trigger NOT necessarily fired</li>
+          <li>Use the deal to fund the next commissary batch</li>
+        </ul>
+      </div>
+      <div>
+        <h5>If they want ≥10K units / month</h5>
+        <ul>
+          <li><strong>Naju trigger fires</strong> — this is the moment</li>
+          <li>50% deposit ($65K) due within 7 days of PO</li>
+          <li>14–20 weeks to landed inventory</li>
+          <li>Buyer must accept that timeline · push for advance PO + commitment</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="trigger-card">
+    <h4><span class="num">Week 2 → 4</span> Decision point · trigger or pass</h4>
+    <p>If we trigger Naju, we burn the bridge with a $65K commit. If we pass, the buyer moves to a competitor. The decision pivot: <strong>can we secure 50% advance payment from the buyer to fund our 50% deposit to Naju</strong>? Some retailers will, most won't — but it's worth asking. Otherwise the trigger requires our own capital or a funding round.</p>
+    <div class="trigger-grid">
+      <div>
+        <h5>Trigger fires · Day 1 of Naju</h5>
+        <ul>
+          <li>Naju PO sent + Origin Cert clause + KORUS preference</li>
+          <li>50% deposit wired ($65K)</li>
+          <li>Pouch art final to Naju</li>
+          <li>Customs broker confirmed for the entry</li>
+          <li>ShipBob warned: "120K pouches inbound week 18"</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Trigger doesn't fire · alt path</h5>
+        <ul>
+          <li>Pass on the deal · stay in commissary mode</li>
+          <li>Tell the buyer "Q2 next year" or specific date</li>
+          <li>Use their interest as funding-round signal</li>
+          <li>Keep the relationship warm</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ ACTIVITY REGISTRY (FILTERABLE) ════════ -->
+<section>
+  <div class="section-banner">
+    <span class="pip"></span>
+    <span class="num">05 / activity registry</span>
+    <span class="name">Every action · cost · time · who</span>
+    <span class="desc">filterable · searchable · canonical</span>
+  </div>
+
+  <h2 class="section-title">All <em>50+ actions</em>, on one screen.</h2>
+  <p class="section-lede">Filter by mode, owner, license requirement, or category. Search by name. The complete operational checklist between today and a Naju trigger.</p>
+
+  <div class="filter-stack">
+    <div class="filter-row">
+      <span class="label">mode</span>
+      <button class="filter-pill active" data-filter="mode" data-value="all">all <span class="ct">53</span></button>
+      <button class="filter-pill" data-filter="mode" data-value="now">now</button>
+      <button class="filter-pill" data-filter="mode" data-value="ready">scale-ready</button>
+      <button class="filter-pill" data-filter="mode" data-value="trigger">trigger</button>
+      <button class="filter-pill" data-filter="mode" data-value="always">always</button>
+    </div>
+    <div class="filter-row">
+      <span class="label">owner</span>
+      <button class="filter-pill active" data-filter="owner" data-value="all">all</button>
+      <button class="filter-pill" data-filter="owner" data-value="alex">alex</button>
+      <button class="filter-pill" data-filter="owner" data-value="jason">jason</button>
+      <button class="filter-pill" data-filter="owner" data-value="dawon">dawon</button>
+      <button class="filter-pill" data-filter="owner" data-value="team">team</button>
+    </div>
+    <div class="filter-row">
+      <span class="label">who does</span>
+      <button class="filter-pill active" data-filter="license" data-value="all">all</button>
+      <button class="filter-pill" data-filter="license" data-value="in">in-house</button>
+      <button class="filter-pill" data-filter="license" data-value="lic">licensed</button>
+      <button class="filter-pill" data-filter="license" data-value="both">both</button>
+    </div>
+    <div class="filter-row">
+      <span class="label">category</span>
+      <button class="filter-pill active" data-filter="cat" data-value="all">all</button>
+      <button class="filter-pill" data-filter="cat" data-value="reg">regulatory</button>
+      <button class="filter-pill" data-filter="cat" data-value="fin">finance</button>
+      <button class="filter-pill" data-filter="cat" data-value="ops">operational</button>
+      <button class="filter-pill" data-filter="cat" data-value="com">commercial</button>
+      <button class="filter-pill" data-filter="cat" data-value="prod">production</button>
+    </div>
+    <input type="text" class="search-input" id="searchBox" placeholder="search activities…">
+    <div class="filter-meta">
+      <span><span class="ct-display" id="visCt">53</span> visible</span>
+      <span>● = blocker — must complete before downstream tasks</span>
+    </div>
+  </div>
+
+  <div class="registry" id="registry">
+    <div class="act head">
+      <span>activity</span>
+      <span style="text-align:center;">mode</span>
+      <span style="text-align:center;">owner</span>
+      <span style="text-align:center;">who does</span>
+      <span style="text-align:right;">cost</span>
+      <span style="text-align:right;">time</span>
+    </div>
+
+    <!-- ────── REGULATORY ────── -->
+
+    <div class="act" data-mode="now" data-owner="alex" data-license="lic" data-cat="reg">
+      <div class="activity"><span class="blocker-flag"></span>Confirm probiotic strain heat-stability<div class="sub">Spore-form (BC30) survives hot-fill · L. acidophilus does not. Gates the entire commissary path.</div></div>
+      <div class="pip now">now</div>
+      <div class="pip alex">alex</div>
+      <div class="pip lic">licensed</div>
+      <div class="cost">$0</div>
+      <div class="time">3 days</div>
+    </div>
+    <div class="act" data-mode="now" data-owner="alex" data-license="lic" data-cat="reg">
+      <div class="activity">Process Authority letter · hot-fill validation<div class="sub">UC Davis Extension · Cornell · independent food scientist. Required for commissary acidified foods process.</div></div>
+      <div class="pip now">now</div>
+      <div class="pip alex">alex</div>
+      <div class="pip lic">licensed</div>
+      <div class="cost">$1,000</div>
+      <div class="time">2–6 wk</div>
+    </div>
+    <div class="act" data-mode="now" data-owner="alex" data-license="lic" data-cat="reg">
+      <div class="activity">Better Process Control School certification<div class="sub">UC Davis Extension · 2-day class · waitlist 1–3 mo · one founder must hold cert.</div></div>
+      <div class="pip now">now</div>
+      <div class="pip alex">alex</div>
+      <div class="pip lic">licensed</div>
+      <div class="cost">$700</div>
+      <div class="time">4–14 wk</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="alex" data-license="both" data-cat="reg">
+      <div class="activity">Acidified Foods FDA registration · Forms 2541 + 2541e<div class="sub">In-house filing, but Process Authority must validate process first. FDA review 3–6 mo.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip alex">alex</div>
+      <div class="pip both">both</div>
+      <div class="cost">$0</div>
+      <div class="time">3–6 mo</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="alex" data-license="in" data-cat="reg">
+      <div class="activity">FDA Food Facility Registration<div class="sub">Free · online · instant · annual renewal.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip alex">alex</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$0</div>
+      <div class="time">30 min</div>
+    </div>
+    <div class="act" data-mode="now" data-owner="alex" data-license="lic" data-cat="reg">
+      <div class="activity">LA County DPH process approval (commissary)<div class="sub">Required to operate hot-fill in shared commercial kitchen. Inspector signs off.</div></div>
+      <div class="pip now">now</div>
+      <div class="pip alex">alex</div>
+      <div class="pip lic">licensed</div>
+      <div class="cost">$0</div>
+      <div class="time">2–4 wk</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="alex" data-license="both" data-cat="reg">
+      <div class="activity">HACCP plan drafted · CCPs documented<div class="sub">pH, fill temp, cool time, hold time. PCQI-reviewed if commissary path.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip alex">alex</div>
+      <div class="pip both">both</div>
+      <div class="cost">$1,500</div>
+      <div class="time">2–4 wk</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="alex" data-license="lic" data-cat="reg">
+      <div class="activity">PCQI certification (Preventive Controls Qualified Individual)<div class="sub">FSMA requirement for commissary-side oversight. Co-packer covers if outsourced.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip alex">alex</div>
+      <div class="pip lic">licensed</div>
+      <div class="cost">$900</div>
+      <div class="time">2.5 days</div>
+    </div>
+    <div class="act" data-mode="always" data-owner="jason" data-license="in" data-cat="reg">
+      <div class="activity">CDTFA seller's permit (CA)<div class="sub">Free · online · required before any retail sale or market booth.</div></div>
+      <div class="pip always">always</div>
+      <div class="pip jason">jason</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$0</div>
+      <div class="time">1 hr</div>
+    </div>
+    <div class="act" data-mode="trigger" data-owner="alex" data-license="in" data-cat="reg">
+      <div class="activity">FDA Prior Notice (per Naju shipment)<div class="sub">Free · online · required for every import. File 8–24 hrs before arrival.</div></div>
+      <div class="pip trigger">trigger</div>
+      <div class="pip alex">alex</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$0</div>
+      <div class="time">30 min</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="alex" data-license="both" data-cat="reg">
+      <div class="activity">Trademark filing · "Pheeew" wordmark + logo<div class="sub">USPTO TEAS · self-file or attorney-assisted · Class 32 (beverages).</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip alex">alex</div>
+      <div class="pip both">both</div>
+      <div class="cost">$350</div>
+      <div class="time">8–12 mo</div>
+    </div>
+
+    <!-- ────── COMMERCIAL · INSURANCE / BROKER ────── -->
+
+    <div class="act" data-mode="ready" data-owner="jason" data-license="lic" data-cat="com">
+      <div class="activity">Product liability insurance · $1M<div class="sub">Required before any sale. THIMBLE · NEXT · Hiscox · The Hartford. Annual.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip jason">jason</div>
+      <div class="pip lic">licensed</div>
+      <div class="cost">$1,000/yr</div>
+      <div class="time">3–7 days</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="jason" data-license="lic" data-cat="com">
+      <div class="activity">US customs broker · retainer relationship<div class="sub">Pre-engage Flexport · C.H. Robinson · Expeditors. Saves 1–2 wk when trigger fires.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip jason">jason</div>
+      <div class="pip lic">licensed</div>
+      <div class="cost">$0 setup</div>
+      <div class="time">1–2 wk</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="jason" data-license="lic" data-cat="com">
+      <div class="activity">Continuous import bond ($50K minimum)<div class="sub">$300/yr through customs broker · covers all year's entries · file once, use repeatedly.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip jason">jason</div>
+      <div class="pip lic">licensed</div>
+      <div class="cost">$300/yr</div>
+      <div class="time">1 wk</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="alex" data-license="lic" data-cat="com">
+      <div class="activity">KORUS Origin Cert process pre-arranged with Naju<div class="sub">Saves ~3% duty per shipment · in writing on every PO. Naju issues; we receive.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip alex">alex</div>
+      <div class="pip lic">licensed</div>
+      <div class="cost">$0</div>
+      <div class="time">1 email</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="jason" data-license="in" data-cat="com">
+      <div class="activity">UPC / GTIN registration (GS1)<div class="sub">Required for retail · Amazon barcode · register once for full SKU set. Annual renewal.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip jason">jason</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$250</div>
+      <div class="time">1 wk</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="jason" data-license="in" data-cat="com">
+      <div class="activity">Wholesale pricing tiers built (Naju COGS-based)<div class="sub">Case price · MOQ · payment terms · slotting policy · sample policy. Shareable PDF sell sheet.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip jason">jason</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$0</div>
+      <div class="time">2 wk</div>
+    </div>
+
+    <!-- ────── LAB ────── -->
+
+    <div class="act" data-mode="now" data-owner="alex" data-license="lic" data-cat="reg">
+      <div class="activity">Lab testing · nutrition + microbial + accelerated shelf-life<div class="sub">Eurofins · Microbac · Covance · NSF. Batched. Required for label + Acidified Foods filing.</div></div>
+      <div class="pip now">now</div>
+      <div class="pip alex">alex</div>
+      <div class="pip lic">licensed</div>
+      <div class="cost">$2,500</div>
+      <div class="time">3–6 wk</div>
+    </div>
+    <div class="act" data-mode="trigger" data-owner="alex" data-license="lic" data-cat="reg">
+      <div class="activity">Production-run validation lab tests · post-Naju<div class="sub">Re-confirm shelf-life, CFU, nutrition on actual Naju batch · per MSA terms.</div></div>
+      <div class="pip trigger">trigger</div>
+      <div class="pip alex">alex</div>
+      <div class="pip lic">licensed</div>
+      <div class="cost">$1,500</div>
+      <div class="time">3–6 wk</div>
+    </div>
+
+    <!-- ────── PRODUCTION ────── -->
+
+    <div class="act" data-mode="now" data-owner="alex" data-license="lic" data-cat="prod">
+      <div class="activity">Tour 2 LA-area commissary kitchens · hot-fill capable<div class="sub">Hood Kitchen · Cube · Hatchery · Kitchen Match. Confirm pouch-fill permitted.</div></div>
+      <div class="pip now">now</div>
+      <div class="pip alex">alex</div>
+      <div class="pip lic">licensed</div>
+      <div class="cost">$0</div>
+      <div class="time">1 wk</div>
+    </div>
+    <div class="act" data-mode="now" data-owner="alex" data-license="in" data-cat="prod">
+      <div class="activity">Buy benchtop pouch sealer + pH meter + thermometer<div class="sub">Used 2K range. Capital equipment for commissary path.</div></div>
+      <div class="pip now">now</div>
+      <div class="pip alex">alex</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$1,500</div>
+      <div class="time">1 wk</div>
+    </div>
+    <div class="act" data-mode="now" data-owner="alex" data-license="in" data-cat="prod">
+      <div class="activity">Source pouch material · small-batch run (3K)<div class="sub">China direct · 30K MOQ but split across 5 batches · or local pouch printer at higher unit cost.</div></div>
+      <div class="pip now">now</div>
+      <div class="pip alex">alex</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$300</div>
+      <div class="time">2–4 wk</div>
+    </div>
+    <div class="act" data-mode="now" data-owner="alex" data-license="in" data-cat="prod">
+      <div class="activity">Commissary production run #1 · 2,000 units<div class="sub">Berry Mix Phase 1 · 1 day kitchen + ingredients + labor.</div></div>
+      <div class="pip now">now</div>
+      <div class="pip alex">alex</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$1,500</div>
+      <div class="time">1 day</div>
+    </div>
+    <div class="act" data-mode="now" data-owner="alex" data-license="in" data-cat="prod">
+      <div class="activity">Commissary production runs #2 + #3 · 2K each<div class="sub">Iterate as needed · same workflow · ingredient-cost driven.</div></div>
+      <div class="pip now">now</div>
+      <div class="pip alex">alex</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$3,000</div>
+      <div class="time">2 days</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="alex" data-license="in" data-cat="prod">
+      <div class="activity">Naju quote final · 40K × 3 SKU pricing locked<div class="sub">Confirm KORUS Origin Cert clause · payment terms · production calendar.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip alex">alex</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$0</div>
+      <div class="time">2–3 wk</div>
+    </div>
+    <div class="act" data-mode="trigger" data-owner="alex" data-license="in" data-cat="prod">
+      <div class="activity">Naju PO sent · 50% deposit wired<div class="sub">$65K wire · production starts · pouch art final to Naju.</div></div>
+      <div class="pip trigger">trigger</div>
+      <div class="pip alex">alex</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$65,000</div>
+      <div class="time">1 wk</div>
+    </div>
+    <div class="act" data-mode="trigger" data-owner="alex" data-license="in" data-cat="prod">
+      <div class="activity">Naju balance + freight + customs<div class="sub">Final 50% · sea freight · customs clearance · LA inland.</div></div>
+      <div class="pip trigger">trigger</div>
+      <div class="pip alex">alex</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$65,000</div>
+      <div class="time">8–14 wk</div>
+    </div>
+
+    <!-- ────── OPERATIONAL ────── -->
+
+    <div class="act" data-mode="ready" data-owner="jason" data-license="in" data-cat="ops">
+      <div class="activity">ShipBob 3PL account · Shopify integration<div class="sub">No setup fee · ~$5–8/pallet/mo storage + ~$3–6 per pick/pack.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip jason">jason</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$500 reserve</div>
+      <div class="time">1–2 wk</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="jason" data-license="in" data-cat="ops">
+      <div class="activity">Shopify build · pheeew.com<div class="sub">Theme · checkout · subscription tiers · Klaviyo connected.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip jason">jason</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$300/yr</div>
+      <div class="time">2 wk</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="jason" data-license="in" data-cat="ops">
+      <div class="activity">Klaviyo · welcome flow + cart abandonment<div class="sub">Tier $35/mo entry · upgrades with list growth.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip jason">jason</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$140/yr</div>
+      <div class="time">1 wk</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="jason" data-license="in" data-cat="ops">
+      <div class="activity">Amazon Seller Central application<div class="sub">2–4 wk approval · brand registry · listing prep. Start now even if SKUs not live.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip jason">jason</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$40/mo</div>
+      <div class="time">2–4 wk</div>
+    </div>
+    <div class="act" data-mode="now" data-owner="team" data-license="in" data-cat="ops">
+      <div class="activity">LA Temporary Food Facility permits · 5 markets<div class="sub">Per-event permit · prepackaged non-hazardous · LA County DPH.</div></div>
+      <div class="pip now">now</div>
+      <div class="pip team">team</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$500</div>
+      <div class="time">2–3 wk</div>
+    </div>
+    <div class="act" data-mode="now" data-owner="team" data-license="in" data-cat="ops">
+      <div class="activity">Farmers market booth setup · banner + display<div class="sub">In-brand · cooler-free · prepackaged display only.</div></div>
+      <div class="pip now">now</div>
+      <div class="pip team">team</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$400</div>
+      <div class="time">1 wk</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="dawon" data-license="in" data-cat="ops">
+      <div class="activity">Pouch artwork final · CMYK · with-bleed · Korea + China specs<div class="sub">Reserve Nutrition Facts + Best By date areas until lab returns.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip dawon">dawon</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$0</div>
+      <div class="time">2 wk</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="dawon" data-license="in" data-cat="ops">
+      <div class="activity">Sell sheet PDF · COA · sample case template<div class="sub">For wholesale buyer outreach · 1-pager + case price + lead time + compliance docs.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip dawon">dawon</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$0</div>
+      <div class="time">1 wk</div>
+    </div>
+
+    <!-- ────── FINANCE ────── -->
+
+    <div class="act" data-mode="ready" data-owner="alex" data-license="in" data-cat="fin">
+      <div class="activity">Mercury account · spend tracking · reserve $20K<div class="sub">Already in place · Alex's $6,750 contribution clearing.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip alex">alex</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$0</div>
+      <div class="time">done</div>
+    </div>
+    <div class="act" data-mode="trigger" data-owner="alex" data-license="in" data-cat="fin">
+      <div class="activity">Naju trigger funding source<div class="sub">Raise next round · buyer advance PO · founder bridge · partnership capital.</div></div>
+      <div class="pip trigger">trigger</div>
+      <div class="pip alex">alex</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$130K need</div>
+      <div class="time">trigger</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="alex" data-license="in" data-cat="fin">
+      <div class="activity">COGS modeling at full scale · pricing ladder<div class="sub">Sell sheet pricing · margin tiers · Net 30 vs Net 60 cash impact.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip alex">alex</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$0</div>
+      <div class="time">1 wk</div>
+    </div>
+    <div class="act" data-mode="always" data-owner="jason" data-license="in" data-cat="fin">
+      <div class="activity">Bookkeeping · QuickBooks or similar<div class="sub">Track spend · revenue · margin per channel. Required for tax.</div></div>
+      <div class="pip always">always</div>
+      <div class="pip jason">jason</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$30/mo</div>
+      <div class="time">ongoing</div>
+    </div>
+
+    <!-- ────── COMMERCIAL · GO-TO-MARKET ────── -->
+
+    <div class="act" data-mode="now" data-owner="team" data-license="in" data-cat="com">
+      <div class="activity">Visit 5 LA farmers markets · in-person scout<div class="sub">Smorgasburg · Atwater · Silver Lake · Mar Vista · Larchmont.</div></div>
+      <div class="pip now">now</div>
+      <div class="pip team">team</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$0</div>
+      <div class="time">1 wk</div>
+    </div>
+    <div class="act" data-mode="now" data-owner="team" data-license="in" data-cat="com">
+      <div class="activity">Book 3 farmers market booths · season opener<div class="sub">First sales channel · brand exposure · content capture.</div></div>
+      <div class="pip now">now</div>
+      <div class="pip team">team</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$300</div>
+      <div class="time">2 wk</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="dawon" data-license="in" data-cat="com">
+      <div class="activity">Storyboards 04–06 capture · founder-led content<div class="sub">Per the storyboards doc · raw, candid, iPhone-native.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip dawon">dawon</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$0</div>
+      <div class="time">2 wk</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="dawon" data-license="in" data-cat="com">
+      <div class="activity">Brand stills library · Track 02 · ongoing<div class="sub">Desert / sun / shade / toe-tingle · evergreen · per brand world doc.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip dawon">dawon</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$0</div>
+      <div class="time">ongoing</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="jason" data-license="in" data-cat="com">
+      <div class="activity">@saypheeew Instagram launch · 30-day calendar<div class="sub">Per brand world playbook · 5 pillars · 1 post/day.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip jason">jason</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$0</div>
+      <div class="time">2 wk</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="jason" data-license="in" data-cat="com">
+      <div class="activity">Wholesale buyer outreach list · top 10 LA accounts<div class="sub">Erewhon · Whole Foods · Sprouts · Gelson's · Bristol Farms · regional indies.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip jason">jason</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$0</div>
+      <div class="time">1 wk</div>
+    </div>
+    <div class="act" data-mode="ready" data-owner="jason" data-license="in" data-cat="com">
+      <div class="activity">Sample case prep · 24 pouches per buyer<div class="sub">From commissary inventory · with sell sheet + COA.</div></div>
+      <div class="pip ready">ready</div>
+      <div class="pip jason">jason</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$200</div>
+      <div class="time">1 wk</div>
+    </div>
+
+    <!-- ────── REGULATORY · POST-TRIGGER ────── -->
+
+    <div class="act" data-mode="trigger" data-owner="jason" data-license="lic" data-cat="reg">
+      <div class="activity">Customs entry filing · CBP Form 7501 (Naju)<div class="sub">Through retained customs broker · KORUS preference claimed · per shipment.</div></div>
+      <div class="pip trigger">trigger</div>
+      <div class="pip jason">jason</div>
+      <div class="pip lic">licensed</div>
+      <div class="cost">$450</div>
+      <div class="time">3–5 days</div>
+    </div>
+    <div class="act" data-mode="trigger" data-owner="alex" data-license="in" data-cat="reg">
+      <div class="activity">Acidified Foods 2541e · refile per Naju process<div class="sub">If hot-fill at commissary, then again at Naju. Different process, different filing.</div></div>
+      <div class="pip trigger">trigger</div>
+      <div class="pip alex">alex</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$0</div>
+      <div class="time">3–6 mo</div>
+    </div>
+
+    <!-- ────── FINANCE · POST-TRIGGER ────── -->
+
+    <div class="act" data-mode="trigger" data-owner="alex" data-license="in" data-cat="fin">
+      <div class="activity">Wholesale invoicing · Net 30 · QuickBooks<div class="sub">PO acceptance · invoice generation · A/R follow-up · cash collection.</div></div>
+      <div class="pip trigger">trigger</div>
+      <div class="pip alex">alex</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$0</div>
+      <div class="time">ongoing</div>
+    </div>
+    <div class="act" data-mode="trigger" data-owner="jason" data-license="in" data-cat="fin">
+      <div class="activity">Re-order forecast · 90-day rolling<div class="sub">Naju lead time means 4-month rolling forecast required to avoid stockouts.</div></div>
+      <div class="pip trigger">trigger</div>
+      <div class="pip jason">jason</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$0</div>
+      <div class="time">ongoing</div>
+    </div>
+
+    <!-- ────── OPERATIONAL · ALWAYS ────── -->
+
+    <div class="act" data-mode="always" data-owner="alex" data-license="in" data-cat="ops">
+      <div class="activity">Lot tracking system · COA per batch<div class="sub">Required for recall capability · spreadsheet or simple inventory tool.</div></div>
+      <div class="pip always">always</div>
+      <div class="pip alex">alex</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$0</div>
+      <div class="time">ongoing</div>
+    </div>
+    <div class="act" data-mode="always" data-owner="alex" data-license="in" data-cat="ops">
+      <div class="activity">Recall plan documented · contact list · communication template<div class="sub">Required by FDA · 24-hr response · drafted before any sale.</div></div>
+      <div class="pip always">always</div>
+      <div class="pip alex">alex</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$0</div>
+      <div class="time">1 wk</div>
+    </div>
+    <div class="act" data-mode="always" data-owner="alex" data-license="in" data-cat="ops">
+      <div class="activity">Naju relationship maintenance · quarterly check-in<div class="sub">Stay top of mind · rate updates · scheduling availability · keep door open.</div></div>
+      <div class="pip always">always</div>
+      <div class="pip alex">alex</div>
+      <div class="pip in">in-house</div>
+      <div class="cost">$0</div>
+      <div class="time">ongoing</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════ COST + TIME SUMMARY ════════ -->
+<section>
+  <div class="section-banner">
+    <span class="pip"></span>
+    <span class="num">06 / cost + time totals</span>
+    <span class="name">By mode · what each phase costs</span>
+    <span class="desc">$20K validation · $130K trigger</span>
+  </div>
+
+  <h2 class="section-title">The <em>three</em> bills.</h2>
+
+  <div class="modes">
+
+    <div class="mode now">
+      <span class="mode-tag"><span class="pip"></span>mode 1 · validation</span>
+      <h3>$10,200 · 12 weeks</h3>
+      <p class="modesub">Commissary kitchen run + permits + first sales channel.</p>
+      <ul>
+        <li>Process Authority + Better Process School: <strong>$1,700</strong></li>
+        <li>Lab testing: <strong>$2,500</strong></li>
+        <li>Equipment (sealer, meters): <strong>$1,500</strong></li>
+        <li>Production runs (3 × 2K): <strong>$4,500</strong></li>
+        <li>Pouch material (small): <strong>$300</strong></li>
+        <li>Market booth + permits: <strong>$700</strong></li>
+        <li>Buffer: ~$1K</li>
+      </ul>
+    </div>
+
+    <div class="mode ready">
+      <span class="mode-tag"><span class="pip"></span>mode 2 · scale-ready</span>
+      <h3>$6,800 · parallel</h3>
+      <p class="modesub">Infrastructure that pays back when trigger fires.</p>
+      <ul>
+        <li>Insurance: <strong>$1,000/yr</strong></li>
+        <li>Customs broker setup + bond: <strong>$300/yr</strong></li>
+        <li>Trademark filing: <strong>$350</strong></li>
+        <li>UPC/GTIN registration: <strong>$250</strong></li>
+        <li>HACCP plan + PCQI cert: <strong>$2,400</strong></li>
+        <li>Shopify + Klaviyo + Amazon: <strong>$500/yr</strong></li>
+        <li>ShipBob reserve + content + sample cases: <strong>~$2,000</strong></li>
+      </ul>
+    </div>
+
+    <div class="mode trigger">
+      <span class="mode-tag"><span class="pip"></span>mode 3 · trigger</span>
+      <h3>$130K · 14–20 weeks</h3>
+      <p class="modesub">Naju full launch. Triggered, not scheduled.</p>
+      <ul>
+        <li>Naju ex-factory · 3 SKUs × 40K: <strong>$120,320</strong></li>
+        <li>Korea inland + export: <strong>$1,500</strong></li>
+        <li>Sea freight (40ft FCL): <strong>$5,500</strong></li>
+        <li>US import + broker + bond fees: <strong>$1,500</strong></li>
+        <li>LA inland: <strong>$700</strong></li>
+        <li>Production-run validation lab: <strong>$1,500</strong></li>
+        <li><strong>Capital required: ~$130K</strong></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="callout warn" style="margin-top:24px;">
+    <div class="icon">!</div>
+    <div>
+      <h4>Note · validation + scale-ready slightly under $20K</h4>
+      <p>Mode 1 ($10.2K) + Mode 2 ($6.8K) = <strong>$17K of the $20K budget</strong>. Leaves ~$3K reserve for unforeseens (formulation tweak after lab returns, additional pouch order, market booth extras, payment processing during ramp). The trigger event ($130K) is its own funding event — buyer-driven, round-driven, or partnership-driven. Not budgeted in the $20K.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<div class="docfoot">
+  <div>pheeew · launch path · v3 · live<br>
+  <a href="/">← back to dashboard</a></div>
+  <div>internal · 2026-04-24</div>
+</div>
+
+</div>
+
+<script>
+(function() {
+  // Filter state
+  const state = { mode: 'all', owner: 'all', license: 'all', cat: 'all', search: '' };
+  const allItems = document.querySelectorAll('#registry .act:not(.head)');
+  const visCt = document.getElementById('visCt');
+  const searchBox = document.getElementById('searchBox');
+
+  function applyFilters() {
+    let visible = 0;
+    allItems.forEach(item => {
+      const matchesMode = state.mode === 'all' || item.dataset.mode === state.mode;
+      const matchesOwner = state.owner === 'all' || item.dataset.owner === state.owner;
+      const matchesLic = state.license === 'all' || item.dataset.license === state.license;
+      const matchesCat = state.cat === 'all' || item.dataset.cat === state.cat;
+      const matchesSearch = state.search === '' || item.textContent.toLowerCase().includes(state.search);
+      const show = matchesMode && matchesOwner && matchesLic && matchesCat && matchesSearch;
+      item.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+    if (visCt) visCt.textContent = visible;
+  }
+
+  // Filter pill clicks
+  document.querySelectorAll('.filter-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      const filterType = pill.dataset.filter;
+      const filterValue = pill.dataset.value;
+      state[filterType] = filterValue;
+      document.querySelectorAll(`[data-filter="${filterType}"]`).forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      applyFilters();
+    });
+  });
+
+  // Search
+  if (searchBox) {
+    searchBox.addEventListener('input', (e) => {
+      state.search = e.target.value.toLowerCase();
+      applyFilters();
+    });
+  }
+
+  // Initial count
+  if (visCt) visCt.textContent = allItems.length;
+})();
+</script>
+</body>
+</html>
